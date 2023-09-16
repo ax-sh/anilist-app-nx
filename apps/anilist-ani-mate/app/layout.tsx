@@ -1,6 +1,6 @@
 import { type PropsWithChildren } from 'react';
 import { Nav } from '@anilist-app-nx/ui';
-import { Providers } from './providers';
+import { NextAuthProvider, Providers } from './providers';
 import './global.scss';
 
 export const metadata = {
@@ -12,10 +12,12 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body>
-        <Providers>
-          <Nav />
-          {children}
-        </Providers>
+        <NextAuthProvider>
+          <Providers>
+            <Nav />
+            {children}
+          </Providers>
+        </NextAuthProvider>
       </body>
     </html>
   );
