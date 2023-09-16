@@ -18,6 +18,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@anilist-app-nx/auth": [
+        "auth/src/index.ts"
+      ],
       "@anilist-app-nx/ui": [
         "ui/src/index.ts"
       ]
