@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@apollo/client';
-import userProfile from './graphql/user-profile.gql';
+import userProfile from '../graphql/user-profile.gql';
 
 export function Profile() {
   // const o = client.query(userProfile);

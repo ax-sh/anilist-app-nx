@@ -4,7 +4,7 @@ import {
   DisconnectAnilistButton,
 } from '@anilist-app-nx/auth';
 
-import { Profile } from './profile';
+import { Profile } from './components/profile';
 
 export default async function Index() {
   return (
