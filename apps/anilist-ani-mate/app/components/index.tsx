@@ -1,10 +1,32 @@
 'use client';
-import { Ui } from '@anilist-app-nx/ui';
 
-export function Hello() {
+import { signIn, signOut } from 'next-auth/react';
+import Link from 'next/link';
+
+export const LoginButton = () => {
   return (
-    <div className="bg-indigo-500 p-2 font-mono">
-      <Ui />
-    </div>
+    <button style={{ marginRight: 10 }} onClick={() => signIn()}>
+      Sign in
+    </button>
   );
-}
+};
+
+export const RegisterButton = () => {
+  return (
+    <Link href="/register" style={{ marginRight: 10 }}>
+      Register
+    </Link>
+  );
+};
+
+export const LogoutButton = () => {
+  return (
+    <button style={{ marginRight: 10 }} onClick={() => signOut()}>
+      Sign Out
+    </button>
+  );
+};
+
+export const ProfileButton = () => {
+  return <Link href="/profile">Profile</Link>;
+};

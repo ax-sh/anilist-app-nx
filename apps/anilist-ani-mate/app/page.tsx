@@ -1,11 +1,20 @@
 import { Button } from '@nextui-org/button';
-import { Hello } from './components';
+import {
+  LoginButton,
+  LogoutButton,
+  ProfileButton,
+  RegisterButton,
+} from './components';
 
 export default async function Index() {
   return (
     <section className={'container mx-auto'}>
-      <Hello />
-      <Button>Click me</Button>
+      <div>
+        <LoginButton />
+        <RegisterButton />
+        <LogoutButton />
+        <ProfileButton />
+      </div>
     </section>
   );
 }
