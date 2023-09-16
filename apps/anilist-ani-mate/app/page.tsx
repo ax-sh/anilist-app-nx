@@ -1,19 +1,19 @@
-import { Button } from '@nextui-org/button';
+import { ProfileButton, RegisterButton } from './components';
 import {
+  ConnectAnilistButton,
+  DisconnectAnilistButton,
   LoginButton,
   LogoutButton,
-  ProfileButton,
-  RegisterButton,
-} from './components';
+} from '@anilist-app-nx/auth';
 
 export default async function Index() {
   return (
     <section className={'container mx-auto'}>
       <div>
-        <LoginButton />
-        <RegisterButton />
-        <LogoutButton />
+        <ConnectAnilistButton />
+        <DisconnectAnilistButton />
         <ProfileButton />
+        {/*<RegisterButton />*/}
       </div>
     </section>
   );
