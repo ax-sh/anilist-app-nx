@@ -1,5 +1,9 @@
 query AnilistUserProfileQuery {
   Viewer {
     id
+    name
+    avatar {
+      large
+    }
   }
 }

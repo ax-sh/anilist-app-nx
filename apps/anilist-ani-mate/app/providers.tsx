@@ -18,7 +18,7 @@ export const NextAuthProvider = ({ children }: PropsWithChildren) => {
   return <SessionProvider>{children}</SessionProvider>;
 };
 
-function createIsomorphLink() {
+export function createIsomorphLink() {
   return createHttpLink({
     uri: 'https://graphql.anilist.co',
     credentials: 'same-origin',
