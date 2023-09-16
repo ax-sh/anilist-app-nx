@@ -3,6 +3,9 @@ import {
   ConnectAnilistButton,
   DisconnectAnilistButton,
 } from '@anilist-app-nx/auth';
+// import userProfile from './graphql/user-profile.gql';
+//
+// console.log(userProfile, 77777);
 
 export default async function Index() {
   return (
