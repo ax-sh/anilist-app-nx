@@ -1,10 +1,15 @@
 'use client';
-import { Ui } from '@anilist-app-nx/ui';
 
-export function Hello() {
+import Link from 'next/link';
+
+export const RegisterButton = () => {
   return (
-    <div className="bg-indigo-500 p-2 font-mono">
-      <Ui />
-    </div>
+    <Link href="/register" style={{ marginRight: 10 }}>
+      Register
+    </Link>
   );
-}
+};
+
+export const ProfileButton = () => {
+  return <Link href="/profile">Profile</Link>;
+};
