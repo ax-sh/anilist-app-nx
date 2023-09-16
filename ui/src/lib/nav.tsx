@@ -11,7 +11,7 @@ import {
 } from '@nextui-org/react';
 // import { AcmeLogo } from './AcmeLogo.jsx';
 
-export default function Nav() {
+export function Nav() {
   return (
     <Navbar shouldHideOnScroll>
       <NavbarBrand>
