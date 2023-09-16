@@ -1,0 +1,5 @@
+query AnilistUserProfileQuery {
+  Viewer{
+    id
+  }
+}
