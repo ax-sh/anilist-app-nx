@@ -7,6 +7,6 @@ export function Profile() {
   // const o = client.query(userProfile);
 
   const { data, loading } = useQuery(userProfile);
-  console.log(data, loading, 77777);
+  if (loading) return <>Loading</>;
   return <div>{JSON.stringify(data)}</div>;
 }
