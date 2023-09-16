@@ -2,7 +2,7 @@
 
 import { NextUIProvider } from '@nextui-org/react';
 import { SessionProvider } from 'next-auth/react';
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { PropsWithChildren } from 'react';
 
 export function Providers({ children }: PropsWithChildren) {
@@ -14,7 +14,7 @@ export const NextAuthProvider = ({ children }: PropsWithChildren) => {
 };
 
 const client = new ApolloClient({
-  uri: "https://graphql.anilist.co",
+  uri: 'https://graphql.anilist.co',
   cache: new InMemoryCache(),
 });
 
