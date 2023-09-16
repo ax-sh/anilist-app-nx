@@ -2,6 +2,7 @@ import { createGlobPatternsForDependencies } from '@nx/react/tailwind';
 import { join } from 'path';
 import { nextui } from '@nextui-org/react';
 
+console.log(__dirname, 99);
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [

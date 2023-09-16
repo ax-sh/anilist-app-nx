@@ -1,12 +1,9 @@
 import { Button } from '@nextui-org/button';
-
-function Hello() {
-  return <div className="bg-indigo-500 p-2 font-mono">Hello!</div>;
-}
+import { Hello } from './components';
 
 export default async function Index() {
   return (
-    <section>
+    <section className={'container mx-auto'}>
       <Hello />
       <Button>Click me</Button>
     </section>
