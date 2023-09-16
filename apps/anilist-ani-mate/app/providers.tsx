@@ -13,9 +13,10 @@ export const NextAuthProvider = ({ children }: PropsWithChildren) => {
   return <SessionProvider>{children}</SessionProvider>;
 };
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   uri: 'https://graphql.anilist.co',
   cache: new InMemoryCache(),
+  ssrMode: typeof window === 'undefined',
 });
 
 export const AnilistApolloProvider = ({ children }: PropsWithChildren) => {
