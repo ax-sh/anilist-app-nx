@@ -1,7 +1,7 @@
 import { type PropsWithChildren } from 'react';
-import './global.scss';
+import { Nav } from '@anilist-app-nx/ui';
 import { Providers } from './providers';
-import Nav from './components/nav';
+import './global.scss';
 
 export const metadata = {
   title: 'Ani-Mate | Anilist',
