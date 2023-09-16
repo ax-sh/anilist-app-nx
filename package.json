@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev:ani-mate": "pnpm exec nx run anilist-ani-mate:serve"
+    "dev:ani-mate": "pnpm nx run anilist-ani-mate:serve"
   },
   "private": true,
   "dependencies": {
+    "@nextui-org/react": "^2.1.12",
     "@nx/next": "16.8.1",
+    "framer-motion": "^10.16.4",
     "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
