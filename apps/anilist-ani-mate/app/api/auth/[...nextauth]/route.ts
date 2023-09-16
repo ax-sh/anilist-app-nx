@@ -3,29 +3,22 @@ import type { AuthOptions } from 'next-auth';
 import { AnilistProvider, getHeaders } from '@anilist-app-nx/auth';
 import { env } from '../../../../env';
 import { ANILIST_USER_PROFILE_QUERY } from '@anilist-app-nx/auth';
-import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
+
+import { createApolloClient } from '../../../apollo-client';
 
 export const authOptions: AuthOptions = {
   providers: [
     AnilistProvider({
       userinfo: {
         async request({ tokens }) {
-          const client = new ApolloClient({
-            ssrMode: true,
-            link: createHttpLink({
-              uri: 'https://graphql.anilist.co',
-              credentials: 'same-origin',
-              headers: getHeaders(tokens.access_token),
-            }),
-            cache: new InMemoryCache(),
-          });
-
+          const client = createApolloClient();
           const {
             data,
             // networkStatus,
             // loading
           } = await client.query({
             query: ANILIST_USER_PROFILE_QUERY,
+            context: { headers: getHeaders(tokens.access_token) },
           });
 
           return data.Viewer;
