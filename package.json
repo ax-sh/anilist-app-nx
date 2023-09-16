@@ -2,7 +2,9 @@
   "name": "@anilist-app-nx/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev:ani-mate":"pnpm exec nx run anilist-ani-mate:serve"
+  },
   "private": true,
   "dependencies": {
     "@nx/next": "16.8.1",
