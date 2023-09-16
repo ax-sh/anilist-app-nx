@@ -2,7 +2,12 @@
 
 import { NextUIProvider } from '@nextui-org/react';
 import { SessionProvider } from 'next-auth/react';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
 import { PropsWithChildren } from 'react';
 
 export function Providers({ children }: PropsWithChildren) {
@@ -13,8 +18,18 @@ export const NextAuthProvider = ({ children }: PropsWithChildren) => {
   return <SessionProvider>{children}</SessionProvider>;
 };
 
+function createIsomorphLink() {
+  return createHttpLink({
+    uri: 'https://graphql.anilist.co',
+    credentials: 'same-origin',
+    // headers: {
+    //   cookie: req.header('Cookie'),
+    // },
+  });
+}
+
 export const client = new ApolloClient({
-  uri: 'https://graphql.anilist.co',
+  link: createIsomorphLink(),
   cache: new InMemoryCache(),
   ssrMode: typeof window === 'undefined',
 });
