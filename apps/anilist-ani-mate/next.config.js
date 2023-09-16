@@ -12,6 +12,13 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.(graphql|gql)$/,
+      loader: 'graphql-tag/loader',
+    });
+    return config;
+  },
 };
 
 const plugins = [
