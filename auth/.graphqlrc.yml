@@ -1,0 +1,5 @@
+schema: 'https://graphql.anilist.co/'
+#documents: 'packages/app/src/components/**/*.graphql'
+#extensions:
+#  customExtension:
+#    foo: true
