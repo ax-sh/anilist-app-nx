@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev:ani-mate": "pnpm nx run anilist-ani-mate:serve"
+    "dev:ani-mate": "pnpm nx run anilist-ani-mate:serve",
+    "codegen": "gql-gen --config codegen.yml"
   },
   "private": true,
   "dependencies": {
@@ -69,6 +70,10 @@
     "@graphql-codegen/cli": "^1.0.0",
     "@graphql-codegen/typescript": "^1.0.0",
     "@graphql-codegen/typescript-operations": "^1.0.0",
-    "@parcel/watcher": "^2.1.0"
+    "@parcel/watcher": "^2.1.0",
+    "graphql-codegen-typescript-client": "0.18.2",
+    "graphql-codegen-typescript-react-apollo": "0.18.2",
+    "graphql-codegen-typescript-graphql-files-modules": "0.18.2",
+    "graphql-codegen-fragment-matcher": "0.18.2"
   }
 }
