@@ -5,7 +5,24 @@
   "overrides": [
     {
       "files": ["**/*.{graphql,gql}"],
-      "plugins": ["@graphql-eslint/eslint-plugin"]
+      "parser": "@graphql-eslint/eslint-plugin",
+      "plugins": ["@graphql-eslint"],
+      "extends": [
+        "plugin:@graphql-eslint/operations-recommended",
+        "plugin:@graphql-eslint/schema-recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/consistent-type-assertions": "off",
+        "@graphql-eslint/known-type-names": "error",
+        "@graphql-eslint/require-id-when-available": "off",
+        "@graphql-eslint/selection-set-depth": "off",
+        "@graphql-eslint/naming-convention": "warn",
+        "@graphql-eslint/no-deprecated": "warn"
+      },
+      "parserOptions": {
+        "schema": "/Users/axmin/Desktop/PROJECT/anilist-app-nx/apps/anilist-ani-mate/generated/graphql.schema.json",
+        "operations": "./**/*.gql"
+      }
     },
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -39,6 +56,14 @@
       "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
       "env": {
         "jest": true
+      },
+      "rules": {}
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nrwl/nx/typescript"],
+      "parserOptions": {
+        "project": "./tsconfig.*?.json"
       },
       "rules": {}
     }
