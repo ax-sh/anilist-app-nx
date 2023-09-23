@@ -5,15 +5,17 @@ hooks:
   afterAllFileWrite:
     - prettier --write
 generates:
-  apps/anilist-ani-mate/generated/graphql.ts:
+  apps/anilist-ani-mate/generated/graphql/graphql.ts:
     plugins:
-      - 'typescript-react-apollo'
-      - 'typescript'
-      - 'typescript-operations'
-  #      todo error on adding types suggestions on gql file
-  #      - 'typescript-graphql-files-modules'
-  #      - 'typescript-client'
-  #      - "fragment-matcher"
-  apps/anilist-ani-mate/generated/graphql.schema.json:
+      - typescript-react-apollo
+      - typescript
+      - typescript-operations
+  apps/anilist-ani-mate/generated/graphql/schema.json:
     plugins:
       - 'introspection'
+  apps/anilist-ani-mate/generated/graphql/queries.d.ts:
+    plugins:
+      - typescript-graphql-files-modules
+    config:
+      #      # resulting module definition path glob: "*\/api/user-service/queries.graphql"
+      modulePathPrefix: '*.gql'
