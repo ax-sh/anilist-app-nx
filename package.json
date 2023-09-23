@@ -65,6 +65,10 @@
     "typescript": "~5.2.2",
     "vite": "~4.4.9",
     "vite-plugin-dts": "~2.3.0",
-    "vitest": "~0.34.4"
+    "vitest": "~0.34.4",
+    "@graphql-codegen/cli": "^1.0.0",
+    "@graphql-codegen/typescript": "^1.0.0",
+    "@graphql-codegen/typescript-operations": "^1.0.0",
+    "@parcel/watcher": "^2.1.0"
   }
 }
