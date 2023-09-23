@@ -1,13 +1,16 @@
 overwrite: true
 schema: 'https://graphql.anilist.co/'
 documents: '**/*.gql'
+hooks:
+  afterAllFileWrite:
+    - prettier --write
 generates:
   apps/anilist-ani-mate/generated/graphql.ts:
     plugins:
       - 'typescript-react-apollo'
-#      - 'typescript-client'
-#      - 'typescript-graphql-files-modules'
-#      - "fragment-matcher"
+  #      - 'typescript-client'
+  #      - 'typescript-graphql-files-modules'
+  #      - "fragment-matcher"
   apps/anilist-ani-mate/generated/graphql.schema.json:
     plugins:
       - 'introspection'
