@@ -2,12 +2,12 @@ overwrite: true
 schema: "https://graphql.anilist.co/"
 documents: "**/*.gql"
 generates:
-  apps/anilist-ani-mate/generated/graphql.ts:
+  apps/anilist-ani-mate/graphql.ts:
     plugins:
-      - "typescript-client"
+#      - "typescript-client"
       - "typescript-react-apollo"
-      - "typescript-graphql-files-modules"
-      - "fragment-matcher"
+#      - "typescript-graphql-files-modules"
+#      - "fragment-matcher"
   ./graphql.schema.json:
     plugins:
       - "introspection"

@@ -4,11 +4,12 @@
   "license": "MIT",
   "scripts": {
     "dev:ani-mate": "pnpm nx run anilist-ani-mate:serve",
-    "codegen": "gql-gen --config codegen.yml"
+    "codegen": "pnpm gql-gen --config apps/anilist-ani-mate/codegen.yml"
   },
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.8.4",
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@nextui-org/react": "^2.1.13",
     "@nextui-org/system": "^2.0.10",
     "@nextui-org/theme": "^2.1.9",
@@ -28,8 +29,11 @@
     "@babel/core": "^7.22.20",
     "@babel/preset-react": "^7.22.15",
     "@graphql-codegen/cli": "^1.21.8",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@graphql-codegen/introspection": "^4.0.0",
     "@graphql-codegen/typescript": "^1.23.0",
     "@graphql-codegen/typescript-operations": "^1.18.4",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@nx/eslint-plugin": "16.8.1",
     "@nx/jest": "16.8.1",
     "@nx/js": "16.8.1",
