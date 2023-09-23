@@ -8,9 +8,9 @@ generates:
   apps/anilist-ani-mate/generated/graphql.ts:
     plugins:
       - 'typescript-react-apollo'
+      - 'typescript'
+      - 'typescript-operations'
   #      todo error on adding types suggestions on gql file
-  #      - 'typescript-operations'
-  #      - 'typescript'
   #      - 'typescript-graphql-files-modules'
   #      - 'typescript-client'
   #      - "fragment-matcher"
