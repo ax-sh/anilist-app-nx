@@ -1,0 +1,15 @@
+{
+  "name": "Remote Schema",
+  "schemaPath": "/Users/axmin/Desktop/PROJECT/anilist-app-nx/apps/anilist-ani-mate/generated/graphql.schema.json",
+  "extensions": {
+    "endpoints": {
+      "Apollo Fullstack Tutorial": {
+        "url": "https://graphql.anilist.co/",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": true
+      }
+    }
+  }
+}
