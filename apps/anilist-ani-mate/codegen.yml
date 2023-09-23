@@ -8,8 +8,10 @@ generates:
   apps/anilist-ani-mate/generated/graphql.ts:
     plugins:
       - 'typescript-react-apollo'
-  #      - 'typescript-client'
+  #      - 'typescript-operations'
+  #      - 'typescript'
   #      - 'typescript-graphql-files-modules'
+  #      - 'typescript-client'
   #      - "fragment-matcher"
   apps/anilist-ani-mate/generated/graphql.schema.json:
     plugins:

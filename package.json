@@ -33,6 +33,7 @@
     "@graphql-codegen/client-preset": "^4.1.0",
     "@graphql-codegen/introspection": "^4.0.0",
     "@graphql-codegen/typescript": "^1.23.0",
+    "@graphql-codegen/typescript-graphql-files-modules": "^2.2.1",
     "@graphql-codegen/typescript-operations": "^1.18.4",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@graphql-eslint/eslint-plugin": "^3.20.1",

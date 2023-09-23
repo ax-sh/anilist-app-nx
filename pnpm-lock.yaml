@@ -76,6 +76,9 @@ devDependencies:
   '@graphql-codegen/typescript':
     specifier: ^1.23.0
     version: 1.23.0(graphql@16.8.1)
+  '@graphql-codegen/typescript-graphql-files-modules':
+    specifier: ^2.2.1
+    version: 2.2.1(graphql@16.8.1)
   '@graphql-codegen/typescript-operations':
     specifier: ^1.18.4
     version: 1.18.4(graphql@16.8.1)
@@ -2126,6 +2129,16 @@ packages:
     transitivePeerDependencies:
       - encoding
       - supports-color
+    dev: true
+
+  /@graphql-codegen/typescript-graphql-files-modules@2.2.1(graphql@16.8.1):
+    resolution: {integrity: sha512-E9k7AOZx4w4Qxll6tDbQKLJnriATowhrKobALaTcOG73SWtcZDDDitHjrm2DcV99XxlAFBV0J2ua/2r+nrvfvg==}
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      '@graphql-codegen/plugin-helpers': 2.7.2(graphql@16.8.1)
+      graphql: 16.8.1
+      tslib: 2.4.1
     dev: true
 
   /@graphql-codegen/typescript-operations@1.18.4(graphql@16.8.1):
@@ -4512,22 +4525,6 @@ packages:
       - verdaccio
     dev: true
 
-  /@nrwl/js@16.8.1(@types/node@20.6.2)(nx@16.8.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-I5kCtk0TUvcvJXnD6fbOI1+L4EBHbSZCXVCkv3eXKOeAj0cJ6cOt2g6S7DpWPf2P7zTq22XOPNJy3C8u9tCbgQ==}
-    dependencies:
-      '@nx/js': 16.8.1(@types/node@20.6.2)(nx@16.8.1)(typescript@5.1.6)
-    transitivePeerDependencies:
-      - '@babel/traverse'
-      - '@swc-node/register'
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - debug
-      - nx
-      - supports-color
-      - typescript
-      - verdaccio
-
   /@nrwl/js@16.8.1(@types/node@20.6.2)(nx@16.8.1)(typescript@5.2.2):
     resolution: {integrity: sha512-I5kCtk0TUvcvJXnD6fbOI1+L4EBHbSZCXVCkv3eXKOeAj0cJ6cOt2g6S7DpWPf2P7zTq22XOPNJy3C8u9tCbgQ==}
     dependencies:
@@ -4820,7 +4817,7 @@ packages:
       '@babel/preset-env': 7.22.20(@babel/core@7.22.20)
       '@babel/preset-typescript': 7.22.15(@babel/core@7.22.20)
       '@babel/runtime': 7.22.15
-      '@nrwl/js': 16.8.1(@types/node@20.6.2)(nx@16.8.1)(typescript@5.1.6)
+      '@nrwl/js': 16.8.1(@types/node@20.6.2)(nx@16.8.1)(typescript@5.2.2)
       '@nx/devkit': 16.8.1(nx@16.8.1)
       '@nx/workspace': 16.8.1
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.1.6)
