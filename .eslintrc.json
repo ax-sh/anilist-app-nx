@@ -4,6 +4,10 @@
   "plugins": ["@nx"],
   "overrides": [
     {
+      "files": ["**/*.{graphql,gql}"],
+      "plugins": ["@graphql-eslint/eslint-plugin"]
+    },
+    {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nx/enforce-module-boundaries": [
