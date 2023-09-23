@@ -2,7 +2,7 @@ overwrite: true
 schema: "https://graphql.anilist.co/"
 documents: "**/*.gql"
 generates:
-  src/generated/graphql.ts:
+  apps/anilist-ani-mate/generated/graphql.ts:
     plugins:
       - "typescript-client"
       - "typescript-react-apollo"
