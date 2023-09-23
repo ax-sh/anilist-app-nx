@@ -4809,6 +4809,22 @@ packages:
       - verdaccio
     dev: false
 
+  /@nrwl/js@16.9.0(@types/node@20.6.2)(nx@16.9.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-BrESQovbQNLuHT50dJttBFG7pomXWTJiVycfAknkGkE/+1/AdAkmx8PtBFBDTLvilsHV98VIWAwsPyo3tehQ4A==}
+    dependencies:
+      '@nx/js': 16.9.0(@types/node@20.6.2)(nx@16.9.0)(typescript@5.1.6)
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - debug
+      - nx
+      - supports-color
+      - typescript
+      - verdaccio
+
   /@nrwl/js@16.9.0(@types/node@20.6.2)(nx@16.9.0)(typescript@5.2.2):
     resolution: {integrity: sha512-BrESQovbQNLuHT50dJttBFG7pomXWTJiVycfAknkGkE/+1/AdAkmx8PtBFBDTLvilsHV98VIWAwsPyo3tehQ4A==}
     dependencies:
@@ -5229,7 +5245,7 @@ packages:
       '@babel/preset-env': 7.22.20(@babel/core@7.22.20)
       '@babel/preset-typescript': 7.22.15(@babel/core@7.22.20)
       '@babel/runtime': 7.22.15
-      '@nrwl/js': 16.9.0(@types/node@20.6.2)(nx@16.9.0)(typescript@5.2.2)
+      '@nrwl/js': 16.9.0(@types/node@20.6.2)(nx@16.9.0)(typescript@5.1.6)
       '@nx/devkit': 16.9.0(nx@16.9.0)
       '@nx/workspace': 16.9.0
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.1.6)
