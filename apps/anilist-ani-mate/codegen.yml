@@ -5,9 +5,9 @@ generates:
   apps/anilist-ani-mate/generated/graphql.ts:
     plugins:
       - 'typescript-react-apollo'
-      - 'typescript-client'
-      - 'typescript-graphql-files-modules'
-  #      - "fragment-matcher"
-  ./generated/graphql.schema.json:
+#      - 'typescript-client'
+#      - 'typescript-graphql-files-modules'
+#      - "fragment-matcher"
+  apps/anilist-ani-mate/generated/graphql.schema.json:
     plugins:
       - 'introspection'
