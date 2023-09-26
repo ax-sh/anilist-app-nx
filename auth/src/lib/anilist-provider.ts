@@ -45,8 +45,6 @@ export function AnilistProvider<P extends AnilistProfile>(
     type: 'oauth',
     version: '2.0',
 
-    // accessTokenUrl: 'https://anilist.co/api/v2/oauth/token',
-    // requestTokenUrl: 'https://anilist.co/api/v2/oauth/token',
     token: 'https://anilist.co/api/v2/oauth/token',
     authorization: {
       url: 'https://anilist.co/api/v2/oauth/authorize',
