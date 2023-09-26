@@ -11,7 +11,7 @@ export default async function Index() {
     <section className={'container mx-auto'}>
       <Profile />
       <div className={'flex flex-col gap-4'}>
-        <ConnectAnilistButton />
+        {/*<ConnectAnilistButton />*/}
         <DisconnectAnilistButton />
         <ProfileButton />
         {/*<RegisterButton />*/}

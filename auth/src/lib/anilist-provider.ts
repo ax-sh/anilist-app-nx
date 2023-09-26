@@ -35,7 +35,7 @@ export function AnilistProvider<P extends AnilistProfile>(
     name: 'Anilist',
     type: 'oauth',
     version: '2.0',
-    // params: { grant_type: 'authorization_code' },
+
     accessTokenUrl: 'https://anilist.co/api/v2/oauth/token',
     requestTokenUrl: 'https://anilist.co/api/v2/oauth/token',
     authorization: {
@@ -46,10 +46,7 @@ export function AnilistProvider<P extends AnilistProfile>(
         client_id: options.clientId,
       },
     },
-    token: {
-      url: 'https://anilist.co/api/v2/oauth/token',
-      params: {},
-    },
+    token: 'https://anilist.co/api/v2/oauth/token',
     userinfo: options.userinfo,
     clientId: options.clientId,
     clientSecret: options.clientSecret,
