@@ -1,0 +1,28 @@
+# query UserAnimeList{
+    
+# }
+
+ query AnimeQuery($id: Int) {
+    Media(id: $id, type: ANIME) {
+      id
+      idMal
+      title {
+        romaji
+        english
+        native
+      }
+      characters {
+        nodes {
+          image {
+            large
+          }
+          name {
+            userPreferred
+          }
+          id
+          favourites
+          isFavourite
+        }
+      }
+    }
+  }
