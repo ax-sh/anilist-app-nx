@@ -21,23 +21,33 @@ export type AnilistProviderOptions<P> = OAuthUserConfig<P> &
 export function AnilistProvider<P extends AnilistProfile>(
   options: AnilistProviderOptions<P>,
 ): OAuthConfig<P> {
-  const profile = Boolean(options.profile)
-    ? options.profile!
-    : (profile: P): Awaitable<User> => {
-        return {
-          id: `${profile.id}`,
-          image: profile.avatar.large,
-          name: profile.name,
-        };
-      };
+  function getProfile(profile: P): Awaitable<User> {
+    console.log('using internal getProfile');
+    return {
+      id: `${profile.id}`,
+      image: profile.avatar.large,
+      name: profile.name,
+    };
+  }
+  // NOTE reference
+  // profile(profile: P, tokens: TokenSet): Awaitable<User> {
+  //   return {
+  //     email: undefined,
+  //     id: `${profile.id}`,
+  //     image: profile.avatar.large,
+  //     name: profile.name,
+  //   };
+  // },
+
   return {
     id: 'anilist',
     name: 'Anilist',
     type: 'oauth',
     version: '2.0',
 
-    accessTokenUrl: 'https://anilist.co/api/v2/oauth/token',
-    requestTokenUrl: 'https://anilist.co/api/v2/oauth/token',
+    // accessTokenUrl: 'https://anilist.co/api/v2/oauth/token',
+    // requestTokenUrl: 'https://anilist.co/api/v2/oauth/token',
+    token: 'https://anilist.co/api/v2/oauth/token',
     authorization: {
       url: 'https://anilist.co/api/v2/oauth/authorize',
       params: {
@@ -46,18 +56,9 @@ export function AnilistProvider<P extends AnilistProfile>(
         client_id: options.clientId,
       },
     },
-    token: 'https://anilist.co/api/v2/oauth/token',
     userinfo: options.userinfo,
     clientId: options.clientId,
     clientSecret: options.clientSecret,
-    profile,
-    // profile(profile: P, tokens: TokenSet): Awaitable<User> {
-    //   return {
-    //     email: undefined,
-    //     id: `${profile.id}`,
-    //     image: profile.avatar.large,
-    //     name: profile.name,
-    //   };
-    // },
+    profile: Boolean(options.profile) ? options.profile! : getProfile,
   };
 }
