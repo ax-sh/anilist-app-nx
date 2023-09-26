@@ -1,8 +1,5 @@
 import { ProfileButton } from './components';
-import {
-  ConnectAnilistButton,
-  DisconnectAnilistButton,
-} from '@anilist-app-nx/auth';
+import { DisconnectAnilistButton } from '@anilist-app-nx/auth';
 
 import { Profile } from './components/profile';
 

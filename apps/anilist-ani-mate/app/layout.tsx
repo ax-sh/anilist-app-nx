@@ -8,9 +8,10 @@ import {
 import './global.scss';
 
 import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev';
+import * as process from 'process';
 
-if (true) {
-  // Adds messages only in a dev environment
+if (process.env.NODE_ENV === 'development') {
+  // NOTE Adds messages only in a dev environment
   loadDevMessages();
   loadErrorMessages();
 }
