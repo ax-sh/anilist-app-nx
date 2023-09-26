@@ -7,6 +7,14 @@ import {
 } from './providers';
 import './global.scss';
 
+import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev';
+
+if (true) {
+  // Adds messages only in a dev environment
+  loadDevMessages();
+  loadErrorMessages();
+}
+
 export const metadata = {
   title: 'Ani-Mate | Anilist',
   description: '',
