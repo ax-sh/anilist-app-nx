@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "prepare": "husky install",
     "dev:ani-mate": "pnpm nx run anilist-ani-mate:serve",
     "codegen": "pnpm gql-gen --config apps/anilist-ani-mate/codegen.yml"
   },
