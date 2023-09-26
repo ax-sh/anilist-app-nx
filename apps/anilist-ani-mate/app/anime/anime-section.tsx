@@ -1,11 +1,12 @@
 'use client';
-import { useAnimeQueryQuery } from 'apps/anilist-ani-mate/generated/graphql/graphql';
+import { useAnimeQuery } from 'apps/anilist-ani-mate/generated/graphql/graphql';
+import { isApolloError } from '@apollo/client';
 
 export function AnimeSection() {
-  const { data, loading, error } = useAnimeQueryQuery({
+  const { data, loading, error } = useAnimeQuery({
     variables: { id: 20 },
   });
-  if (error) return <>{JSON.stringify(error)}</>;
+  if (error && isApolloError(error)) return <>{JSON.stringify(error)}</>;
   if (loading) return <>loading</>;
 
   return (
