@@ -9,6 +9,7 @@ import {
   Link,
   Button,
 } from '@nextui-org/react';
+import { ConnectAnilistButton } from '@anilist-app-nx/auth';
 // import { AcmeLogo } from './AcmeLogo.jsx';
 
 export function Nav() {
@@ -37,13 +38,13 @@ export function Nav() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
+          <ConnectAnilistButton className={'bg-blue-400 text-white'} />
         </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem>
+        {/*<NavbarItem>*/}
+        {/*  <Button as={Link} color="primary" href="#" variant="flat">*/}
+        {/*    Sign Up*/}
+        {/*  </Button>*/}
+        {/*</NavbarItem>*/}
       </NavbarContent>
     </Navbar>
   );
