@@ -1,6 +1,4 @@
 import { ProfileButton } from './components';
-import { DisconnectAnilistButton } from '@anilist-app-nx/auth';
-
 import { Profile } from './components/profile';
 
 export default async function Index() {
@@ -8,9 +6,9 @@ export default async function Index() {
     <section className={'container mx-auto'}>
       <Profile />
       <div className={'flex flex-col gap-4'}>
-        {/*<ConnectAnilistButton />*/}
-        <DisconnectAnilistButton />
         <ProfileButton />
+        {/*<ConnectAnilistButton />*/}
+        {/*<DisconnectAnilistButton />*/}
         {/*<RegisterButton />*/}
       </div>
     </section>

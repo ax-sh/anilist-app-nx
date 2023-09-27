@@ -7,12 +7,16 @@ import {
   NavbarContent,
   NavbarItem,
   Link,
-  Button,
 } from '@nextui-org/react';
-import { ConnectAnilistButton } from '@anilist-app-nx/auth';
-// import { AcmeLogo } from './AcmeLogo.jsx';
+import {
+  ConnectAnilistButton,
+  DisconnectAnilistButton,
+} from '@anilist-app-nx/auth';
+import { useSession } from 'next-auth/react';
 
 export function Nav() {
+  const { status } = useSession();
+
   return (
     <Navbar shouldHideOnScroll>
       <NavbarBrand>
@@ -38,7 +42,12 @@ export function Nav() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <ConnectAnilistButton className={'bg-blue-400 text-white'} />
+          {status === 'unauthenticated' && (
+            <ConnectAnilistButton className={'bg-blue-400 text-white'} />
+          )}
+          {status === 'authenticated' && (
+            <DisconnectAnilistButton className={'bg-red-400 text-white'} />
+          )}
         </NavbarItem>
         {/*<NavbarItem>*/}
         {/*  <Button as={Link} color="primary" href="#" variant="flat">*/}
