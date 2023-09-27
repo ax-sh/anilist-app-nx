@@ -1,6 +1,7 @@
 'use client';
 import { useAnilistUserProfileQueryQuery } from '../../generated/graphql/graphql';
 import { fromError } from '@apollo/client';
+import { Avatar } from '@nextui-org/react';
 // import { GetServerSideProps } from 'next';
 
 // function withSession(callback: any) {
@@ -34,12 +35,20 @@ export default function ProfilePage() {
   const { data, loading, error } = useAnilistUserProfileQueryQuery();
   if (error) {
     console.log(fromError(error).map(console.log));
-    return <>{JSON.stringify(error)}</>;
+    return (
+      <div className={'container mx-auto'}>
+        <pre>{JSON.stringify(error, null, 4)}</pre>
+      </div>
+    );
   }
-  if (loading) return <>loading</>;
+  if (loading) return <div className={'container mx-auto'}>loading</div>;
+  const user = data?.Viewer;
   return (
     <main className={'container mx-auto'}>
-      <pre>{JSON.stringify(data, null, 4)}</pre>
+      {user?.avatar?.large && (
+        <Avatar alt={'user'} src={user?.avatar?.large} title={user?.name} />
+      )}
+      <pre>{JSON.stringify(user, null, 4)}</pre>
     </main>
   );
 }
