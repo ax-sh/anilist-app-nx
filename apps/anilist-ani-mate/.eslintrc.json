@@ -8,6 +8,12 @@
   "ignorePatterns": ["!**/*", ".next/**/*"],
   "overrides": [
     {
+      "files": ["**/graphql.ts"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    },
+    {
       "files": ["*.*"],
       "rules": {
         "@next/next/no-html-link-for-pages": "off"
