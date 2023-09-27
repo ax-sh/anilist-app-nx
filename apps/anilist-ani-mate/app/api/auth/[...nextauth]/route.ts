@@ -19,6 +19,8 @@ const anilistProvider = AnilistProvider({
         context: { headers: getHeaders(tokens.access_token) },
       });
 
+      localStorage.setItem('token', tokens.access_token!);
+
       return data.Viewer;
     },
   },
