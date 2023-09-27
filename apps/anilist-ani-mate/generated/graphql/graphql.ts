@@ -22,6 +22,82 @@ export type Incremental<T> =
     };
 const defaultOptions = {} as const;
 
+export const UserAnimeListDocument = gql`
+  query UserAnimeList($username: String) {
+    MediaListCollection(
+      userName: $username
+      type: ANIME
+      sort: UPDATED_TIME_DESC
+    ) {
+      lists {
+        entries {
+          media {
+            id
+            title {
+              romaji
+            }
+            coverImage {
+              extraLarge
+            }
+            idMal
+            status
+          }
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useUserAnimeListQuery__
+ *
+ * To run a query within a React component, call `useUserAnimeListQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUserAnimeListQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUserAnimeListQuery({
+ *   variables: {
+ *      username: // value for 'username'
+ *   },
+ * });
+ */
+export function useUserAnimeListQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    UserAnimeListQuery,
+    UserAnimeListQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<UserAnimeListQuery, UserAnimeListQueryVariables>(
+    UserAnimeListDocument,
+    options,
+  );
+}
+export function useUserAnimeListLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    UserAnimeListQuery,
+    UserAnimeListQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<UserAnimeListQuery, UserAnimeListQueryVariables>(
+    UserAnimeListDocument,
+    options,
+  );
+}
+export type UserAnimeListQueryHookResult = ReturnType<
+  typeof useUserAnimeListQuery
+>;
+export type UserAnimeListLazyQueryHookResult = ReturnType<
+  typeof useUserAnimeListLazyQuery
+>;
+export type UserAnimeListQueryResult = Apollo.QueryResult<
+  UserAnimeListQuery,
+  UserAnimeListQueryVariables
+>;
 export const AnimeDocument = gql`
   query Anime($id: Int) {
     Media(id: $id, type: ANIME) {
@@ -4684,6 +4760,34 @@ export type YearStats = {
   amount?: Maybe<Scalars['Int']['output']>;
   meanScore?: Maybe<Scalars['Int']['output']>;
   year?: Maybe<Scalars['Int']['output']>;
+};
+
+export type UserAnimeListQueryVariables = Exact<{
+  username?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+export type UserAnimeListQuery = {
+  __typename?: 'Query';
+  MediaListCollection?: {
+    __typename?: 'MediaListCollection';
+    lists?: Array<{
+      __typename?: 'MediaListGroup';
+      entries?: Array<{
+        __typename?: 'MediaList';
+        media?: {
+          __typename?: 'Media';
+          id: number;
+          idMal?: number | null;
+          status?: MediaStatus | null;
+          title?: { __typename?: 'MediaTitle'; romaji?: string | null } | null;
+          coverImage?: {
+            __typename?: 'MediaCoverImage';
+            extraLarge?: string | null;
+          } | null;
+        } | null;
+      } | null> | null;
+    } | null> | null;
+  } | null;
 };
 
 export type AnimeQueryVariables = Exact<{

@@ -1,28 +1,23 @@
-# query UserAnimeList{
-
-# }
-
- query Anime($id: Int) {
-    Media(id: $id, type: ANIME) {
-      id
-      idMal
-      title {
-        romaji
-        english
-        native
-      }
-      characters {
-        nodes {
-          image {
-            large
-          }
-          name {
-            userPreferred
-          }
+query UserAnimeList($username: String) {
+  MediaListCollection(
+    userName: $username
+    type: ANIME
+    sort: UPDATED_TIME_DESC
+  ) {
+    lists {
+      entries {
+        media {
           id
-          favourites
-          isFavourite
+          title {
+            romaji
+          }
+          coverImage {
+            extraLarge
+          }
+          idMal
+          status
         }
       }
     }
   }
+}
