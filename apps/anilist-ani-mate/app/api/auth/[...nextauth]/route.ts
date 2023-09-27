@@ -1,13 +1,13 @@
-import NextAuth, { Session, User } from 'next-auth';
+import NextAuth from 'next-auth';
 import type { AuthOptions } from 'next-auth';
 import { AnilistProvider, getHeaders } from '@anilist-app-nx/auth';
 import { env } from '../../../../env';
 import { ANILIST_USER_PROFILE_QUERY } from '@anilist-app-nx/auth';
-import { JWT } from 'next-auth/jwt';
+
 // import jsonwebtoken from 'jsonwebtoken';
 
 import { createApolloClient } from '../../../apollo-client';
-import type { AdapterUser } from 'next-auth/src/adapters';
+import { CallbacksOptions } from 'next-auth/src/core/types';
 
 async function fetchAuthUser(access_token: string) {
   const client = createApolloClient();
@@ -36,22 +36,24 @@ const anilistProvider = AnilistProvider({
 const jwt = async ({
   token,
   account,
-}: {
-  token: JWT;
-  user: User | AdapterUser;
-  account: any;
-}) => {
+}: Parameters<CallbacksOptions['jwt']>[0]) => {
   if (account) {
     token.accessToken = account.access_token;
   }
   return token;
 };
 
-const session = async function session(params: {
-  session: Session;
-  user: User;
-  token: JWT;
-}) {
+type ExtendedSessionType = Parameters<CallbacksOptions['session']>[0];
+
+// type ExtendedSessionType = Omit<
+//   Parameters<CallbacksOptions['session']>[0],
+//   'session'
+// > & {
+//   session: Pick<Parameters<CallbacksOptions['session']>[0], 'session'> & {
+//     token: JWT;
+//   };
+// };
+const session = async function session(params: ExtendedSessionType) {
   // const encodedToken = jsonwebtoken.sign(params.token, 'process.env.SECRET', {
   //   algorithm: 'HS256',
   // });
@@ -61,13 +63,14 @@ const session = async function session(params: {
 
   return params.session;
 };
+
 export const authOptions: AuthOptions = {
   providers: [anilistProvider],
-  // debug: true,
   callbacks: {
     session,
     jwt,
   },
+  // debug: true,
 };
 
 const handler = NextAuth(authOptions);
