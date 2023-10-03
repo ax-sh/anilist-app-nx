@@ -5,7 +5,13 @@ import { ANILIST_USER_PROFILE_QUERY } from '@anilist-app-nx/auth';
 
 export function Profile() {
   const { data, loading, error } = useQuery(ANILIST_USER_PROFILE_QUERY);
-  if (error) return <pre>error {JSON.stringify(error, null, 4)}</pre>;
+  if (error)
+    return (
+      <pre>
+        error{' '}
+        {error.graphQLErrors.map((error) => JSON.stringify(error, null, 4))}
+      </pre>
+    );
   if (loading) return <pre>Loading</pre>;
   return <div>{JSON.stringify(data)}</div>;
 }
