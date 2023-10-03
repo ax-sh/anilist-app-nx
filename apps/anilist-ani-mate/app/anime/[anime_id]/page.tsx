@@ -11,10 +11,21 @@ export default function AnimePage({ params }: AnimePageProps) {
   });
   if (error) return <ErrorJsonViewer error={error} />;
   if (loading) return <>loading</>;
-  const { characters, ...media } = data?.Media!;
+  const { characters, title, id, idMal } = data?.Media!;
+
   return (
-    <section className={'container mx-auto'}>
-      <CharactersSection characters={characters.nodes!} />
+    <section className={'container mx-auto prose'}>
+      <h1>
+        {title?.english} | {title?.romaji}
+      </h1>
+      <h2>
+        anilist: {id} malId:{idMal}
+      </h2>
+      <div className={'not-prose'}>
+        <CharactersSection characters={characters!.nodes!} />
+      </div>
+      <pre>{JSON.stringify(data, null, 4)}</pre>
+      <pre>{JSON.stringify(title, null, 4)}</pre>
     </section>
   );
 }
