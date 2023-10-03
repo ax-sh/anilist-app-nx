@@ -9,6 +9,8 @@ query Anime($id: Int) {
     }
     characters {
       nodes {
+        gender
+
         image {
           large
         }

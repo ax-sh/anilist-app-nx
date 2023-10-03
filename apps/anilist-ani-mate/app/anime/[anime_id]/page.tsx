@@ -18,9 +18,9 @@ export default function AnimePage({ params }: AnimePageProps) {
       <h1>
         {title?.english} | {title?.romaji}
       </h1>
-      <h2>
+      <h5>
         anilist: {id} malId:{idMal}
-      </h2>
+      </h5>
       <div className={'not-prose'}>
         <CharactersSection characters={characters!.nodes!} />
       </div>
