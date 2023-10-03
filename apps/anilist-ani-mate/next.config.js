@@ -14,7 +14,6 @@ const nextConfig = {
         hostname: '**',
       },
     ],
-    domains: ['s4.anilist.co'],
   },
   nx: {
     // Set this to true if you would like to use SVGR
