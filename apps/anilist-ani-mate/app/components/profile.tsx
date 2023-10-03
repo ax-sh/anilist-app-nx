@@ -1,4 +1,5 @@
 'use client';
+import { Spinner } from '@nextui-org/react';
 
 import { ApolloError, useQuery } from '@apollo/client';
 import { ANILIST_USER_PROFILE_QUERY } from '@anilist-app-nx/auth';
@@ -14,6 +15,11 @@ function ShowErrorJson({ error }: { error: ApolloError }) {
 export function Profile() {
   const { data, loading, error } = useQuery(ANILIST_USER_PROFILE_QUERY);
   if (error) return <ShowErrorJson error={error} />;
-  if (loading) return <pre>Loading</pre>;
-  return <pre>{JSON.stringify(data, null, 4)}</pre>;
+  if (loading)
+    return (
+      <div>
+        Loading <Spinner />
+      </div>
+    );
+  return <pre>{JSON.stringify(data.Viewer, null, 4)}</pre>;
 }
