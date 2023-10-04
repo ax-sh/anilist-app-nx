@@ -16,6 +16,7 @@
     "@nextui-org/theme": "^2.1.9",
     "@nx/next": "16.9.0",
     "add": "^2.0.6",
+    "clsx": "^2.0.0",
     "envalid": "^7.3.1",
     "envsafe": "^2.0.3",
     "eslint-plugin-graphql": "^4.0.0",
@@ -27,6 +28,7 @@
     "next-auth": "^4.23.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-use": "^17.4.0",
     "tslib": "^2.6.2"
   },
   "devDependencies": {
