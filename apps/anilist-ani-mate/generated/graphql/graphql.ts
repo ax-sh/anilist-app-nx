@@ -110,6 +110,7 @@ export const AnimeDocument = gql`
       }
       characters {
         nodes {
+          gender
           image {
             large
           }
@@ -4810,6 +4811,7 @@ export type AnimeQuery = {
       __typename?: 'CharacterConnection';
       nodes?: Array<{
         __typename?: 'Character';
+        gender?: string | null;
         id: number;
         favourites?: number | null;
         isFavourite: boolean;
