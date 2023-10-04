@@ -1,27 +1,70 @@
-import { Avatar, Badge } from '@nextui-org/react';
+import { Avatar, AvatarGroup, Badge } from '@nextui-org/react';
 import { AnimeCard } from './anime-card';
+import { useMemo } from 'react';
+import clsx from 'clsx';
 
+function characterSortPredicate<T extends { gender: string }>(a: T, b: T) {
+  // equal items sort equally
+  if (a === b) {
+    return 0;
+  }
+
+  // nulls sort after anything else
+  if (a === null) {
+    return 1;
+  }
+  if (b === null) {
+    return -1;
+  }
+
+  const modifier = (x: T) => x?.gender ?? 0;
+
+  return modifier(a) < modifier(b) ? -1 : 1;
+}
 export function CharactersSection({ characters }: { characters: any[] }) {
+  const sortedCharacters = useMemo(() => {
+    const n = [...characters];
+    n.sort(characterSortPredicate);
+    return n;
+  }, [characters]);
+
   return (
-    <section className={'flex gap-2 flex-wrap'}>
-      {characters.map((character) => {
+    <section className={' '}>
+      {sortedCharacters.map((character) => {
         return (
-          <div key={character.id}>
-            <Badge content={character.favourites} color={'primary'}>
-              <Avatar
-                isBordered
-                color="secondary"
-                className="w-20 h-20 text-large"
-                size={'lg'}
-                src={character.image.large}
-                alt={character.name.userPreferred}
-              />
+          <AvatarGroup isGrid key={character.id}>
+            <Badge
+              content={
+                <span>
+                  {character.favourites} {character.gender}
+                </span>
+              }
+              color={'primary'}
+            >
+              <Badge
+                placement={'bottom-right'}
+                content={character.name.userPreferred}
+              >
+                <Avatar
+                  isBordered
+                  color="secondary"
+                  className={clsx(
+                    'w-20 h-20 text-large',
+                    character.gender === 'Female'
+                      ? ' opacity-100'
+                      : 'opacity-20',
+                  )}
+                  size={'lg'}
+                  src={character.image.large}
+                  alt={character.name.userPreferred}
+                />
+              </Badge>
             </Badge>
 
-            <h5>
-              {character.name.userPreferred} {character.gender}
-            </h5>
-          </div>
+            {/*<h5>*/}
+            {/*  {character.name.userPreferred} {character.gender}*/}
+            {/*</h5>*/}
+          </AvatarGroup>
         );
       })}
       <AnimeCard

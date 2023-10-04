@@ -15,9 +15,10 @@ export default function AnimePage({ params }: AnimePageProps) {
 
   return (
     <section className={'container mx-auto prose'}>
-      <h1>
-        {title?.english} | {title?.romaji}
-      </h1>
+      <h3>
+        {title?.english} <br />
+        <small className={'font-extralight text-md'}>{title?.romaji}</small>
+      </h3>
       <h5>
         anilist: {id} malId:{idMal}
       </h5>
