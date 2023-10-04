@@ -1,5 +1,5 @@
-import { ProfileButton } from './components';
-import { Profile } from './components/profile';
+import { ProfileButton } from '../components';
+import { Profile } from '../components/profile';
 
 export default async function Index() {
   return (
