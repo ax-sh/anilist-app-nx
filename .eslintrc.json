@@ -2,6 +2,7 @@
   "root": true,
   "ignorePatterns": ["**/*"],
   "plugins": ["@nx"],
+  "extends": ["plugin:@cspell/recommended"],
   "overrides": [
     {
       "files": ["**/*.{graphql,gql}"],
