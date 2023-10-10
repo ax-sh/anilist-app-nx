@@ -5,6 +5,7 @@
   "scripts": {
     "prepare": "husky install",
     "dev:ani-mate": "pnpm nx run anilist-ani-mate:serve",
+    "lint:ani-mate": "pnpm nx run anilist-ani-mate:lint",
     "codegen": "pnpm gql-gen --config apps/anilist-ani-mate/codegen.yml"
   },
   "private": true,
@@ -34,6 +35,8 @@
   "devDependencies": {
     "@babel/core": "^7.22.20",
     "@babel/preset-react": "^7.22.15",
+    "@cspell/cspell-types": "^7.3.7",
+    "@cspell/eslint-plugin": "^7.3.7",
     "@graphql-codegen/cli": "^5.0.0",
     "@graphql-codegen/client-preset": "^4.1.0",
     "@graphql-codegen/introspection": "^4.0.0",
