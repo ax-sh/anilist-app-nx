@@ -1,4 +1,4 @@
-import { HomeContainer } from './homeContainer';
+import { HomeContainer } from '../components/home-container';
 import { Profile } from '../components/profile';
 import clsx from 'clsx';
 
