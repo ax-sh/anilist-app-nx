@@ -27,6 +27,14 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
+        "@cspell/spellchecker": [
+          "warn",
+          {
+            "checkComments": false,
+            "autoFix": true,
+            "customWordListFile": "./.cspell/project.txt"
+          }
+        ],
         "@nx/enforce-module-boundaries": [
           "error",
           {
