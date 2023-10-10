@@ -1,0 +1,11 @@
+romaji
+Anilist
+favourites
+Favourite
+
+tailwindcss
+minifiable
+clsx
+
+Codegen
+nextui
