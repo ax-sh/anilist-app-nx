@@ -1,16 +1,17 @@
-import { ProfileButton } from '../components';
+import { HomeContainer } from './homeContainer';
 import { Profile } from '../components/profile';
+import clsx from 'clsx';
 
 export default async function Index() {
   return (
-    <section className={'container mx-auto'}>
+    <main
+      className={clsx(
+        'flex min-h-screen flex-col items-center justify-between',
+        'p-24',
+      )}
+    >
       <Profile />
-      <div className={'flex flex-col gap-4'}>
-        <ProfileButton />
-        {/*<ConnectAnilistButton />*/}
-        {/*<DisconnectAnilistButton />*/}
-        {/*<RegisterButton />*/}
-      </div>
-    </section>
+      <HomeContainer />
+    </main>
   );
 }
