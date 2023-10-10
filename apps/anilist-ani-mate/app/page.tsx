@@ -1,6 +1,6 @@
 import { HomeContainer } from '../components/home-container';
-import { Profile } from '../components/profile';
 import clsx from 'clsx';
+// import { Profile } from '../components/profile';
 
 export default async function Index() {
   return (
@@ -10,7 +10,7 @@ export default async function Index() {
         'p-24',
       )}
     >
-      <Profile />
+      {/*<Profile />*/}
       <HomeContainer />
     </main>
   );
