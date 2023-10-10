@@ -20,8 +20,9 @@ export function Nav() {
   return (
     <Navbar shouldHideOnScroll>
       <NavbarBrand>
-        {/*<AcmeLogo />*/}
-        <p className="font-bold text-inherit">Anilist</p>
+        <Link className="font-bold text-inherit" href={'/'}>
+          Anilist
+        </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>

@@ -9,3 +9,11 @@ clsx
 
 Codegen
 nextui
+
+gqlanime
+gqluser
+
+Doujinshi
+stylised
+
+svgr

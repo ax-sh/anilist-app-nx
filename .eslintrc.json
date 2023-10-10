@@ -2,6 +2,7 @@
   "root": true,
   "ignorePatterns": ["**/*"],
   "plugins": ["@nx"],
+  "extends": ["plugin:@cspell/recommended"],
   "overrides": [
     {
       "files": ["**/*.{graphql,gql}"],
@@ -27,6 +28,15 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@cspell/spellchecker": [
+          "warn",
+          {
+            "checkComments": false,
+            "autoFix": true,
+            "customWordListFile": "./.cspell/project.txt"
+          }
+        ],
         "@nx/enforce-module-boundaries": [
           "error",
           {
