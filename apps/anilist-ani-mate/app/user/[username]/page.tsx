@@ -75,11 +75,13 @@ export default function UserPage({ params }: UserPageProps) {
   console.log(medias, 333);
 
   return (
-    <section className={'container mx-auto prose'}>
-      <h1>User: {params.username}</h1>
+    <section className={'container mx-auto'}>
+      <div className={'prose max-w-none'}>
+        <h1>User: {params.username}</h1>
 
-      <div className={'flex flex-wrap gap-4'}>
-        {medias?.map((anime) => <AnimeCard key={anime?.id} anime={anime} />)}
+        <div className={'flex flex-wrap gap-4'}>
+          {medias?.map((anime) => <AnimeCard key={anime?.id} anime={anime} />)}
+        </div>
       </div>
     </section>
   );
