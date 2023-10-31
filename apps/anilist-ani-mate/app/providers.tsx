@@ -16,7 +16,7 @@ export function AniMateProvider({ children }: PropsWithChildren) {
   return (
     <AnilistApolloProvider>
       <NextAuthProvider>
-        <NextUIProvider className={'AniMate flex flex-col'}>
+        <NextUIProvider className={'AniMate flex flex-col min-h-screen'}>
           {children}
         </NextUIProvider>
       </NextAuthProvider>
