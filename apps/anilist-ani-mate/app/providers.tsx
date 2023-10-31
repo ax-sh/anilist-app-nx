@@ -12,8 +12,16 @@ import { PropsWithChildren, useMemo } from 'react';
 import { httpLink } from './apollo-client';
 import { setContext } from '@apollo/client/link/context';
 
-export function Providers({ children }: PropsWithChildren) {
-  return <NextUIProvider>{children}</NextUIProvider>;
+export function AniMateProvider({ children }: PropsWithChildren) {
+  return (
+    <AnilistApolloProvider>
+      <NextAuthProvider>
+        <NextUIProvider className={'AniMate flex flex-col'}>
+          {children}
+        </NextUIProvider>
+      </NextAuthProvider>
+    </AnilistApolloProvider>
+  );
 }
 
 export const NextAuthProvider = ({ children }: PropsWithChildren) => {
