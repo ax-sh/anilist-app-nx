@@ -1,6 +1,6 @@
 import { AnimeSection } from './anime-section';
 
-export default function Anime() {
+export default function AnimePage() {
   return (
     <section>
       <AnimeSection />

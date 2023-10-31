@@ -1,9 +1,10 @@
 import { createGlobPatternsForDependencies } from '@nx/react/tailwind';
 import { join } from 'path';
 import { nextui } from '@nextui-org/react';
+const { withTV } = require('tailwind-variants/transformer');
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+module.exports = withTV({
   content: [
     join(
       __dirname,
@@ -21,4 +22,4 @@ module.exports = {
   },
   darkMode: 'class',
   plugins: [nextui(), require('@tailwindcss/typography')],
-};
+});

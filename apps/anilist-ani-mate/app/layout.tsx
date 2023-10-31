@@ -1,17 +1,13 @@
 import { type PropsWithChildren } from 'react';
 import { Nav } from '@anilist-app-nx/ui';
-import {
-  AnilistApolloProvider,
-  NextAuthProvider,
-  Providers,
-} from './providers';
+import { AniMateProvider } from './providers';
 import './global.scss';
 
-import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev';
+import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev';
 import * as process from 'process';
 
 if (process.env.NODE_ENV === 'development') {
-  // NOTE Adds messages only in a dev environment
+  // NOTE: Adds messages only in a dev environment
   loadDevMessages();
   loadErrorMessages();
 }
@@ -25,14 +21,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body>
-        <AnilistApolloProvider>
-          <NextAuthProvider>
-            <Providers>
-              <Nav />
-              {children}
-            </Providers>
-          </NextAuthProvider>
-        </AnilistApolloProvider>
+        <AniMateProvider>
+          <Nav />
+          {children}
+        </AniMateProvider>
       </body>
     </html>
   );

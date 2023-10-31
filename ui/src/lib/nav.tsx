@@ -2,11 +2,11 @@
 import React from 'react';
 
 import {
+  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
 } from '@nextui-org/react';
 import {
   ConnectAnilistButton,
@@ -15,7 +15,8 @@ import {
 import { useSession } from 'next-auth/react';
 
 export function Nav() {
-  const { status } = useSession();
+  const { status, data } = useSession();
+  const username = data?.user?.name ?? '';
 
   return (
     <Navbar shouldHideOnScroll>
@@ -26,18 +27,15 @@ export function Nav() {
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
-            AnimeList
-          </Link>
+          {status === 'authenticated' && (
+            <Link color="foreground" href={`/user/${username}`}>
+              AnimeList
+            </Link>
+          )}
         </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Search
-          </Link>
-        </NavbarItem>
-        {/*<NavbarItem>*/}
-        {/*  <Link color="foreground" href="#">*/}
-        {/*    Integrations*/}
+        {/*<NavbarItem isActive>*/}
+        {/*  <Link href="/" aria-current="page">*/}
+        {/*    Search*/}
         {/*  </Link>*/}
         {/*</NavbarItem>*/}
       </NavbarContent>
@@ -50,11 +48,6 @@ export function Nav() {
             <DisconnectAnilistButton className={'bg-red-400 text-white'} />
           )}
         </NavbarItem>
-        {/*<NavbarItem>*/}
-        {/*  <Button as={Link} color="primary" href="#" variant="flat">*/}
-        {/*    Sign Up*/}
-        {/*  </Button>*/}
-        {/*</NavbarItem>*/}
       </NavbarContent>
     </Navbar>
   );

@@ -1,25 +1,17 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { useMemo, useState } from 'react';
+import { ComponentProps, useMemo, useState } from 'react';
 import SearchInput from './search-input';
 import { Button, Divider } from '@nextui-org/react';
 
-export function FindUserAnimeList() {
+export function FindUserAnimeList({ className }: ComponentProps<'div'>) {
   const router = useRouter();
   const [value, setValue] = useState('');
-
-  const validationState = useMemo(() => {
-    if (value === '') return undefined;
-
-    return value ? 'valid' : 'invalid';
-  }, [value]);
-
-  function handleFind() {
-    router.push(`/user/${value}`);
-  }
+  const isInvalid = useMemo(() => !!value.trim(), [value]);
+  const handleFind = () => router.push(`/user/${value}`);
 
   return (
-    <div className={'flex flex-col'}>
+    <div className={className}>
       <SearchInput
         type={'text'}
         value={value}
@@ -27,11 +19,9 @@ export function FindUserAnimeList() {
         isClearable
         placeholder="Find user"
         className="max-w-xl"
-        color={validationState === 'invalid' ? 'danger' : 'success'}
-        errorMessage={
-          validationState === 'invalid' && 'Please enter a valid email'
-        }
-        validationState={validationState}
+        color={isInvalid ? 'danger' : 'success'}
+        errorMessage={isInvalid && 'Please enter a valid username'}
+        isInvalid={isInvalid}
       />
       <Divider className={'my-2'} />
       <Button isDisabled={!value} className={'grow'} onClick={handleFind}>
