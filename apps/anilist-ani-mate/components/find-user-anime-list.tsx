@@ -3,17 +3,11 @@ import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
 import SearchInput from './search-input';
 import { Button, Divider } from '@nextui-org/react';
-import { buttonVariant } from '@anilist-app-nx/ui';
 
 export function FindUserAnimeList() {
   const router = useRouter();
   const [value, setValue] = useState('');
-
-  const validationState = useMemo(() => {
-    if (value === '') return undefined;
-
-    return value ? 'valid' : 'invalid';
-  }, [value]);
+  const isInvalid = useMemo(() => !!value.trim(), [value]);
 
   const handleFind = () => router.push(`/user/${value}`);
 
@@ -26,18 +20,11 @@ export function FindUserAnimeList() {
         isClearable
         placeholder="Find user"
         className="max-w-xl"
-        color={validationState === 'invalid' ? 'danger' : 'success'}
-        errorMessage={
-          validationState === 'invalid' && 'Please enter a valid email'
-        }
-        validationState={validationState}
+        color={isInvalid ? 'danger' : 'success'}
+        errorMessage={isInvalid && 'Please enter a valid email'}
+        isInvalid={isInvalid}
       />
       <Divider className={'my-2'} />
-
-      <button className={buttonVariant({ size: 'sm', color: 'secondary' })}>
-        Click me
-      </button>
-
       <Button isDisabled={!value} className={'grow'} onClick={handleFind}>
         Find
       </Button>
