@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input, InputProps } from '@nextui-org/react';
-// import { SearchIcon } from './SearchIcon';
+import { CgSearch } from 'react-icons/cg';
 
 export default function SearchInput(props: InputProps) {
   return (
@@ -29,9 +29,9 @@ export default function SearchInput(props: InputProps) {
           '!cursor-text',
         ],
       }}
-      // startContent={
-      // <SearchIcon className="pointer-events-none flex-shrink-0 text-black/50 text-slate-400 dark:text-white/90" />
-      // }
+      startContent={
+        <CgSearch className="pointer-events-none flex-shrink-0 text-black/50 text-slate-400 dark:text-white/90" />
+      }
       {...props}
     />
   );
