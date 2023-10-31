@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
 import SearchInput from './search-input';
 import { Button, Divider } from '@nextui-org/react';
+import { buttonVariant } from '@anilist-app-nx/ui';
 
 export function FindUserAnimeList() {
   const router = useRouter();
@@ -32,6 +33,11 @@ export function FindUserAnimeList() {
         validationState={validationState}
       />
       <Divider className={'my-2'} />
+
+      <button className={buttonVariant({ size: 'sm', color: 'secondary' })}>
+        Click me
+      </button>
+
       <Button isDisabled={!value} className={'grow'} onClick={handleFind}>
         Find
       </Button>
