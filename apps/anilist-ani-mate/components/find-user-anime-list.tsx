@@ -14,9 +14,7 @@ export function FindUserAnimeList() {
     return value ? 'valid' : 'invalid';
   }, [value]);
 
-  function handleFind() {
-    router.push(`/user/${value}`);
-  }
+  const handleFind = () => router.push(`/user/${value}`);
 
   return (
     <div className={'flex flex-col'}>
