@@ -33,9 +33,11 @@ export function HomeContainer() {
   const { status } = useSession();
 
   return (
-    <div className={containerVariant({ color: 'secondary' })}>
-      <div className={'flex flex-col gap-4'}>
-        {status === 'authenticated' && <FindUserAnimeList />}
+    <div className={containerVariant({ color: 'primary' })}>
+      <div className={'flex flex-col gap-4 w-4/12'}>
+        {status === 'authenticated' && (
+          <FindUserAnimeList className={'flex flex-col'} />
+        )}
         {status === 'unauthenticated' && <ConnectAnilistButton />}
       </div>
     </div>

@@ -8,7 +8,7 @@ import {
   Media,
   useUserAnimeListQuery,
 } from '../../../generated/graphql/graphql';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { ErrorJsonViewer, Loader } from '@anilist-app-nx/ui';
 import { useToggle } from 'react-use';
 
@@ -52,7 +52,7 @@ function AnimeCard({ anime }: { anime: Media }) {
       </Card>
       <div className={clsx('p-4 text-black', !on && 'hidden')}>
         <h2>{anime.title?.romaji}</h2>
-        {/*<AnimeCharacters animeId={anime.id} />*/}
+        <AnimeCharacters animeId={anime.id} />
       </div>
     </div>
   );
