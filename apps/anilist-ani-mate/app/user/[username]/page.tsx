@@ -9,7 +9,7 @@ import {
   useUserAnimeListQuery,
 } from '../../../generated/graphql/graphql';
 import { useMemo } from 'react';
-import { ErrorJsonViewer } from '@anilist-app-nx/ui';
+import { ErrorJsonViewer, Loader } from '@anilist-app-nx/ui';
 import { useToggle } from 'react-use';
 
 function AnimeCard({ anime }: { anime: Media }) {
@@ -68,12 +68,10 @@ export default function UserPage({ params }: UserPageProps) {
       (i) => i?.entries?.map((e) => e?.media),
     );
   }, [data]);
-  if (error) {
-    return <ErrorJsonViewer error={error} />;
-  }
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
+  if (error) return <ErrorJsonViewer error={error} />;
+
+  if (loading) return <Loader />;
+
   console.log(medias, 333);
 
   return (
