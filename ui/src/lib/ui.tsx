@@ -13,6 +13,8 @@ export function Ui(props: UiProps) {
         <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026704d" />
         <Avatar name="Jane" />
         <Avatar src="https://i.pravatar.cc/150?u=a04258114e29026702d" />
+        {/* useless */}
+        {/* eslint-disable-next-line @cspell/spellchecker */}
         <Avatar name="Joooooooooe" />
       </div>
     </div>
