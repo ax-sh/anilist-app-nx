@@ -1,9 +1,13 @@
 export function Loader() {
   return (
-    <section
-      className={'loader prose grid place-content-center h-screen text-center'}
-    >
-      <h1 className={'text-center'}>Loading...</h1>
+    <section className={'Loader grow flex items-stretch justify-center'}>
+      <div
+        className={
+          'grow bg-green-500 grid prose max-w-none place-content-center'
+        }
+      >
+        <h1 className={'text-center'}>Loading...</h1>
+      </div>
     </section>
   );
 }
