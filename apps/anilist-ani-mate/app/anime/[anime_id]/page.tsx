@@ -6,12 +6,12 @@ import { CharactersSection } from '../characters-section';
 type AnimePageProps = { params: { anime_id: number } };
 // https://anilist.co/anime/162893/Ryza-no-Atelier-Tokoyami-no-Joou-to-Himitsu-no-Kakurega/
 export default function AnimePage({ params }: AnimePageProps) {
-  const { data, loading, error } = useAnimeQuery({
+  const { data, error, loading } = useAnimeQuery({
     variables: { id: params.anime_id },
   });
   if (error) return <ErrorJsonViewer error={error} />;
   if (loading) return <>loading</>;
-  const { characters, title, id, idMal } = data?.Media!;
+  const { characters, id, idMal, title } = data?.Media!;
 
   return (
     <section className={'container mx-auto prose'}>
@@ -23,6 +23,7 @@ export default function AnimePage({ params }: AnimePageProps) {
         anilist: {id} malId:{idMal}
       </h5>
       <div className={'not-prose'}>
+        {/* @ts-ignore*/}
         <CharactersSection characters={characters!.nodes!} />
       </div>
       <pre>{JSON.stringify(data, null, 4)}</pre>

@@ -1,11 +1,13 @@
-import NextAuth from 'next-auth';
 import type { AuthOptions } from 'next-auth';
-import { AnilistProvider, getHeaders } from '@anilist-app-nx/auth';
+import NextAuth from 'next-auth';
+import {
+  ANILIST_USER_PROFILE_QUERY,
+  AnilistProvider,
+  getHeaders,
+} from '@anilist-app-nx/auth';
 import { env } from '../../../../env';
-import { ANILIST_USER_PROFILE_QUERY } from '@anilist-app-nx/auth';
 
 // import jsonwebtoken from 'jsonwebtoken';
-
 import { createApolloClient } from '../../../apollo-client';
 import { CallbacksOptions } from 'next-auth/src/core/types';
 
@@ -16,26 +18,26 @@ async function fetchAuthUser(access_token: string) {
     // networkStatus,
     // loading
   } = await client.query({
-    query: ANILIST_USER_PROFILE_QUERY,
     context: { headers: getHeaders(access_token) },
+    query: ANILIST_USER_PROFILE_QUERY,
   });
 
   return data.Viewer;
 }
 
 const anilistProvider = AnilistProvider({
+  clientId: env.ANILIST_ID,
+  clientSecret: env.ANILIST_SECRET,
   userinfo: {
     async request({ tokens }) {
       return await fetchAuthUser(tokens.access_token!);
     },
   },
-  clientId: env.ANILIST_ID,
-  clientSecret: env.ANILIST_SECRET,
 });
 
 const jwt = async ({
-  token,
   account,
+  token,
 }: Parameters<CallbacksOptions['jwt']>[0]) => {
   if (account) {
     token.accessToken = account.access_token;
@@ -65,11 +67,11 @@ const session = async function session(params: ExtendedSessionType) {
 };
 
 export const authOptions: AuthOptions = {
-  providers: [anilistProvider],
   callbacks: {
-    session,
     jwt,
+    session,
   },
+  providers: [anilistProvider],
   // debug: true,
 };
 

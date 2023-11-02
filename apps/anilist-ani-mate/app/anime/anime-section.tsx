@@ -6,7 +6,7 @@ import { CharactersSection } from './characters-section';
 
 export function AnimeSection() {
   const variables = { id: 20 };
-  const { data, loading, error } = useAnimeQuery({
+  const { data, error, loading } = useAnimeQuery({
     variables,
   });
   if (error) return <ErrorJsonViewer error={error} />;
