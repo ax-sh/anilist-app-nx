@@ -17,3 +17,4 @@ Doujinshi
 stylised
 
 svgr
+extralight

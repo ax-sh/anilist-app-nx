@@ -9,13 +9,12 @@ export default function SearchInput(props: InputProps) {
       isClearable
       radius="lg"
       classNames={{
-        label: 'text-black/50 dark:text-white/90',
+        innerWrapper: 'bg-transparent',
         input: [
           'bg-transparent',
           'text-black/90 dark:text-white/90',
           'placeholder:text-default-700/50 dark:placeholder:text-white/60',
         ],
-        innerWrapper: 'bg-transparent',
         inputWrapper: [
           'shadow-xl',
           'bg-default-200/50',
@@ -28,6 +27,7 @@ export default function SearchInput(props: InputProps) {
           'dark:group-data-[focused=true]:bg-default/60',
           '!cursor-text',
         ],
+        label: 'text-black/50 dark:text-white/90',
       }}
       startContent={
         <CgSearch className="pointer-events-none flex-shrink-0 text-black/50 text-slate-400 dark:text-white/90" />

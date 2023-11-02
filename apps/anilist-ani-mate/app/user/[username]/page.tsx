@@ -7,7 +7,7 @@ import { AnimeCard } from './anime-card';
 
 type UserPageProps = { params: { username: string } };
 export default function UserPage({ params }: UserPageProps) {
-  const { data, loading, error } = useUserAnimeListQuery({
+  const { data, error, loading } = useUserAnimeListQuery({
     variables: { username: params.username },
   });
   const medias = useMemo(() => {

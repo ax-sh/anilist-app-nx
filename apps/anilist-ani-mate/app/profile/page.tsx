@@ -32,7 +32,7 @@ import { Avatar } from '@nextui-org/react';
 // }) satisfies GetServerSideProps<any>;
 
 export default function ProfilePage() {
-  const { data, loading, error } = useAnilistUserProfileQueryQuery();
+  const { data, error, loading } = useAnilistUserProfileQueryQuery();
   if (error) {
     console.log(fromError(error).map(console.log));
     return (

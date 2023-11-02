@@ -1,6 +1,7 @@
 import { createGlobPatternsForDependencies } from '@nx/react/tailwind';
 import { join } from 'path';
 import { nextui } from '@nextui-org/react';
+
 const { withTV } = require('tailwind-variants/transformer');
 
 /** @type {import('tailwindcss').Config} */
@@ -17,9 +18,9 @@ module.exports = withTV({
       './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
     ),
   ],
+  darkMode: 'class',
+  plugins: [nextui(), require('@tailwindcss/typography')],
   theme: {
     extend: {},
   },
-  darkMode: 'class',
-  plugins: [nextui(), require('@tailwindcss/typography')],
 });

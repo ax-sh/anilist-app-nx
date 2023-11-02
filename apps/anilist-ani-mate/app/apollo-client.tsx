@@ -7,20 +7,20 @@ import {
 
 export function createIsomorphLink() {
   return createHttpLink({
-    uri: 'https://graphql.anilist.co',
     credentials: 'same-origin',
+    uri: 'https://graphql.anilist.co',
   });
 }
 
 export const httpLink = new HttpLink({
-  uri: 'https://graphql.anilist.co',
   credentials: 'same-origin',
+  uri: 'https://graphql.anilist.co',
 });
 
 export function createApolloClient() {
   return new ApolloClient({
-    link: createIsomorphLink(),
     cache: new InMemoryCache(),
+    link: createIsomorphLink(),
     ssrMode: typeof window === 'undefined',
   });
 }

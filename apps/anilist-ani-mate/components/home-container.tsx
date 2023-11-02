@@ -8,6 +8,16 @@ import { gql, useQuery } from '@apollo/client';
 
 export const containerVariant = tv({
   base: 'flex w-full grow items-center justify-center rounded-xl px-8 shadow-lg',
+  // ],
+  defaultVariants: {
+    // size: 'md',
+    color: 'primary',
+  },
+  // compoundVariants: [
+  //   {
+  //     size: ['sm', 'md'],
+  //     class: 'px-3 py-1',
+  //   },
   variants: {
     color: {
       primary: 'bg-gradient-to-tr from-pink-500 to-yellow-500 text-white',
@@ -18,16 +28,6 @@ export const containerVariant = tv({
     //     md: 'text-base',
     //     lg: 'px-4 py-3 text-lg',
     //   },
-  },
-  // compoundVariants: [
-  //   {
-  //     size: ['sm', 'md'],
-  //     class: 'px-3 py-1',
-  //   },
-  // ],
-  defaultVariants: {
-    // size: 'md',
-    color: 'primary',
   },
 });
 
