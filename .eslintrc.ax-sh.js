@@ -1,9 +1,10 @@
 const { defineConfig } = require('eslint-define-config');
 
 module.exports = defineConfig({
-  plugins: ['pii', 'no-secrets', 'perfectionist'],
+  plugins: ['pii', 'no-secrets', 'perfectionist', 'write-good-comments'],
   extends: ['plugin:pii/recommended'],
   rules: {
+    'write-good-comments/write-good-comments': 'warn',
     '@typescript-eslint/no-explicit-any': [
       'warn',
       {

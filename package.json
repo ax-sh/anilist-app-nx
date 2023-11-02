@@ -87,6 +87,7 @@
     "eslint-plugin-pii": "^1.0.2",
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-write-good-comments": "^0.2.0",
     "graphql-codegen-fragment-matcher": "0.18.2",
     "graphql-codegen-typescript-client": "0.18.2",
     "graphql-codegen-typescript-graphql-files-modules": "0.18.2",
