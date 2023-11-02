@@ -1,4 +1,5 @@
 import { graphql, http, HttpResponse } from 'msw';
+import { UserAnimeListMockData } from './mock-data/userAnimeListMockData';
 
 const anilist = graphql.link('https://graphql.anilist.co');
 export const handlers = [
@@ -13,4 +14,7 @@ export const handlers = [
       },
     });
   }),
+  anilist.query('UserAnimeList', ({ query }) =>
+    HttpResponse.json(UserAnimeListMockData, { status: 201 }),
+  ),
 ];
