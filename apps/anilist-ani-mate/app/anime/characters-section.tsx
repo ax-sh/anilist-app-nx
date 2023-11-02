@@ -23,7 +23,14 @@ function characterSortPredicate<T extends { gender: string }>(a: T, b: T) {
 }
 
 type CharactersSectionProps = {
-  characters: { gender: string; id: number; [key: string]: unknown }[];
+  characters: {
+    [key: string]: unknown;
+    favourites: number;
+    gender: string;
+    id: number;
+    image: Record<string, string>;
+    name: Record<string, string>;
+  }[];
 };
 export function CharactersSection({ characters }: CharactersSectionProps) {
   const sortedCharacters = useMemo(() => {

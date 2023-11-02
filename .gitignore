@@ -40,11 +40,4 @@ Thumbs.db
 
 # Next.js
 .next
-/.nx/cache/d/daemon.log
-/.nx/cache/d/server-process.json
-/.nx/cache/terminalOutputs/36617759423454392
-/.nx/cache/file-map.json
-/.nx/cache/lockfile.hash
-/.nx/cache/parsed-lock-file.json
-/.nx/cache/project-graph.json
-/.nx/cache/run.json
+/.nx/cache

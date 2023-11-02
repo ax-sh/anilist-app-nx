@@ -13,6 +13,7 @@ export function AnimeSection() {
   if (loading) return <Loader />;
   // eslint-disable-next-line no-unsafe-optional-chaining, @typescript-eslint/no-unused-vars, @typescript-eslint/no-non-null-asserted-optional-chain
   const { characters, ...media } = data?.Media!;
+  // @ts-ignore
   return <ErrorJsonViewer error={data} />;
   return (
     <section className={'container mx-auto'}>
