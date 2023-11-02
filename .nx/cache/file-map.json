@@ -1,0 +1,585 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.0.2",
+  "deps": {
+    "@apollo/client": "^3.8.4",
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "@nextui-org/react": "^2.1.13",
+    "@nextui-org/system": "^2.0.10",
+    "@nextui-org/theme": "^2.1.9",
+    "@nx/next": "17.0.2",
+    "add": "^2.0.6",
+    "clsx": "^2.0.0",
+    "envalid": "^7.3.1",
+    "envsafe": "^2.0.3",
+    "eslint-plugin-graphql": "^4.0.0",
+    "eslint-plugin-new-with-error": "^5.0.0",
+    "framer-motion": "^10.16.4",
+    "graphql": "^16.8.1",
+    "graphql-config": "3.0.0-rc.3",
+    "jsonwebtoken": "^9.0.2",
+    "next": "13.4.19",
+    "next-auth": "^4.23.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.11.0",
+    "react-use": "^17.4.0",
+    "tailwind-variants": "^0.1.18",
+    "tslib": "^2.6.2",
+    "@babel/core": "^7.22.20",
+    "@babel/preset-react": "^7.22.15",
+    "@cspell/cspell-types": "^7.3.7",
+    "@cspell/eslint-plugin": "^7.3.7",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@graphql-codegen/introspection": "^4.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-graphql-files-modules": "^2.2.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
+    "@graphql-eslint/eslint-plugin": "^3.20.1",
+    "@nx/eslint-plugin": "17.0.2",
+    "@nx/jest": "17.0.2",
+    "@nx/js": "17.0.2",
+    "@nx/linter": "17.0.2",
+    "@nx/react": "17.0.2",
+    "@nx/vite": "17.0.2",
+    "@nx/workspace": "17.0.2",
+    "@parcel/watcher": "^2.3.0",
+    "@tailwindcss/typography": "^0.5.10",
+    "@testing-library/react": "14.0.0",
+    "@types/jest": "^29.5.5",
+    "@types/jsonwebtoken": "^9.0.3",
+    "@types/node": "20.6.2",
+    "@types/react": "18.2.24",
+    "@types/react-dom": "18.2.9",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "@vitejs/plugin-react": "~4.0.4",
+    "@vitest/coverage-c8": "~0.32.4",
+    "@vitest/ui": "~0.34.5",
+    "autoprefixer": "10.4.16",
+    "babel-jest": "^29.7.0",
+    "eslint": "~8.50.0",
+    "eslint-config-next": "13.4.19",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-define-config": "^1.24.1",
+    "eslint-formatter-mo": "^1.2.0",
+    "eslint-interactive": "^10.8.0",
+    "eslint-plugin-deprecation": "^2.0.0",
+    "eslint-plugin-import": "2.28.1",
+    "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-no-secrets": "^0.8.9",
+    "eslint-plugin-perfectionist": "^2.2.0",
+    "eslint-plugin-pii": "^1.0.2",
+    "eslint-plugin-react": "7.33.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-write-good-comments": "^0.2.0",
+    "graphql-codegen-fragment-matcher": "0.18.2",
+    "graphql-codegen-typescript-client": "0.18.2",
+    "graphql-codegen-typescript-graphql-files-modules": "0.18.2",
+    "graphql-codegen-typescript-react-apollo": "0.18.2",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jsdom": "~22.1.0",
+    "msw": "^2.0.1",
+    "nx": "17.0.2",
+    "postcss": "8.4.29",
+    "prettier": "^3.0.3",
+    "sass": "1.67.0",
+    "tailwindcss": "3.3.3",
+    "ts-jest": "^29.1.1",
+    "ts-node": "10.9.1",
+    "typescript": "~5.2.2",
+    "vite": "~4.4.9",
+    "vite-plugin-dts": "~2.3.0",
+    "vitest": "~0.34.5"
+  },
+  "pathMappings": {
+    "@anilist-app-nx/auth": ["auth/src/index.ts"],
+    "@anilist-app-nx/ui": ["ui/src/index.ts"]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {
+      "anilist-ani-mate": [
+        {
+          "file": "apps/anilist-ani-mate/.eslintrc.json",
+          "hash": "1717309914993227820"
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/anime/[anime_id]/page.tsx",
+          "hash": "13307686283845531608",
+          "deps": ["ui"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/anime/anime-card.tsx",
+          "hash": "10854941988360235145",
+          "deps": ["npm:@nextui-org/react", "npm:next"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/anime/anime-section.tsx",
+          "hash": "13194263453240327515",
+          "deps": ["ui"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/anime/characters-section.tsx",
+          "hash": "7970796555305130114",
+          "deps": ["npm:@nextui-org/react", "npm:react", "npm:clsx"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/anime/page.tsx",
+          "hash": "5796466219069733060"
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/api/anime/anime-list.gql",
+          "hash": "10173069326771497316"
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/api/anime/anime.gql",
+          "hash": "5043468548715955620"
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/api/anime/route.ts",
+          "hash": "495073956729887886"
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/api/auth/[...nextauth]/route.ts",
+          "hash": "8034152166820016242",
+          "deps": ["npm:next-auth", "auth"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/apollo-client.tsx",
+          "hash": "2500920551846470805",
+          "deps": ["npm:@apollo/client"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/global.scss",
+          "hash": "2866083945719690482"
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/layout.tsx",
+          "hash": "12447204996141071126",
+          "deps": ["npm:react", "ui", "npm:@apollo/client", "npm:process"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/middleware.ts",
+          "hash": "6817636359312973135",
+          "deps": ["npm:next"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/page.tsx",
+          "hash": "2552871231116499198",
+          "deps": ["npm:tailwind-variants"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/profile/page.tsx",
+          "hash": "13127974132724602124",
+          "deps": ["npm:@apollo/client", "npm:@nextui-org/react"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/providers.tsx",
+          "hash": "6897517200073862414",
+          "deps": [
+            "npm:@nextui-org/react",
+            "npm:next-auth",
+            "npm:@apollo/client",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/user/[username]/ActiveLink.tsx",
+          "hash": "4905042723529923043",
+          "deps": ["npm:next", "npm:react"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/user/[username]/anime-card.tsx",
+          "hash": "14643952650232195173",
+          "deps": [
+            "npm:react-use",
+            "npm:clsx",
+            "npm:@nextui-org/react",
+            "npm:next",
+            "npm:react",
+            "npm:tailwind-variants"
+          ]
+        },
+        {
+          "file": "apps/anilist-ani-mate/app/user/[username]/page.tsx",
+          "hash": "9324181922425912867",
+          "deps": ["npm:react", "ui"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/codegen.yml",
+          "hash": "5204181546789545154"
+        },
+        {
+          "file": "apps/anilist-ani-mate/components/find-user-anime-list.tsx",
+          "hash": "4918009458718241985",
+          "deps": ["npm:next", "npm:react", "npm:@nextui-org/react"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/components/home-container.tsx",
+          "hash": "9083131294889951722",
+          "deps": [
+            "npm:next-auth",
+            "auth",
+            "npm:tailwind-variants",
+            "npm:@nextui-org/react",
+            "npm:@apollo/client"
+          ]
+        },
+        {
+          "file": "apps/anilist-ani-mate/components/index.tsx",
+          "hash": "13801274464780918081",
+          "deps": ["npm:next"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/components/profile.tsx",
+          "hash": "13861546885191483959",
+          "deps": ["npm:@nextui-org/react", "npm:@apollo/client", "auth", "ui"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/components/search-input.tsx",
+          "hash": "16735781011190821570",
+          "deps": ["npm:react", "npm:@nextui-org/react", "npm:react-icons"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/env.ts",
+          "hash": "6234465294428662904",
+          "deps": ["npm:envalid"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/generated/graphql/graphql.ts",
+          "hash": "15629722568109701684",
+          "deps": ["npm:@apollo/client"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/generated/graphql/queries.d.ts",
+          "hash": "6512044957967593201",
+          "deps": ["npm:graphql"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/generated/graphql/schema.json",
+          "hash": "16636790906061556050"
+        },
+        {
+          "file": "apps/anilist-ani-mate/index.d.ts",
+          "hash": "5498222895072842432"
+        },
+        {
+          "file": "apps/anilist-ani-mate/jest.config.ts",
+          "hash": "12351397806863602769"
+        },
+        {
+          "file": "apps/anilist-ani-mate/mocks/browser.ts",
+          "hash": "10032875665968386485",
+          "deps": ["npm:msw"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/mocks/handlers.ts",
+          "hash": "3018484153551250172",
+          "deps": ["npm:msw"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/mocks/mock-data/userAnimeListMockData.ts",
+          "hash": "15912986827460829468"
+        },
+        {
+          "file": "apps/anilist-ani-mate/next-env.d.ts",
+          "hash": "5909181270615354023"
+        },
+        {
+          "file": "apps/anilist-ani-mate/next.config.js",
+          "hash": "13725017941282613359",
+          "deps": ["npm:@nx/next"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/postcss.config.js",
+          "hash": "6702544065250145554",
+          "deps": ["npm:path"]
+        },
+        {
+          "file": "apps/anilist-ani-mate/project.json",
+          "hash": "5168517646659551080"
+        },
+        {
+          "file": "apps/anilist-ani-mate/public/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/anilist-ani-mate/public/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "apps/anilist-ani-mate/public/mockServiceWorker.js",
+          "hash": "7493188805579065902"
+        },
+        {
+          "file": "apps/anilist-ani-mate/tailwind.config.js",
+          "hash": "12903840247449380797",
+          "deps": [
+            "npm:@nx/react/tailwind",
+            "npm:path",
+            "npm:@nextui-org/react",
+            "npm:tailwind-variants",
+            "npm:@tailwindcss/typography"
+          ]
+        },
+        {
+          "file": "apps/anilist-ani-mate/tsconfig.json",
+          "hash": "6977029420035735753"
+        },
+        {
+          "file": "apps/anilist-ani-mate/tsconfig.spec.json",
+          "hash": "6922413205408300107"
+        }
+      ],
+      "auth": [
+        {
+          "file": "auth/.babelrc",
+          "hash": "2946678488919325452"
+        },
+        {
+          "file": "auth/.eslintrc.json",
+          "hash": "1694173675512665700"
+        },
+        {
+          "file": "auth/README.md",
+          "hash": "17049953570275250328"
+        },
+        {
+          "file": "auth/package.json",
+          "hash": "11145888247664039644"
+        },
+        {
+          "file": "auth/project.json",
+          "hash": "7881162320460813326"
+        },
+        {
+          "file": "auth/src/index.ts",
+          "hash": "39074598007925310"
+        },
+        {
+          "file": "auth/src/lib/anilist-provider.ts",
+          "hash": "9008605661488918170",
+          "deps": ["npm:next-auth"]
+        },
+        {
+          "file": "auth/src/lib/auth-buttons.tsx",
+          "hash": "8905908695096650335",
+          "deps": [
+            "npm:next-auth",
+            "npm:@nextui-org/button",
+            "npm:react",
+            "npm:@nextui-org/react"
+          ]
+        },
+        {
+          "file": "auth/src/lib/auth.spec.tsx",
+          "hash": "16698860608725849898",
+          "deps": ["npm:next-auth"]
+        },
+        {
+          "file": "auth/src/lib/graphql/user-profile.gql",
+          "hash": "9862720313495546721"
+        },
+        {
+          "file": "auth/tsconfig.json",
+          "hash": "1659718875347638779"
+        },
+        {
+          "file": "auth/tsconfig.lib.json",
+          "hash": "6570966748152269604"
+        },
+        {
+          "file": "auth/tsconfig.spec.json",
+          "hash": "14243795351211638914"
+        },
+        {
+          "file": "auth/vite.config.ts",
+          "hash": "16225160851789513602",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-react",
+            "npm:@nx/vite",
+            "npm:vite-plugin-dts",
+            "npm:path"
+          ]
+        }
+      ],
+      "ui": [
+        {
+          "file": "ui/.babelrc",
+          "hash": "2946678488919325452"
+        },
+        {
+          "file": "ui/.eslintrc.json",
+          "hash": "1694173675512665700"
+        },
+        {
+          "file": "ui/README.md",
+          "hash": "12971312433074001572"
+        },
+        {
+          "file": "ui/package.json",
+          "hash": "12476764222201050954"
+        },
+        {
+          "file": "ui/project.json",
+          "hash": "3098419254221493483"
+        },
+        {
+          "file": "ui/src/index.ts",
+          "hash": "9412855967624454511"
+        },
+        {
+          "file": "ui/src/lib/button.tsx",
+          "hash": "8231864613800784989",
+          "deps": ["npm:tailwind-variants"]
+        },
+        {
+          "file": "ui/src/lib/error-json-viewer.tsx",
+          "hash": "17337842889711805085",
+          "deps": ["npm:@apollo/client"]
+        },
+        {
+          "file": "ui/src/lib/loader.tsx",
+          "hash": "12293199355338410683"
+        },
+        {
+          "file": "ui/src/lib/nav.tsx",
+          "hash": "9177729482325725586",
+          "deps": [
+            "npm:react",
+            "npm:@nextui-org/react",
+            "auth",
+            "npm:next-auth"
+          ]
+        },
+        {
+          "file": "ui/src/lib/ui.tsx",
+          "hash": "1190707840454540536",
+          "deps": ["npm:@nextui-org/react"]
+        },
+        {
+          "file": "ui/tsconfig.json",
+          "hash": "1659718875347638779"
+        },
+        {
+          "file": "ui/tsconfig.lib.json",
+          "hash": "6570966748152269604"
+        },
+        {
+          "file": "ui/tsconfig.spec.json",
+          "hash": "14243795351211638914"
+        },
+        {
+          "file": "ui/vite.config.ts",
+          "hash": "9568123386296792594",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-react",
+            "npm:@nx/vite",
+            "npm:vite-plugin-dts",
+            "npm:path"
+          ]
+        }
+      ]
+    },
+    "nonProjectFiles": [
+      {
+        "file": ".cspell/project.txt",
+        "hash": "2881467961163643376"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "5443105041930014821"
+      },
+      {
+        "file": ".env",
+        "hash": "11341366126460157762"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "7663861978715868291"
+      },
+      {
+        "file": ".eslintrc.ax-sh.js",
+        "hash": "4122546089239153901"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "1126896387223182"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "4037654227863647172"
+      },
+      {
+        "file": ".graphqlrc",
+        "hash": "13774613356022357991"
+      },
+      {
+        "file": ".husky/pre-commit",
+        "hash": "4096497413512724904"
+      },
+      {
+        "file": ".lintstagedrc",
+        "hash": "8876778754537908580"
+      },
+      {
+        "file": ".npmrc",
+        "hash": "10528042615906264141"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "8865097869854018350"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "235626400633494639"
+      },
+      {
+        "file": "README.md",
+        "hash": "2964270287733794666"
+      },
+      {
+        "file": "cspell.config.js",
+        "hash": "10185493399022098028"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "12333515226966617182"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": "migrations.json",
+        "hash": "9221584835570120246"
+      },
+      {
+        "file": "nx.json",
+        "hash": "14109465015831155612"
+      },
+      {
+        "file": "package.json",
+        "hash": "13918448033549816841"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "5442065229051302759"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "15645947887706032593"
+      }
+    ]
+  }
+}
