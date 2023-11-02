@@ -6,6 +6,7 @@
     "prepare": "husky install",
     "dev:ani-mate": "pnpm nx run anilist-ani-mate:serve",
     "lint:ani-mate": "pnpm nx run anilist-ani-mate:lint",
+    "lint:prettify:ani-mate": "pnpm eslint ./apps/anilist-ani-mate/app/**/*.tsx -f mo",
     "lint:interactive": "pnpm exec eslint-interactive ./",
     "codegen": "pnpm gql-gen --config apps/anilist-ani-mate/codegen.yml"
   },
@@ -74,6 +75,7 @@
     "eslint": "~8.50.0",
     "eslint-config-next": "13.4.19",
     "eslint-config-prettier": "9.0.0",
+    "eslint-define-config": "^1.24.1",
     "eslint-formatter-mo": "^1.2.0",
     "eslint-interactive": "^10.8.0",
     "eslint-plugin-import": "2.28.1",

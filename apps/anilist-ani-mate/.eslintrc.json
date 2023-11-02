@@ -4,7 +4,7 @@
     "next",
     "next/core-web-vitals",
     "../../.eslintrc.json",
-    "../../.eslintrc.ax-sh.json"
+    "../../.eslintrc.ax-sh.js"
   ],
   "ignorePatterns": ["!**/*", ".next/**/*"],
   "overrides": [

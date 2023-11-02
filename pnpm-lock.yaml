@@ -190,6 +190,9 @@ devDependencies:
   eslint-config-prettier:
     specifier: 9.0.0
     version: 9.0.0(eslint@8.50.0)
+  eslint-define-config:
+    specifier: ^1.24.1
+    version: 1.24.1
   eslint-formatter-mo:
     specifier: ^1.2.0
     version: 1.2.0
@@ -10518,6 +10521,11 @@ packages:
       eslint: '>=7.0.0'
     dependencies:
       eslint: 8.50.0
+    dev: true
+
+  /eslint-define-config@1.24.1:
+    resolution: {integrity: sha512-o36vBhPSWyIQlHoMqGhhcGmOOm2A2ccBVIdLTG/AWdm9YmjpsLpf+5ntf9LlHR6dduLREgxtGwvwPwSt7vnXJg==}
+    engines: {node: '>=18.0.0', npm: '>=9.0.0', pnpm: '>= 8.6.0'}
     dev: true
 
   /eslint-formatter-codeframe@7.32.1:
