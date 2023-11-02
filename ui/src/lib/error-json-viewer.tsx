@@ -1,6 +1,8 @@
 import { ApolloError } from '@apollo/client';
 
 type ShowErrorJsonProps = { error: ApolloError };
+
+// @deprecated
 export function ErrorJsonViewer({ error }: ShowErrorJsonProps) {
   return (
     <pre role={'alert'}>

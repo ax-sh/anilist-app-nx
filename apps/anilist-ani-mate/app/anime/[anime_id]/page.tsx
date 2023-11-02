@@ -5,6 +5,7 @@ import { CharactersSection } from '../characters-section';
 
 type AnimePageProps = { params: { anime_id: number } };
 // https://anilist.co/anime/162893/Ryza-no-Atelier-Tokoyami-no-Joou-to-Himitsu-no-Kakurega/
+
 export default function AnimePage({ params }: AnimePageProps) {
   const { data, error, loading } = useAnimeQuery({
     variables: { id: params.anime_id },
