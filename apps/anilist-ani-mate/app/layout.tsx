@@ -13,8 +13,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export const metadata = {
-  title: 'Ani-Mate | Anilist',
   description: '',
+  title: 'Ani-Mate | Anilist',
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {

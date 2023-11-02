@@ -6,11 +6,12 @@ import { CharactersSection } from './characters-section';
 
 export function AnimeSection() {
   const variables = { id: 20 };
-  const { data, loading, error } = useAnimeQuery({
+  const { data, error, loading } = useAnimeQuery({
     variables,
   });
   if (error) return <ErrorJsonViewer error={error} />;
   if (loading) return <Loader />;
+  // eslint-disable-next-line no-unsafe-optional-chaining, @typescript-eslint/no-unused-vars, @typescript-eslint/no-non-null-asserted-optional-chain
   const { characters, ...media } = data?.Media!;
   return <ErrorJsonViewer error={data} />;
   return (

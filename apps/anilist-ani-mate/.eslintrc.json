@@ -3,7 +3,8 @@
     "plugin:@nx/react-typescript",
     "next",
     "next/core-web-vitals",
-    "../../.eslintrc.json"
+    "../../.eslintrc.json",
+    "../../.eslintrc.ax-sh.js"
   ],
   "ignorePatterns": ["!**/*", ".next/**/*"],
   "overrides": [

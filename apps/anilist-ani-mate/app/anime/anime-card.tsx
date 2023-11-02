@@ -1,7 +1,7 @@
 import { Badge, Card, CardFooter } from '@nextui-org/react';
 import Image from 'next/image';
 
-export function AnimeCard({ src, name }: { src: string; name: string }) {
+export function AnimeCard({ name, src }: { src: string; name: string }) {
   return (
     <Card isFooterBlurred radius="lg" className="border-none">
       <Image
