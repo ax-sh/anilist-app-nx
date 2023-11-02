@@ -4,6 +4,7 @@ import { ConnectAnilistButton } from '@anilist-app-nx/auth';
 import { FindUserAnimeList } from './find-user-anime-list';
 import { tv } from 'tailwind-variants';
 import { Spinner } from '@nextui-org/react';
+import { gql, useQuery } from '@apollo/client';
 
 export const containerVariant = tv({
   base: 'flex w-full grow items-center justify-center rounded-xl px-8 shadow-lg',
@@ -32,6 +33,15 @@ export const containerVariant = tv({
 
 export function HomeContainer() {
   const { status } = useSession();
+  const { data } = useQuery(gql`
+    query ListPosts {
+      posts {
+        id
+        title
+      }
+    }
+  `);
+  console.log(data);
 
   return (
     <div className={containerVariant({ color: 'primary' })}>
