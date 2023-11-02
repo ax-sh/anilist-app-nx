@@ -1,14 +1,23 @@
 const { defineConfig } = require('eslint-define-config');
 
 module.exports = defineConfig({
-  plugins: ['pii', 'no-secrets', 'perfectionist', 'write-good-comments'],
+  plugins: [
+    'pii',
+    'no-secrets',
+    'perfectionist',
+    'write-good-comments',
+    'perfectionist',
+    'deprecation',
+  ],
   extends: [
     'plugin:pii/recommended',
     'plugin:deprecation/recommended',
-    'deprecation',
+    'plugin:perfectionist/recommended-natural',
+    'plugin:deprecation/recommended',
   ],
   rules: {
     'write-good-comments/write-good-comments': 'warn',
+    '@next/next/no-html-link-for-pages': 'off',
     '@typescript-eslint/no-explicit-any': [
       'warn',
       {
