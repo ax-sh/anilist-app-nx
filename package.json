@@ -10,7 +10,8 @@
     "lint:interactive:ani-mate": "pnpm eslint-interactive ./apps/anilist-ani-mate/app/**/*.tsx -f mo",
     "lint:interactive": "pnpm exec eslint-interactive ./",
     "nibble": "pnpm eslint-nibble ./apps/anilist-ani-mate/app/**/*.tsx",
-    "codegen": "pnpm gql-gen --config apps/anilist-ani-mate/codegen.yml"
+    "codegen": "pnpm gql-gen --config apps/anilist-ani-mate/codegen.yml",
+    "lint": "pnpx lint-staged --concurrent false --relative --debug"
   },
   "private": true,
   "dependencies": {
