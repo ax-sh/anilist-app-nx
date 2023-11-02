@@ -3,6 +3,7 @@ import { useSession } from 'next-auth/react';
 import { ConnectAnilistButton } from '@anilist-app-nx/auth';
 import { FindUserAnimeList } from './find-user-anime-list';
 import { tv } from 'tailwind-variants';
+import { Spinner } from '@nextui-org/react';
 
 export const containerVariant = tv({
   base: 'flex w-full grow items-center justify-center rounded-xl px-8 shadow-lg',
@@ -39,6 +40,7 @@ export function HomeContainer() {
           <FindUserAnimeList className={'flex flex-col'} />
         )}
         {status === 'unauthenticated' && <ConnectAnilistButton />}
+        {status === 'loading' && <Spinner />}
       </div>
     </div>
   );
