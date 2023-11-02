@@ -12,6 +12,7 @@ async function initMocks() {
     // const { server } = await import('./src/mocks/server')
     // await server.listen({ onUnhandledRequest: 'bypass' })
   } else {
+    // NOTE needs to run in the browser (client side)
     const { worker } = await import('../mocks/browser');
     console.log(worker, 2323);
     await worker.start({ onUnhandledRequest: 'bypass' });
