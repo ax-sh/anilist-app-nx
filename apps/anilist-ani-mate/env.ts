@@ -1,4 +1,4 @@
-import { cleanEnv, str } from 'envalid';
+import { bool, cleanEnv, str } from 'envalid';
 // import { envsafe, url } from 'envsafe';
 
 export const env = cleanEnv(process.env, {
@@ -6,6 +6,7 @@ export const env = cleanEnv(process.env, {
   ANILIST_ID: str(),
   ANILIST_SECRET: str(),
   NODE_ENV: str({ choices: ['development', 'test', 'production', 'staging'] }),
+  NEXT_PUBLIC_MOCK_APIS:bool({default :false})
   // eslint-disable-next-line  pii/no-email
   // ADMIN_EMAIL: email({ default: 'admin@example.com' }),
   // EMAIL_CONFIG_JSON: json({ desc: 'Additional email parameters' }),
