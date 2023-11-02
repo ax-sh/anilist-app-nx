@@ -66,8 +66,8 @@ export const AnilistApolloProvider = ({ children }: PropsWithChildren) => {
     });
 
     return new ApolloClient({
-      link: from([authMiddleware, httpLink]),
       cache: new InMemoryCache(),
+      link: from([authMiddleware, httpLink]),
     });
   }, []);
   return <ApolloProvider client={client}>{children}</ApolloProvider>;

@@ -21,7 +21,11 @@ function characterSortPredicate<T extends { gender: string }>(a: T, b: T) {
 
   return modifier(a) < modifier(b) ? -1 : 1;
 }
-export function CharactersSection({ characters }: { characters: any[] }) {
+
+type CharactersSectionProps = {
+  characters: { gender: string; id: number; [key: string]: any }[];
+};
+export function CharactersSection({ characters }: CharactersSectionProps) {
   const sortedCharacters = useMemo(() => {
     const n = [...characters];
     n.sort(characterSortPredicate);
@@ -67,8 +71,9 @@ export function CharactersSection({ characters }: { characters: any[] }) {
           </AvatarGroup>
         );
       })}
+      {/*Reisalin Stout*/}
       <AnimeCard
-        name={'Reisalin Stout'}
+        name={'Mary'}
         src={
           'https://s4.anilist.co/file/anilistcdn/character/large/b223350-yNmgtin88wwu.png'
         }
