@@ -12,6 +12,24 @@ import { PropsWithChildren, useMemo } from 'react';
 import { httpLink } from './apollo-client';
 import { setContext } from '@apollo/client/link/context';
 
+async function initMocks() {
+  if (typeof window === 'undefined') {
+    // todo: fix this
+    // const { server } = await import('./src/mocks/server')
+    // await server.listen({ onUnhandledRequest: 'bypass' })
+  } else {
+    // NOTE needs to run in the browser (client side)
+    const { worker } = await import('../mocks/browser');
+    await worker.start({ onUnhandledRequest: 'bypass' });
+  }
+}
+
+// Note the change in ENV var name here
+// https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#bundling-environment-variables-for-the-browser
+// if (process.env.NEXT_PUBLIC_MOCK_APIS === 'enabled') {
+void initMocks();
+// }
+
 export function AniMateProvider({ children }: PropsWithChildren) {
   return (
     <AnilistApolloProvider>
