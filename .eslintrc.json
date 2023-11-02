@@ -1,8 +1,8 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nx", "pii"],
-  "extends": ["plugin:@cspell/recommended", "plugin:pii/recommended"],
+  "plugins": ["@nx"],
+  "extends": ["plugin:@cspell/recommended"],
   "overrides": [
     {
       "files": ["**/*.{graphql,gql}"],

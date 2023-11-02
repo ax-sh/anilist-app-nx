@@ -1,0 +1,16 @@
+{
+  "plugins": ["pii"],
+  "extends": ["plugin:pii/recommended"],
+  "overrides": [
+    {
+      "files": ["*.d.ts"],
+      "extends": ["plugin:pii/recommended"],
+      "rules": {
+        "pii/no-email": "off",
+        "pii/no-dob": "off",
+        "pii/no-ip": "off",
+        "pii/no-phone-number": "off"
+      }
+    }
+  ]
+}
