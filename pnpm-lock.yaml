@@ -23,6 +23,9 @@ dependencies:
   '@nx/next':
     specifier: 17.0.2
     version: 17.0.2(@babel/core@7.23.2)(@types/node@20.8.10)(eslint@8.52.0)(next@14.0.1)(nx@17.0.2)(typescript@5.2.2)(webpack@5.89.0)
+  '@types/lodash':
+    specifier: ^4.14.201
+    version: 4.14.201
   add:
     specifier: ^2.0.6
     version: 2.0.6
@@ -53,6 +56,9 @@ dependencies:
   jsonwebtoken:
     specifier: ^9.0.2
     version: 9.0.2
+  lodash:
+    specifier: ^4.17.21
+    version: 4.17.21
   next:
     specifier: 14.0.1
     version: 14.0.1(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)(sass@1.69.5)
@@ -7007,35 +7013,35 @@ packages:
   /@types/lodash.foreach@4.5.8:
     resolution: {integrity: sha512-nMZmw6YAyNivWbbaY/hTF56YMl5T9+i+auaUhxtbA+ZNEwqwyTo0b7Jn85HNfiqsVQVzbhI0zIaSp7C5EpAPQQ==}
     dependencies:
-      '@types/lodash': 4.14.200
+      '@types/lodash': 4.14.201
     dev: false
 
   /@types/lodash.get@4.4.8:
     resolution: {integrity: sha512-XK+co6sBkJxh1vaVP8al6cAA17dX//RNCknGG8JhpHFJfxq/GXKAYB9NKheG22pu2xpWpxfFd65W08EhH2IFlg==}
     dependencies:
-      '@types/lodash': 4.14.200
+      '@types/lodash': 4.14.201
     dev: false
 
   /@types/lodash.kebabcase@4.1.8:
     resolution: {integrity: sha512-ZwdT+S6Ejbl2KEw/nunwO63hMzABqzVdWonRMEuhKs0GfwqffaQ3tSJo+/wmDCCaGUHIiObsBFY59GUYjYMk5A==}
     dependencies:
-      '@types/lodash': 4.14.200
+      '@types/lodash': 4.14.201
     dev: false
 
   /@types/lodash.mapkeys@4.6.8:
     resolution: {integrity: sha512-vA3/4dFOkK9ugEOuqGLEwLeWicwQM03LmboZHuiG0VU0jdFyq5NRdw8XF2cnz5ZdGiGF3Yb8dS9UVoQzirHlfA==}
     dependencies:
-      '@types/lodash': 4.14.200
+      '@types/lodash': 4.14.201
     dev: false
 
   /@types/lodash.omit@4.5.8:
     resolution: {integrity: sha512-CeIDttD58jS7R7M4rI8ZNBbV6JGG+BkKQFnWjduFJwTxqo8NdT/xjbjmQc39MVB2TKJ0rvQxddNaIna+W/pQvw==}
     dependencies:
-      '@types/lodash': 4.14.200
+      '@types/lodash': 4.14.201
     dev: false
 
-  /@types/lodash@4.14.200:
-    resolution: {integrity: sha512-YI/M/4HRImtNf3pJgbF+W6FrXovqj+T+/HpENLTooK9PnkacBsDpeP3IpHab40CClUfhNmdM2WTNP2sa2dni5Q==}
+  /@types/lodash@4.14.201:
+    resolution: {integrity: sha512-y9euML0cim1JrykNxADLfaG0FgD1g/yTHwUs/Jg9ZIU7WKj2/4IW9Lbb1WZbvck78W/lfGXFfe+u2EGfIJXdLQ==}
     dev: false
 
   /@types/node@20.8.10:
@@ -11083,7 +11089,7 @@ packages:
       graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0
     dependencies:
       graphql: 16.8.1
-      lodash: 4.17.11
+      lodash: 4.17.21
       resolve-from: 4.0.0
     dev: true
 
