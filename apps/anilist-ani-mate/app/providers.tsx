@@ -26,9 +26,9 @@ async function initMocks() {
 
 // Note the change in ENV var name here
 // https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#bundling-environment-variables-for-the-browser
-// if (process.env.NEXT_PUBLIC_MOCK_APIS === 'enabled') {
-void initMocks();
-// }
+if (process.env.NEXT_PUBLIC_MOCK_APIS) {
+  void initMocks();
+}
 
 export function AniMateProvider({ children }: PropsWithChildren) {
   return (

@@ -5,6 +5,7 @@
   "scripts": {
     "prepare": "husky install",
     "dev:ani-mate": "pnpm nx run anilist-ani-mate:serve",
+    "dev:mock": "cross-env NEXT_PUBLIC_MOCK_APIS=true pnpm nx run anilist-ani-mate:serve",
     "lint:ani-mate": "pnpm nx run anilist-ani-mate:lint",
     "lint:prettify:ani-mate": "pnpm eslint ./apps/anilist-ani-mate/app/**/*.tsx -f mo",
     "lint:interactive:ani-mate": "pnpm eslint-interactive ./apps/anilist-ani-mate/app/**/*.tsx -f mo",
@@ -77,6 +78,7 @@
     "@vitest/ui": "~0.34.6",
     "autoprefixer": "10.4.16",
     "babel-jest": "^29.7.0",
+    "cross-env": "^7.0.3",
     "eslint": "~8.52.0",
     "eslint-config-next": "14.0.1",
     "eslint-config-prettier": "9.0.0",
