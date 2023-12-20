@@ -1,5 +1,10 @@
 # AnilistAppNx
 
+## Run server
+```shell
+pnpm dev:ani-mate
+```
+
 #### A MonoRepo for using GraphQL and NX for Anilist
 
 ## Stacks
