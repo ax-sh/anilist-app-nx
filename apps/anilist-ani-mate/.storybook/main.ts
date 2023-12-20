@@ -7,6 +7,9 @@ const config: StorybookConfig = {
     name: '@storybook/nextjs',
     options: {},
   },
+  core: {
+    builder: '@storybook/builder-vite', // 👈 The builder enabled here.
+  },
 };
 
 export default config;
