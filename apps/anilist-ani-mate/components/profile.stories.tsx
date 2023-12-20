@@ -23,7 +23,7 @@ export const Heading: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    console.log(canvas, 222);
+    console.log(canvasElement, 222);
     await expect(canvas.getByText(/Welcome to Profile!/gi)).toBeTruthy();
   },
 };
