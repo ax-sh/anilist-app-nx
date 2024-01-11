@@ -3,6 +3,8 @@ import { UserAnimeList } from './user-anime-list';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
+import { graphql, HttpResponse } from 'msw';
+import { UserAnimeListMockData } from '../mocks/mock-data/userAnimeListMockData';
 
 const meta: Meta<typeof UserAnimeList> = {
   component: UserAnimeList,
@@ -19,6 +21,18 @@ export const Heading: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/Welcome to UserAnimeList!/gi)).toBeTruthy();
+    await expect(canvas.getByText(/Welcome to UserAnimeList!/gi)).toBeTruthy();
+  },
+};
+
+const anilist = graphql.link('https://graphql.anilist.co');
+
+Heading.parameters = {
+  msw: {
+    handlers: [
+      anilist.query('UserAnimeList', ({ query }) =>
+        HttpResponse.json(UserAnimeListMockData, { status: 201 }),
+      ),
+    ],
   },
 };
