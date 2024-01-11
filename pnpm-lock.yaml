@@ -166,6 +166,9 @@ devDependencies:
   '@storybook/nextjs':
     specifier: 7.6.7
     version: 7.6.7(@swc/core@1.3.102)(esbuild@0.18.20)(next@14.0.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.69.7)(typescript@5.3.3)(webpack@5.89.0)
+  '@storybook/react':
+    specifier: ^7.6.7
+    version: 7.6.7(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)
   '@storybook/test-runner':
     specifier: ^0.16.0
     version: 0.16.0(@types/node@20.11.0)(ts-node@10.9.2)
@@ -14619,7 +14622,7 @@ packages:
       graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0
     dependencies:
       graphql: 16.8.1
-      lodash: 4.17.11
+      lodash: 4.17.21
       resolve-from: 4.0.0
     dev: true
 
