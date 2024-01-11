@@ -16,7 +16,8 @@
     "lint:interactive": "pnpm exec eslint-interactive ./",
     "nibble": "pnpm eslint-nibble ./apps/anilist-ani-mate/app/**/*.tsx",
     "codegen": "pnpm gql-gen --config apps/anilist-ani-mate/codegen.yml",
-    "lint": "pnpx lint-staged --concurrent false --relative"
+    "lint": "pnpx lint-staged --concurrent false --relative",
+    "gen:ui": "pnpm exec nx generate @nx/next:component --directory=ui/src/lib --nameAndDirectoryFormat=as-provided --style=scss --no-interactive"
   },
   "private": true,
   "dependencies": {
