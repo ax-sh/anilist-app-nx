@@ -1,14 +1,14 @@
 import { initialize, mswLoader } from 'msw-storybook-addon';
 
 // Initialize MSW
-// initialize();
+initialize();
 
 const preview = {
   parameters: {
     // your other code...
   },
   // Provide the MSW addon loader globally
-  // loaders: [mswLoader],
+  loaders: [mswLoader],
 };
 
 export default preview;
