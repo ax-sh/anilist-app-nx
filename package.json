@@ -18,7 +18,8 @@
     "codegen": "pnpm gql-gen --config apps/anilist-ani-mate/codegen.yml",
     "lint": "pnpx lint-staged --concurrent false --relative",
     "gen:ui": "pnpm nx generate @nx/next:component --directory=ui/src/lib --nameAndDirectoryFormat=as-provided --style=scss --no-interactive",
-    "gen:ui:story": "pnpm nx generate @nx/react:component-story --project=ui --no-interactive",
+    "gen:ui:story": "pnpm nx generate @nx/react:component-story  --no-interactive",
+    "gen:app:story": "nx g @nx/react:stories --name=anilist-ani-mate",
     "gen:app:ui": "nx g @nx/next:component --directory=apps/anilist-ani-mate/ui --nameAndDirectoryFormat=as-provided --style=none"
   },
   "private": true,
