@@ -9,6 +9,10 @@ const preview = {
   },
   // Provide the MSW addon loader globally
   loaders: [mswLoader],
+  addons: [
+    // Other Storybook addons
+    '@storybook/addon-interactions', // 👈 Register the addon
+  ],
 };
 
 export default preview;
