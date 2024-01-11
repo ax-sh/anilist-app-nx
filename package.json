@@ -18,7 +18,7 @@
     "codegen": "pnpm gql-gen --config apps/anilist-ani-mate/codegen.yml",
     "lint": "pnpx lint-staged --concurrent false --relative",
     "gen:ui": "pnpm nx generate @nx/next:component --directory=ui/src/lib --nameAndDirectoryFormat=as-provided --style=scss --no-interactive",
-    "gen:story": "pnpm nx generate @nx/react:component-story --componentPath=lib/user-anime-list.tsx --project=ui --no-interactive --dry-run "
+    "gen:ui:story": "pnpm nx generate @nx/react:component-story --project=ui --no-interactive"
   },
   "private": true,
   "dependencies": {
