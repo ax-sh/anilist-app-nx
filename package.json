@@ -5,6 +5,7 @@
   "scripts": {
     "prepare": "husky install",
     "dev:ani-mate": "pnpm nx run anilist-ani-mate:serve",
+    "dev": "pnpm dev:ani-mate",
     "storybook:ani-mate": "pnpm nx run anilist-ani-mate:storybook",
     "storybook": "pnpm storybook:ani-mate",
     "dev:mock": "cross-env NEXT_PUBLIC_MOCK_APIS=true pnpm nx run anilist-ani-mate:serve",
