@@ -4,7 +4,6 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",
-    "storybook": "pnpm nx run anilist-ani-mate:storybook",
     "dev:ani-mate": "pnpm nx run anilist-ani-mate:serve",
     "dev:mock": "cross-env NEXT_PUBLIC_MOCK_APIS=true pnpm nx run anilist-ani-mate:serve",
     "lint:ani-mate": "pnpm nx run anilist-ani-mate:lint",
