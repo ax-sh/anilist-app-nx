@@ -7,7 +7,8 @@ export function UserAnimeList(props: UserAnimeListProps) {
   const { data, error, loading } = useUserAnimeListQuery({
     variables: { username: '' },
   });
-  console.log(data, 888);
+  if (loading) return 7;
+  console.log(data!.MediaListCollection?.lists, 888);
   return (
     <div>
       <h1>Welcome to UserAnimeList!</h1>

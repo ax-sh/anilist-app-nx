@@ -5,6 +5,7 @@ import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { graphql, HttpResponse } from 'msw';
 import { UserAnimeListMockData } from '../mocks/mock-data/userAnimeListMockData';
+import { AniMateProvider } from '../app/providers';
 
 const meta: Meta<typeof UserAnimeList> = {
   component: UserAnimeList,
@@ -26,6 +27,15 @@ export const Heading: Story = {
 };
 
 const anilist = graphql.link('https://graphql.anilist.co');
+
+Heading.decorators = [
+  (Story) => (
+    <AniMateProvider>
+      {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+      <Story />
+    </AniMateProvider>
+  ),
+];
 
 Heading.parameters = {
   msw: {
