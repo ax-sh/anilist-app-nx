@@ -1,3 +1,5 @@
+import { faker } from '@faker-js/faker';
+
 const media = {
   media: {
     id: 130592,
@@ -22,7 +24,7 @@ export const UserAnimeListMockData = {
     MediaListCollection: {
       lists: [
         {
-          entries: [media],
+          entries: faker.helpers.multiple(() => media),
           __typename: 'MediaListGroup',
         },
       ],

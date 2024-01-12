@@ -8,14 +8,14 @@ export interface UserAnimeListProps {}
 
 function AnimeList({ results }: { results: IAnimePartsFragment[] }) {
   return (
-    <section>
-      {results.map((result) => {
+    <section className={'grid grid-cols-4 flex-wrap'}>
+      {results.map((result, index) => {
         return (
-          <div key={result.id} className={'aspect-square overflow-hidden h-80'}>
+          <div key={index} className={'aspect-square overflow-hidden h-80'}>
             <img
               className={'object-cover w-full h-full'}
               alt="series"
-              src={result.coverImage?.extraLarge}
+              src={result.coverImage?.extraLarge!}
             />
           </div>
         );
