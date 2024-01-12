@@ -1,4 +1,4 @@
- const { defineConfig } = require('eslint-define-config');
+const { defineConfig } = require('eslint-define-config');
 
 module.exports = defineConfig({
   plugins: [
@@ -12,7 +12,7 @@ module.exports = defineConfig({
   extends: [
     'plugin:pii/recommended',
     'plugin:deprecation/recommended',
-    'plugin:perfectionist/recommended-natural',
+    // 'plugin:perfectionist/recommended-natural',
     'plugin:deprecation/recommended',
   ],
   rules: {
@@ -25,13 +25,13 @@ module.exports = defineConfig({
       },
     ],
     'no-secrets/no-secrets': 'error',
-    'perfectionist/sort-objects': [
-      'error',
-      {
-        type: 'natural',
-        order: 'asc',
-      },
-    ],
+    // 'perfectionist/sort-objects': [
+    //   'off',
+    //   {
+    //     type: 'natural',
+    //     order: 'asc',
+    //   },
+    // ],
   },
   overrides: [
     {

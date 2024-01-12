@@ -1,7 +1,7 @@
 import { initialize, mswLoader } from 'msw-storybook-addon';
 import process from 'process';
 import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev';
-
+import '../app/global.scss';
 // Initialize MSW
 initialize();
 

@@ -11,7 +11,7 @@ function AnimeList({ results }: { results: IAnimePartsFragment[] }) {
     <section>
       {results.map((result) => {
         return (
-          <div key={result.id}>
+          <div key={result.id} className={'aspect-square'}>
             <img alt="series" src={result.coverImage?.extraLarge} />
           </div>
         );
