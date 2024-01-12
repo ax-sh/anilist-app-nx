@@ -1,6 +1,6 @@
 overwrite: true
 schema: 'https://graphql.anilist.co/'
-documents: '**/*.gql'
+documents: '**/*.{gql,graphql}'
 hooks:
   afterAllFileWrite:
     - prettier --write
@@ -23,6 +23,12 @@ generates:
       withResultType: false
       withMutationFn: false
       withMutationOptionsType: false
+      noNamespaces: true
+      strict: true
+      preResolveTypes: true
+      typesPrefix: I
+      typesSuffix: 'Type',
+#      maybeValue: T
 #      addDocBlocks: false
   apps/anilist-ani-mate/generated/graphql/schema.json:
     plugins:
