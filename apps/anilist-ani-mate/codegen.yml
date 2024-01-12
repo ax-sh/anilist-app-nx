@@ -13,9 +13,15 @@ generates:
     config:
       reactApolloVersion: 3
       withHooks: true
-#  apps/anilist-ani-mate/generated/graphql/schema.json:
-#    plugins:
-#      - 'introspection'
+      withHOC: false
+      withComponent: false
+      withResultType: false
+      withMutationFn: false
+      withMutationOptionsType: false
+#      addDocBlocks: false
+  apps/anilist-ani-mate/generated/graphql/schema.json:
+    plugins:
+      - 'introspection'
   apps/anilist-ani-mate/generated/graphql/queries.d.ts:
     plugins:
       - typescript-graphql-files-modules
