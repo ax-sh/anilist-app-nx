@@ -10,6 +10,11 @@ generates:
       - typescript-react-apollo
       - typescript
       - typescript-operations
+      - add:
+          content:
+            - '// 🛑 NOTICE: Add the __generated__ folders to the .gitignore file.'
+            - '/* eslint-disable */'
+            - '/* tslint:disable */'
     config:
       reactApolloVersion: 3
       withHooks: true
@@ -26,5 +31,5 @@ generates:
     plugins:
       - typescript-graphql-files-modules
     config:
-      #      # resulting module definition path glob: "*\/api/user-service/queries.graphql"
+            # resulting module definition path glob: "*\/api/user-service/queries.graphql"
       modulePathPrefix: '*.gql'

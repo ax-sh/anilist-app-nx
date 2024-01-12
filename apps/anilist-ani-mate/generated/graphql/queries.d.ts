@@ -1,6 +1,7 @@
 declare module '*/*.gqlanime-list.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
+  export const AnimeParts: DocumentNode;
   export const UserAnimeList: DocumentNode;
 
   export default defaultDocument;

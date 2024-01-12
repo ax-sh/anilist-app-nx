@@ -12909,6 +12909,12 @@
             "deprecationReason": null
           },
           {
+            "name": "CHARACTER_DATA",
+            "description": "A character data moderator",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "COMMUNITY",
             "description": "A community moderator",
             "isDeprecated": false,
@@ -12971,6 +12977,12 @@
           {
             "name": "SOCIAL_MEDIA",
             "description": "A social media moderator",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "STAFF_DATA",
+            "description": "A staff data moderator",
             "isDeprecated": false,
             "deprecationReason": null
           }

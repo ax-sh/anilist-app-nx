@@ -1,3 +1,6 @@
+// 🛑 NOTICE: Add the __generated__ folders to the .gitignore file.
+/* eslint-disable */
+/* tslint:disable */
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
@@ -21,7 +24,19 @@ export type Incremental<T> =
       [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
     };
 const defaultOptions = {} as const;
-
+export const AnimePartsFragmentDoc = gql`
+  fragment AnimeParts on Media {
+    id
+    title {
+      romaji
+    }
+    coverImage {
+      extraLarge
+    }
+    idMal
+    status
+  }
+`;
 export const UserAnimeListDocument = gql`
   query UserAnimeList($username: String) {
     MediaListCollection(
@@ -32,20 +47,13 @@ export const UserAnimeListDocument = gql`
       lists {
         entries {
           media {
-            id
-            title {
-              romaji
-            }
-            coverImage {
-              extraLarge
-            }
-            idMal
-            status
+            ...AnimeParts
           }
         }
       }
     }
   }
+  ${AnimePartsFragmentDoc}
 `;
 
 /**
@@ -88,15 +96,26 @@ export function useUserAnimeListLazyQuery(
     options,
   );
 }
+export function useUserAnimeListSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    UserAnimeListQuery,
+    UserAnimeListQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    UserAnimeListQuery,
+    UserAnimeListQueryVariables
+  >(UserAnimeListDocument, options);
+}
 export type UserAnimeListQueryHookResult = ReturnType<
   typeof useUserAnimeListQuery
 >;
 export type UserAnimeListLazyQueryHookResult = ReturnType<
   typeof useUserAnimeListLazyQuery
 >;
-export type UserAnimeListQueryResult = Apollo.QueryResult<
-  UserAnimeListQuery,
-  UserAnimeListQueryVariables
+export type UserAnimeListSuspenseQueryHookResult = ReturnType<
+  typeof useUserAnimeListSuspenseQuery
 >;
 export const AnimeDocument = gql`
   query Anime($id: Int) {
@@ -160,11 +179,22 @@ export function useAnimeLazyQuery(
     options,
   );
 }
+export function useAnimeSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    AnimeQuery,
+    AnimeQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<AnimeQuery, AnimeQueryVariables>(
+    AnimeDocument,
+    options,
+  );
+}
 export type AnimeQueryHookResult = ReturnType<typeof useAnimeQuery>;
 export type AnimeLazyQueryHookResult = ReturnType<typeof useAnimeLazyQuery>;
-export type AnimeQueryResult = Apollo.QueryResult<
-  AnimeQuery,
-  AnimeQueryVariables
+export type AnimeSuspenseQueryHookResult = ReturnType<
+  typeof useAnimeSuspenseQuery
 >;
 export const AnilistUserProfileQueryDocument = gql`
   query AnilistUserProfileQuery {
@@ -217,15 +247,26 @@ export function useAnilistUserProfileQueryLazyQuery(
     AnilistUserProfileQueryQueryVariables
   >(AnilistUserProfileQueryDocument, options);
 }
+export function useAnilistUserProfileQuerySuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    AnilistUserProfileQueryQuery,
+    AnilistUserProfileQueryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    AnilistUserProfileQueryQuery,
+    AnilistUserProfileQueryQueryVariables
+  >(AnilistUserProfileQueryDocument, options);
+}
 export type AnilistUserProfileQueryQueryHookResult = ReturnType<
   typeof useAnilistUserProfileQueryQuery
 >;
 export type AnilistUserProfileQueryLazyQueryHookResult = ReturnType<
   typeof useAnilistUserProfileQueryLazyQuery
 >;
-export type AnilistUserProfileQueryQueryResult = Apollo.QueryResult<
-  AnilistUserProfileQueryQuery,
-  AnilistUserProfileQueryQueryVariables
+export type AnilistUserProfileQuerySuspenseQueryHookResult = ReturnType<
+  typeof useAnilistUserProfileQuerySuspenseQuery
 >;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -2327,6 +2368,8 @@ export enum ModRole {
   Admin = 'ADMIN',
   /** An anime data moderator */
   AnimeData = 'ANIME_DATA',
+  /** A character data moderator */
+  CharacterData = 'CHARACTER_DATA',
   /** A community moderator */
   Community = 'COMMUNITY',
   /** An AniList developer */
@@ -2349,6 +2392,8 @@ export enum ModRole {
   Retired = 'RETIRED',
   /** A social media moderator */
   SocialMedia = 'SOCIAL_MEDIA',
+  /** A staff data moderator */
+  StaffData = 'STAFF_DATA',
 }
 
 export type Mutation = {
@@ -4761,6 +4806,18 @@ export type YearStats = {
   amount?: Maybe<Scalars['Int']['output']>;
   meanScore?: Maybe<Scalars['Int']['output']>;
   year?: Maybe<Scalars['Int']['output']>;
+};
+
+export type AnimePartsFragment = {
+  __typename?: 'Media';
+  id: number;
+  idMal?: number | null;
+  status?: MediaStatus | null;
+  title?: { __typename?: 'MediaTitle'; romaji?: string | null } | null;
+  coverImage?: {
+    __typename?: 'MediaCoverImage';
+    extraLarge?: string | null;
+  } | null;
 };
 
 export type UserAnimeListQueryVariables = Exact<{
