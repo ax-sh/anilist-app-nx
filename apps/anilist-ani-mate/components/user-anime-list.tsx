@@ -1,13 +1,29 @@
 import {
-  IMediaListGroup,
+  IAnimePartsFragment,
+  IUserAnimeListQuery,
   useUserAnimeListQuery,
 } from '../generated/graphql/graphql';
 
 export interface UserAnimeListProps {}
 
-function AnimeList({ data }: { data: IMediaListGroup[] }) {
-  console.log(data, 33);
-  return <>anime list</>;
+function AnimeList({ results }: { results: IAnimePartsFragment[] }) {
+  return (
+    <section>
+      {results.map((result) => {
+        return (
+          <div key={result.id}>
+            <img alt="series" src={result.coverImage?.extraLarge} />
+          </div>
+        );
+      })}
+    </section>
+  );
+}
+function transformUserAnimeList(data: IUserAnimeListQuery) {
+  const result = data.MediaListCollection.lists[0];
+  const anime = result.entries.map((entry) => entry.media);
+
+  return anime;
 }
 
 export function UserAnimeList(props: UserAnimeListProps) {
@@ -19,9 +35,7 @@ export function UserAnimeList(props: UserAnimeListProps) {
 
   return (
     <div>
-      <AnimeList
-        data={data!.MediaListCollection!.lists! as IMediaListGroup[]}
-      />
+      <AnimeList results={transformUserAnimeList(data)} />
     </div>
   );
 }
