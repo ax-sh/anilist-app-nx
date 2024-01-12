@@ -1,3 +1,16 @@
+
+fragment AnimeParts on Media {
+  id
+  title {
+    romaji
+  }
+  coverImage {
+    extraLarge
+  }
+  idMal
+  status
+}
+
 query UserAnimeList($username: String) {
   MediaListCollection(
     userName: $username
@@ -7,15 +20,7 @@ query UserAnimeList($username: String) {
     lists {
       entries {
         media {
-          id
-          title {
-            romaji
-          }
-          coverImage {
-            extraLarge
-          }
-          idMal
-          status
+          ...AnimeParts
         }
       }
     }
