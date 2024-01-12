@@ -120,13 +120,7 @@ export type UserAnimeListSuspenseQueryHookResult = ReturnType<
 export const AnimeDocument = gql`
   query Anime($id: Int) {
     Media(id: $id, type: ANIME) {
-      id
-      idMal
-      title {
-        romaji
-        english
-        native
-      }
+      ...AnimeParts
       characters {
         nodes {
           gender
@@ -143,6 +137,7 @@ export const AnimeDocument = gql`
       }
     }
   }
+  ${AnimePartsFragmentDoc}
 `;
 
 /**
@@ -4808,18 +4803,6 @@ export type YearStats = {
   year?: Maybe<Scalars['Int']['output']>;
 };
 
-export type AnimePartsFragment = {
-  __typename?: 'Media';
-  id: number;
-  idMal?: number | null;
-  status?: MediaStatus | null;
-  title?: { __typename?: 'MediaTitle'; romaji?: string | null } | null;
-  coverImage?: {
-    __typename?: 'MediaCoverImage';
-    extraLarge?: string | null;
-  } | null;
-};
-
 export type UserAnimeListQueryVariables = Exact<{
   username?: InputMaybe<Scalars['String']['input']>;
 }>;
@@ -4848,6 +4831,18 @@ export type UserAnimeListQuery = {
   } | null;
 };
 
+export type AnimePartsFragment = {
+  __typename?: 'Media';
+  id: number;
+  idMal?: number | null;
+  status?: MediaStatus | null;
+  title?: { __typename?: 'MediaTitle'; romaji?: string | null } | null;
+  coverImage?: {
+    __typename?: 'MediaCoverImage';
+    extraLarge?: string | null;
+  } | null;
+};
+
 export type AnimeQueryVariables = Exact<{
   id?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -4858,12 +4853,7 @@ export type AnimeQuery = {
     __typename?: 'Media';
     id: number;
     idMal?: number | null;
-    title?: {
-      __typename?: 'MediaTitle';
-      romaji?: string | null;
-      english?: string | null;
-      native?: string | null;
-    } | null;
+    status?: MediaStatus | null;
     characters?: {
       __typename?: 'CharacterConnection';
       nodes?: Array<{
@@ -4878,6 +4868,11 @@ export type AnimeQuery = {
           userPreferred?: string | null;
         } | null;
       } | null> | null;
+    } | null;
+    title?: { __typename?: 'MediaTitle'; romaji?: string | null } | null;
+    coverImage?: {
+      __typename?: 'MediaCoverImage';
+      extraLarge?: string | null;
     } | null;
   } | null;
 };
