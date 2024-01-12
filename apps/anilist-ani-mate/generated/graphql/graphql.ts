@@ -2,7 +2,6 @@
 /* eslint-disable */
 /* tslint:disable */
 import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -23,249 +22,6 @@ export type Incremental<T> =
   | {
       [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
     };
-const defaultOptions = {} as const;
-export const AnimePartsFragmentDoc = gql`
-  fragment AnimeParts on Media {
-    id
-    title {
-      romaji
-      userPreferred
-      native
-      english
-    }
-    coverImage {
-      extraLarge
-    }
-    idMal
-    status
-  }
-`;
-export const UserAnimeListDocument = gql`
-  query UserAnimeList($username: String) {
-    MediaListCollection(
-      userName: $username
-      type: ANIME
-      sort: UPDATED_TIME_DESC
-    ) {
-      lists {
-        entries {
-          media {
-            ...AnimeParts
-          }
-        }
-      }
-    }
-  }
-  ${AnimePartsFragmentDoc}
-`;
-
-/**
- * __useUserAnimeListQuery__
- *
- * To run a query within a React component, call `useUserAnimeListQuery` and pass it any options that fit your needs.
- * When your component renders, `useUserAnimeListQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useUserAnimeListQuery({
- *   variables: {
- *      username: // value for 'username'
- *   },
- * });
- */
-export function useUserAnimeListQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    IUserAnimeListQuery,
-    IUserAnimeListQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<IUserAnimeListQuery, IUserAnimeListQueryVariables>(
-    UserAnimeListDocument,
-    options,
-  );
-}
-export function useUserAnimeListLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    IUserAnimeListQuery,
-    IUserAnimeListQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<IUserAnimeListQuery, IUserAnimeListQueryVariables>(
-    UserAnimeListDocument,
-    options,
-  );
-}
-export function useUserAnimeListSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    IUserAnimeListQuery,
-    IUserAnimeListQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<
-    IUserAnimeListQuery,
-    IUserAnimeListQueryVariables
-  >(UserAnimeListDocument, options);
-}
-export type UserAnimeListQueryHookResult = ReturnType<
-  typeof useUserAnimeListQuery
->;
-export type UserAnimeListLazyQueryHookResult = ReturnType<
-  typeof useUserAnimeListLazyQuery
->;
-export type UserAnimeListSuspenseQueryHookResult = ReturnType<
-  typeof useUserAnimeListSuspenseQuery
->;
-export const AnimeDocument = gql`
-  query Anime($id: Int) {
-    Media(id: $id, type: ANIME) {
-      ...AnimeParts
-      characters {
-        nodes {
-          gender
-          image {
-            large
-          }
-          name {
-            userPreferred
-          }
-          id
-          favourites
-          isFavourite
-        }
-      }
-    }
-  }
-  ${AnimePartsFragmentDoc}
-`;
-
-/**
- * __useAnimeQuery__
- *
- * To run a query within a React component, call `useAnimeQuery` and pass it any options that fit your needs.
- * When your component renders, `useAnimeQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useAnimeQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useAnimeQuery(
-  baseOptions?: Apollo.QueryHookOptions<IAnimeQuery, IAnimeQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<IAnimeQuery, IAnimeQueryVariables>(
-    AnimeDocument,
-    options,
-  );
-}
-export function useAnimeLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<IAnimeQuery, IAnimeQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<IAnimeQuery, IAnimeQueryVariables>(
-    AnimeDocument,
-    options,
-  );
-}
-export function useAnimeSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    IAnimeQuery,
-    IAnimeQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<IAnimeQuery, IAnimeQueryVariables>(
-    AnimeDocument,
-    options,
-  );
-}
-export type AnimeQueryHookResult = ReturnType<typeof useAnimeQuery>;
-export type AnimeLazyQueryHookResult = ReturnType<typeof useAnimeLazyQuery>;
-export type AnimeSuspenseQueryHookResult = ReturnType<
-  typeof useAnimeSuspenseQuery
->;
-export const AnilistUserProfileQueryDocument = gql`
-  query AnilistUserProfileQuery {
-    Viewer {
-      id
-      name
-      avatar {
-        large
-      }
-    }
-  }
-`;
-
-/**
- * __useAnilistUserProfileQueryQuery__
- *
- * To run a query within a React component, call `useAnilistUserProfileQueryQuery` and pass it any options that fit your needs.
- * When your component renders, `useAnilistUserProfileQueryQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useAnilistUserProfileQueryQuery({
- *   variables: {
- *   },
- * });
- */
-export function useAnilistUserProfileQueryQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    IAnilistUserProfileQueryQuery,
-    IAnilistUserProfileQueryQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    IAnilistUserProfileQueryQuery,
-    IAnilistUserProfileQueryQueryVariables
-  >(AnilistUserProfileQueryDocument, options);
-}
-export function useAnilistUserProfileQueryLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    IAnilistUserProfileQueryQuery,
-    IAnilistUserProfileQueryQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    IAnilistUserProfileQueryQuery,
-    IAnilistUserProfileQueryQueryVariables
-  >(AnilistUserProfileQueryDocument, options);
-}
-export function useAnilistUserProfileQuerySuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
-    IAnilistUserProfileQueryQuery,
-    IAnilistUserProfileQueryQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<
-    IAnilistUserProfileQueryQuery,
-    IAnilistUserProfileQueryQueryVariables
-  >(AnilistUserProfileQueryDocument, options);
-}
-export type AnilistUserProfileQueryQueryHookResult = ReturnType<
-  typeof useAnilistUserProfileQueryQuery
->;
-export type AnilistUserProfileQueryLazyQueryHookResult = ReturnType<
-  typeof useAnilistUserProfileQueryLazyQuery
->;
-export type AnilistUserProfileQuerySuspenseQueryHookResult = ReturnType<
-  typeof useAnilistUserProfileQuerySuspenseQuery
->;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string };
@@ -4913,3 +4669,71 @@ export type IAnilistUserProfileQueryQuery = {
     avatar?: { __typename?: 'UserAvatar'; large?: string | null } | null;
   } | null;
 };
+
+export const AnimePartsFragmentDoc = gql`
+  fragment AnimeParts on Media {
+    id
+    title {
+      romaji
+      userPreferred
+      native
+      english
+    }
+    coverImage {
+      extraLarge
+    }
+    idMal
+    status
+  }
+`;
+export const UserAnimeListDocument = gql`
+  query UserAnimeList($username: String) {
+    MediaListCollection(
+      userName: $username
+      type: ANIME
+      sort: UPDATED_TIME_DESC
+    ) {
+      lists {
+        entries {
+          media {
+            ...AnimeParts
+          }
+        }
+      }
+    }
+  }
+  ${AnimePartsFragmentDoc}
+`;
+export const AnimeDocument = gql`
+  query Anime($id: Int) {
+    Media(id: $id, type: ANIME) {
+      ...AnimeParts
+      characters {
+        nodes {
+          gender
+          image {
+            large
+          }
+          name {
+            userPreferred
+          }
+          id
+          favourites
+          isFavourite
+        }
+      }
+    }
+  }
+  ${AnimePartsFragmentDoc}
+`;
+export const AnilistUserProfileQueryDocument = gql`
+  query AnilistUserProfileQuery {
+    Viewer {
+      id
+      name
+      avatar {
+        large
+      }
+    }
+  }
+`;
