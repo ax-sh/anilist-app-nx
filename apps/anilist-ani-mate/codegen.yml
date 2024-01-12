@@ -10,12 +10,12 @@ generates:
       - typescript-react-apollo
       - typescript
       - typescript-operations
-  apps/anilist-ani-mate/generated/graphql/schema.json:
-    plugins:
-      - 'introspection'
-  apps/anilist-ani-mate/generated/graphql/queries.d.ts:
-    plugins:
-      - typescript-graphql-files-modules
-    config:
-      #      # resulting module definition path glob: "*\/api/user-service/queries.graphql"
-      modulePathPrefix: '*.gql'
+#  apps/anilist-ani-mate/generated/graphql/schema.json:
+#    plugins:
+#      - 'introspection'
+#  apps/anilist-ani-mate/generated/graphql/queries.d.ts:
+#    plugins:
+#      - typescript-graphql-files-modules
+#    config:
+#      #      # resulting module definition path glob: "*\/api/user-service/queries.graphql"
+#      modulePathPrefix: '*.gql'
