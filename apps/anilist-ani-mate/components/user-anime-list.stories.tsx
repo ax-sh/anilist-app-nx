@@ -15,11 +15,11 @@ const meta: Meta<typeof UserAnimeList> = {
 export default meta;
 type Story = StoryObj<typeof UserAnimeList>;
 
-export const Primary = {
-  args: {},
-};
+// export const Primary = {
+//   args: {},
+// };
 
-export const Heading: Story = {
+export const Primary: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -29,7 +29,7 @@ export const Heading: Story = {
 
 const anilist = graphql.link('https://graphql.anilist.co');
 
-Heading.decorators = [
+Primary.decorators = [
   (Story) => (
     <AniMateProvider>
       {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
@@ -38,7 +38,7 @@ Heading.decorators = [
   ),
 ];
 
-Heading.parameters = {
+Primary.parameters = {
   apolloClient: {
     MockedProvider,
     // any props you want to pass to MockedProvider on every story
