@@ -7,9 +7,9 @@ hooks:
 generates:
   apps/anilist-ani-mate/generated/graphql/graphql.ts:
     plugins:
-      - typescript-react-apollo
       - typescript
       - typescript-operations
+      - typescript-react-apollo
       - add:
           content:
             - '// 🛑 NOTICE: Add the __generated__ folders to the .gitignore file.'
@@ -17,7 +17,7 @@ generates:
             - '/* tslint:disable */'
     config:
       reactApolloVersion: 3
-      withHooks: true
+      withHooks: false
       withHOC: false
       withComponent: false
       withResultType: false
