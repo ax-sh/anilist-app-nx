@@ -1,15 +1,6 @@
+#import "./anime.gql"
 
-fragment AnimeParts on Media {
-  id
-  title {
-    romaji
-  }
-  coverImage {
-    extraLarge
-  }
-  idMal
-  status
-}
+
 
 query UserAnimeList($username: String) {
   MediaListCollection(

@@ -1,12 +1,20 @@
+
+fragment AnimeParts on Media {
+  id
+  title {
+    romaji
+
+  }
+  coverImage {
+    extraLarge
+  }
+  idMal
+  status
+}
+
 query Anime($id: Int) {
   Media(id: $id, type: ANIME) {
-    id
-    idMal
-    title {
-      romaji
-      english
-      native
-    }
+   ...AnimeParts
     characters {
       nodes {
         gender
