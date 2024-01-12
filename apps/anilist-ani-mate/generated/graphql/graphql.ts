@@ -29,6 +29,9 @@ export const AnimePartsFragmentDoc = gql`
     id
     title {
       romaji
+      userPreferred
+      native
+      english
     }
     coverImage {
       extraLarge
@@ -4820,7 +4823,13 @@ export type UserAnimeListQuery = {
           id: number;
           idMal?: number | null;
           status?: MediaStatus | null;
-          title?: { __typename?: 'MediaTitle'; romaji?: string | null } | null;
+          title?: {
+            __typename?: 'MediaTitle';
+            romaji?: string | null;
+            userPreferred?: string | null;
+            native?: string | null;
+            english?: string | null;
+          } | null;
           coverImage?: {
             __typename?: 'MediaCoverImage';
             extraLarge?: string | null;
@@ -4836,7 +4845,13 @@ export type AnimePartsFragment = {
   id: number;
   idMal?: number | null;
   status?: MediaStatus | null;
-  title?: { __typename?: 'MediaTitle'; romaji?: string | null } | null;
+  title?: {
+    __typename?: 'MediaTitle';
+    romaji?: string | null;
+    userPreferred?: string | null;
+    native?: string | null;
+    english?: string | null;
+  } | null;
   coverImage?: {
     __typename?: 'MediaCoverImage';
     extraLarge?: string | null;
@@ -4869,7 +4884,13 @@ export type AnimeQuery = {
         } | null;
       } | null> | null;
     } | null;
-    title?: { __typename?: 'MediaTitle'; romaji?: string | null } | null;
+    title?: {
+      __typename?: 'MediaTitle';
+      romaji?: string | null;
+      userPreferred?: string | null;
+      native?: string | null;
+      english?: string | null;
+    } | null;
     coverImage?: {
       __typename?: 'MediaCoverImage';
       extraLarge?: string | null;
