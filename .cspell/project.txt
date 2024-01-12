@@ -18,3 +18,4 @@ stylised
 
 svgr
 extralight
+animelist

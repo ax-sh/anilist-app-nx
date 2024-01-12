@@ -1,3 +1,4 @@
 {
-  "*.{ts,tsx,json,md,gql}": ["prettier --write","eslint"]
+  "*.{ts,tsx,md,gql}": ["eslint"],
+    "*.{ts,tsx,json,md,gql}": ["prettier --write"],
 }
