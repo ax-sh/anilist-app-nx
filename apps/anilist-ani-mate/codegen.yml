@@ -26,8 +26,8 @@ generates:
       noNamespaces: true
       strict: true
       preResolveTypes: true
-      typesPrefix: I
-      typesSuffix: 'Type',
+      typesPrefix: 'I'
+#      typesSuffix: 'Type',
 #      maybeValue: T
 #      addDocBlocks: false
   apps/anilist-ani-mate/generated/graphql/schema.json:
