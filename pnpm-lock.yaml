@@ -313,6 +313,9 @@ devDependencies:
   sass:
     specifier: 1.69.7
     version: 1.69.7
+  storybook-addon-apollo-client:
+    specifier: ^5.0.0
+    version: 5.0.0(@storybook/addons@7.6.7)(@types/react-dom@18.2.18)(@types/react@18.2.47)(graphql@16.8.1)(react-dom@18.2.0)(react@18.2.0)
   tailwindcss:
     specifier: 3.4.1
     version: 3.4.1(ts-node@10.9.2)
@@ -8339,6 +8342,17 @@ packages:
     resolution: {integrity: sha512-Q/BKjJaKzl4RWxH45K2iIXwkicj4ReVAUIpIyd7dPBb/Bx+hEDYZxR5dDg82AMkZdA71x5ttMnuDSuVpmWAE6g==}
     dependencies:
       memoizerific: 1.11.3
+    dev: true
+
+  /@storybook/addons@7.6.7(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-nRPy2IFlhDsd34Iebvsdv4gJzThsdgePU7xAf5UQa2Ph2dejsFY0IADoRi4xvkPUAWOjkeu/qvgWLD6X859s2A==}
+    dependencies:
+      '@storybook/manager-api': 7.6.7(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/preview-api': 7.6.7
+      '@storybook/types': 7.6.7
+    transitivePeerDependencies:
+      - react
+      - react-dom
     dev: true
 
   /@storybook/blocks@7.6.7(@types/react-dom@18.2.18)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
@@ -19982,6 +19996,25 @@ packages:
 
   /store2@2.14.2:
     resolution: {integrity: sha512-siT1RiqlfQnGqgT/YzXVUNsom9S0H1OX+dpdGN1xkyYATo4I6sep5NmsRD/40s3IIOvlCq6akxkqG82urIZW1w==}
+    dev: true
+
+  /storybook-addon-apollo-client@5.0.0(@storybook/addons@7.6.7)(@types/react-dom@18.2.18)(@types/react@18.2.47)(graphql@16.8.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-vE0q7R90LuV5bmnas0B3HBU+0c7axmDpu5mYLTzqKLyQbgVlw102GGhodRA0EZOJa+KrQQ7d6auojPS3tZpVxQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@storybook/addons': ^7.0.0
+      graphql: '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@storybook/addons': 7.6.7(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/components': 7.6.7(@types/react-dom@18.2.18)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      graphql: 16.8.1
+      react: 18.2.0
+      tslib: 2.5.3
+    transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-dom'
+      - react-dom
     dev: true
 
   /stream-browserify@3.0.0:

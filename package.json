@@ -128,6 +128,7 @@
     "postcss": "8.4.33",
     "prettier": "^3.1.1",
     "sass": "1.69.7",
+    "storybook-addon-apollo-client": "^5.0.0",
     "tailwindcss": "3.4.1",
     "ts-jest": "^29.1.1",
     "ts-node": "10.9.2",
