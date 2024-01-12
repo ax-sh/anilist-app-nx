@@ -3,6 +3,9 @@ fragment AnimeParts on Media {
   id
   title {
     romaji
+userPreferred
+    native
+    english
 
   }
   coverImage {
