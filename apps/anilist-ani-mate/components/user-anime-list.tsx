@@ -1,17 +1,31 @@
 /* eslint-disable-next-line */
-import { useUserAnimeListQuery } from '../generated/graphql/graphql';
+import {
+  AnimePartsFragment,
+  Maybe,
+  Media,
+  MediaListCollection,
+  MediaListGroup,
+  UserAnimeListQuery,
+  useUserAnimeListQuery,
+} from '../generated/graphql/graphql';
+import { AnimeParts } from '*/*.gqlanime.gql';
 
 export interface UserAnimeListProps {}
+
+function AnimeList({ data }: { data: MediaListGroup[] }) {
+  console.log(data, 33);
+  return 'dfdf';
+}
 
 export function UserAnimeList(props: UserAnimeListProps) {
   const { data, error, loading } = useUserAnimeListQuery({
     variables: { username: '' },
   });
-  if (loading) return 7;
-  console.log(data!.MediaListCollection?.lists, 888);
+  if (loading) return 'loading';
+
   return (
     <div>
-      <h1>Welcome to UserAnimeList!</h1>
+      <AnimeList data={data!.MediaListCollection!.lists! as MediaListGroup[]} />
     </div>
   );
 }
