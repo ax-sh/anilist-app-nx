@@ -20,6 +20,7 @@ const preview = {
   addons: [
     // Other Storybook addons
     '@storybook/addon-interactions', // 👈 Register the addon
+    'storybook-addon-apollo-client',
   ],
 };
 
