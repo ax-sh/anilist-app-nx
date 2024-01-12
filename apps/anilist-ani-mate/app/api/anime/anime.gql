@@ -6,7 +6,6 @@ fragment AnimeParts on Media {
 userPreferred
     native
     english
-
   }
   coverImage {
     extraLarge
