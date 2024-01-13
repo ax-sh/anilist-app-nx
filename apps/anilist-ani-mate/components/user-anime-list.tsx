@@ -6,7 +6,7 @@ import {
 
 export interface UserAnimeListProps {}
 
-function AnimeList({ results }: { results: IAnimePartsFragment[] }) {
+function AnimeList({ results }: { readonly results: IAnimePartsFragment[] }) {
   return (
     <section className={'grid grid-cols-4 flex-wrap'}>
       {results.map((result, index) => {
@@ -24,8 +24,8 @@ function AnimeList({ results }: { results: IAnimePartsFragment[] }) {
   );
 }
 function transformUserAnimeList(data: IUserAnimeListQuery) {
-  const result = data.MediaListCollection.lists[0];
-  const anime = result.entries.map((entry) => entry.media);
+  const result = data.MediaListCollection?.lists![0]!;
+  const anime = result?.entries?.map((entry) => entry?.media);
 
   return anime;
 }
@@ -39,7 +39,7 @@ export function UserAnimeList(props: UserAnimeListProps) {
 
   return (
     <div>
-      <AnimeList results={transformUserAnimeList(data)} />
+      <AnimeList results={transformUserAnimeList(data!)} />
     </div>
   );
 }

@@ -18,6 +18,7 @@ generates:
             - '/* tslint:disable */'
     config:
       reactApolloVersion: 3
+      useTypeImports: true
       withHooks: true
       withHOC: false
       withComponent: false
