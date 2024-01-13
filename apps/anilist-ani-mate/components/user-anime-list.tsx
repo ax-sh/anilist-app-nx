@@ -25,10 +25,9 @@ function AnimeList({ results }: { readonly results: IAnimePartsFragment[] }) {
 }
 function transformUserAnimeList(data: IUserAnimeListQuery) {
   const result = data.MediaListCollection?.lists![0]!;
-  const anime = result?.entries?.map(
-    (entry) => entry?.media,
-  ) as IAnimePartsFragment[];
-
+  const anime: IAnimePartsFragment[] = result?.entries?.map(
+    (entry) => entry?.media!,
+  )!;
   return anime;
 }
 
