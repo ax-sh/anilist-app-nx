@@ -12,8 +12,7 @@ generates:
       - typescript-react-apollo
       - add:
           content:
-            - '// 🛑 NOTICE: Add the __generated__ folders to the .gitignore file.'
-            - '// ⚠️ DO NOT EDIT '️
+            - '// 🛑 NOTICE: Add the __generated__ folders to the .gitignore file. ⚠️ DO NOT EDIT'
             - '/* eslint-disable */'
             - '/* tslint:disable */'
     config:

@@ -1,4 +1,4 @@
-// 🛑 NOTICE: Add the __generated__ folders to the .gitignore file.
+// 🛑 NOTICE: Add the __generated__ folders to the .gitignore file. ⚠️ DO NOT EDIT
 /* eslint-disable */
 /* tslint:disable */
 import { gql } from '@apollo/client';
