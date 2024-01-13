@@ -1,6 +1,7 @@
 import {
   ApolloClient,
   createHttpLink,
+  DocumentTransform,
   HttpLink,
   InMemoryCache,
 } from '@apollo/client';

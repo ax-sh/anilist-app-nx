@@ -5,6 +5,7 @@ import { getSession, SessionProvider } from 'next-auth/react';
 import {
   ApolloClient,
   ApolloProvider,
+  DocumentTransform,
   from,
   InMemoryCache,
 } from '@apollo/client';
@@ -48,6 +49,13 @@ export const NextAuthProvider = ({ children }: PropsWithChildren) => {
 
 // export const apolloClient = createApolloClient();
 
+const documentTransform = new DocumentTransform((document) => {
+  const transformedDocument = document;
+  console.log('[transformedDocument]', document);
+  // modify the document
+  return transformedDocument;
+});
+
 export const AnilistApolloProvider = ({ children }: PropsWithChildren) => {
   const client = useMemo(() => {
     const authMiddleware = setContext(async (operation, { headers }) => {
@@ -66,6 +74,7 @@ export const AnilistApolloProvider = ({ children }: PropsWithChildren) => {
     });
 
     return new ApolloClient({
+      documentTransform,
       cache: new InMemoryCache(),
       link: from([authMiddleware, httpLink]),
     });
