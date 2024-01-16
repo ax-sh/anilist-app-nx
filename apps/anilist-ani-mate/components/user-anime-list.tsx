@@ -3,6 +3,13 @@ import {
   IUserAnimeListQuery,
   useUserAnimeListQuery,
 } from '../generated/graphql/graphql';
+import {
+  Button,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@nextui-org/react';
+import { useState } from 'react';
 
 export interface UserAnimeListProps {}
 
@@ -19,13 +26,23 @@ function AnimeCardContainer<T extends Record<string, any>>(
     </div>
   );
 }
-function AnimeCard({ title, src }: { src: string; title: string }) {
-  const handleOpen = ()>{
-    console.log('get characters')
-  }
+function AnimeCard({
+  title,
+  src,
+  onClick,
+}: {
+  src: string;
+  title: string;
+  onClick: () => void;
+}) {
+  // const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  const handleOpen = () => {
+    onClick();
+  };
 
   return (
-    <div
+    <button
       className={'relative aspect-square overflow-hidden h-90 rounded-md prose'}
       onClick={handleOpen}
     >
@@ -40,7 +57,7 @@ function AnimeCard({ title, src }: { src: string; title: string }) {
           {title}
         </div>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -50,13 +67,36 @@ function AnimeList({ results }: { readonly results: IAnimePartsFragment[] }) {
     <section>
       <AnimeCardContainer
         rows={results}
-        renderRow={({ title, coverImage }, index) => (
-          <AnimeCard
-            key={index}
-            title={title?.romaji!}
-            src={coverImage?.extraLarge!}
-          />
-        )}
+        renderRow={({ title, coverImage }, index) => {
+          const [isOpen, setIsOpen] = useState(false);
+          return (
+            <Popover
+              placement="bottom"
+              isOpen={isOpen}
+              onOpenChange={(open) => {
+                setIsOpen(open);
+                console.log('get characters');
+              }}
+            >
+              <PopoverTrigger>
+                <AnimeCard
+                  onClick={() => setIsOpen(true)}
+                  key={index}
+                  title={title?.romaji!}
+                  src={coverImage?.extraLarge!}
+                />
+              </PopoverTrigger>
+              <PopoverContent>
+                <div className="px-1 py-2">
+                  <div className="text-small font-bold">
+                    Popover {title?.romaji}
+                  </div>
+                  <div className="text-tiny">This is the popover content</div>
+                </div>
+              </PopoverContent>
+            </Popover>
+          );
+        }}
       />
     </section>
   );
