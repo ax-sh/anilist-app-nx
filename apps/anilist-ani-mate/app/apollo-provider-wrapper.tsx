@@ -12,7 +12,7 @@ import { setContext } from '@apollo/client/link/context';
 import { NEXT_PUBLIC_ANILIST_GRAPHQL_API_URL } from './constants';
 import { logger } from './logger';
 
-const httpLink = new HttpLink({
+export const httpLink = new HttpLink({
   uri: NEXT_PUBLIC_ANILIST_GRAPHQL_API_URL,
   // credentials: 'same-origin',
 });

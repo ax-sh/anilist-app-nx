@@ -1,10 +1,10 @@
-import { graphql, http, HttpResponse } from 'msw';
+import { http, HttpResponse } from 'msw';
 import { UserAnimeListMockData } from './mock-data/userAnimeListMockData';
+import { anilistLink } from '../app/constants';
 
-const anilist = graphql.link('https://graphql.anilist.co');
 export const handlers = [
-  http.get('/resource', () => HttpResponse.json({ id: 'abc-123' })),
-  anilist.query('ListPosts', ({ query }) => {
+  // http.get('/resource', () => HttpResponse.json({ id: 'abc-123' })),
+  anilistLink.query('ListPosts', ({ query }) => {
     console.log('Intercepted a "ListPosts" GraphQL query:', query);
     return HttpResponse.json({
       data: {
@@ -14,7 +14,7 @@ export const handlers = [
       },
     });
   }),
-  anilist.query('UserAnimeList', ({ query }) =>
+  anilistLink.query('UserAnimeList', ({ query }) =>
     HttpResponse.json(UserAnimeListMockData, { status: 201 }),
   ),
 ];

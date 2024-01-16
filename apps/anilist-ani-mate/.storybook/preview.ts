@@ -5,7 +5,7 @@ import '../app/global.scss';
 // Initialize MSW
 initialize();
 // Provide the MSW addon decorator globally
-export const decorators = [mswDecorator];
+// export const decorators = [mswDecorator];
 
 if (process.env.NODE_ENV === 'development') {
   // NOTE: Adds messages only in a dev environment

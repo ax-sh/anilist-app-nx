@@ -5,8 +5,15 @@ import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { graphql, HttpResponse } from 'msw';
 import { UserAnimeListMockData } from '../mocks/mock-data/userAnimeListMockData';
-import { AniMateProvider } from '../app/providers';
-import { MockedProvider } from '@apollo/client/testing'; // Use for Apollo Version 3+
+import { MockedProvider } from '@apollo/client/testing';
+import { anilistLink } from '../app/constants';
+import {
+  ApolloClient,
+  ApolloProvider,
+  from,
+  InMemoryCache,
+} from '@apollo/client';
+import { httpLink } from '../app/apollo-provider-wrapper'; // Use for Apollo Version 3+
 
 const meta: Meta<typeof UserAnimeList> = {
   component: UserAnimeList,
@@ -14,10 +21,6 @@ const meta: Meta<typeof UserAnimeList> = {
 };
 export default meta;
 type Story = StoryObj<typeof UserAnimeList>;
-
-// export const Primary = {
-//   args: {},
-// };
 
 export const Primary: Story = {
   args: {},
@@ -27,14 +30,22 @@ export const Primary: Story = {
   },
 };
 
-const anilist = graphql.link('https://graphql.anilist.co');
+function AnilistStorybookProvider({ children }) {
+  const client = new ApolloClient({
+    link: from([httpLink]),
+    cache: new InMemoryCache(),
+
+    ssrMode: typeof window === 'undefined',
+  });
+  return <ApolloProvider client={client}>{children}</ApolloProvider>;
+}
 
 Primary.decorators = [
   (Story) => (
-    <AniMateProvider>
+    <AnilistStorybookProvider>
       {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
       <Story />
-    </AniMateProvider>
+    </AnilistStorybookProvider>
   ),
 ];
 
@@ -45,7 +56,7 @@ Primary.parameters = {
   },
   msw: {
     handlers: [
-      anilist.query('UserAnimeList', ({ query }) =>
+      anilistLink.query('UserAnimeList', ({ query }) =>
         HttpResponse.json(UserAnimeListMockData, { status: 201 }),
       ),
     ],
