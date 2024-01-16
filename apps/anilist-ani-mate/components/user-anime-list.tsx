@@ -6,23 +6,54 @@ import {
 
 export interface UserAnimeListProps {}
 
+type AnimeCardContainerProps<T> = { rows: T[]; renderRow: React.FC<T> };
+
+function AnimeCardContainer<T extends Record<string, any>>(
+  props: AnimeCardContainerProps<T>,
+) {
+  return (
+    <div className={'grid grid-cols-4 flex-wrap container gap-2'}>
+      {props.rows.map((row) => (
+        <props.renderRow {...row} />
+      ))}
+    </div>
+  );
+}
+function AnimeCard({ title, src }: { src: string; title: string }) {
+  return (
+    <div
+      className={'relative aspect-square overflow-hidden h-90 rounded-md prose'}
+    >
+      <img
+        className={'object-cover w-full h-full opacity-40'}
+        alt="series"
+        src={src}
+      />
+
+      <div className={'absolute inset-0 h-full w-full'}>
+        <div className={'absolute bottom-0'}>{title}</div>
+      </div>
+    </div>
+  );
+}
+
 function AnimeList({ results }: { readonly results: IAnimePartsFragment[] }) {
   return (
-    <section className={'grid grid-cols-4 flex-wrap'}>
-      {results.map((result, index) => {
-        return (
-          <div key={index} className={'aspect-square overflow-hidden h-80'}>
-            <img
-              className={'object-cover w-full h-full'}
-              alt="series"
-              src={result.coverImage?.extraLarge!}
-            />
-          </div>
-        );
-      })}
+    <section>
+      <AnimeCardContainer
+        rows={results}
+        renderRow={({ title, coverImage }, index) => (
+          <AnimeCard
+            key={index}
+            title={title?.userPreferred!}
+            src={coverImage?.extraLarge!}
+          />
+        )}
+      />
     </section>
   );
 }
+
 function transformUserAnimeList(data: IUserAnimeListQuery) {
   const result = data.MediaListCollection?.lists![0]!;
   const anime: IAnimePartsFragment[] = result?.entries?.map(
