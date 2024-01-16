@@ -17,9 +17,13 @@ const httpLink = new HttpLink({
   // credentials: 'same-origin',
 });
 
-export const ApolloProviderWrapper = ({ children }: PropsWithChildren) => {
-  // export const apolloClient = createApolloClient();
+async function getAccessToken() {
+  const { token } = await fetch('/api/auth/session').then((res) => res.json());
+  const { accessToken } = token;
+  return { accessToken };
+}
 
+export const ApolloProviderWrapper = ({ children }: PropsWithChildren) => {
   const documentTransform = new DocumentTransform((document) => {
     const transformedDocument = document;
     logger.debug(document);
@@ -29,14 +33,12 @@ export const ApolloProviderWrapper = ({ children }: PropsWithChildren) => {
 
   const client = useMemo(() => {
     const authMiddleware = setContext(async (_, { headers }) => {
-      const { token } = await fetch('/api/auth/token').then((res) =>
-        res.json(),
-      );
+      const { accessToken } = await getAccessToken();
 
       return {
         headers: {
           ...headers,
-          authorization: `Bearer ${token}`,
+          authorization: `Bearer ${accessToken}`,
         },
       };
     });
@@ -45,7 +47,7 @@ export const ApolloProviderWrapper = ({ children }: PropsWithChildren) => {
       link: from([authMiddleware, httpLink]),
       cache: new InMemoryCache(),
       documentTransform,
-      // ssrMode: typeof window === 'undefined',
+      ssrMode: typeof window === 'undefined',
     });
   }, []);
 
