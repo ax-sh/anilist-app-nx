@@ -33,7 +33,7 @@ export const containerVariant = tv({
 
 export function HomeContainer() {
   const { status } = useSession();
-  const { data } = useQuery(gql`
+  const { data, loading, error } = useQuery(gql`
     query ListPosts {
       posts {
         id
@@ -41,6 +41,11 @@ export function HomeContainer() {
       }
     }
   `);
+  if (loading) return <>loading</>;
+  if (error) {
+    console.log(error, error.clientErrors);
+    return <>{error.message}</>;
+  }
   console.log(data);
 
   return (
