@@ -44,25 +44,6 @@ function AnimeCard({
       />
     </Card>
   );
-
-  // return (
-  //   <button
-  //     className={'relative aspect-square overflow-hidden h-80 rounded-md prose'}
-  //     onClick={handleOpen}
-  //   >
-  //     <img className={'object-cover w-full h-full'} alt="series" src={src} />
-  //
-  //     <div className={'absolute inset-0 h-full w-full '}>
-  //       <div
-  //         className={
-  //           'absolute bottom-0 p-4 right-0 bg-black/40 text-white font-medium'
-  //         }
-  //       >
-  //         {title}
-  //       </div>
-  //     </div>
-  //   </button>
-  // );
 }
 
 function AnimeCharactersContainer({
