@@ -24,14 +24,14 @@ async function getAccessToken() {
 }
 
 export const ApolloProviderWrapper = ({ children }: PropsWithChildren) => {
-  const documentTransform = new DocumentTransform((document) => {
-    const transformedDocument = document;
-    logger.debug(document);
-    // modify the document
-    return transformedDocument;
-  });
-
   const client = useMemo(() => {
+    const documentTransform = new DocumentTransform((document) => {
+      const transformedDocument = document;
+      logger.debug(document);
+      // modify the document
+      return transformedDocument;
+    });
+
     const authMiddleware = setContext(async (_, { headers }) => {
       const { accessToken } = await getAccessToken();
 
