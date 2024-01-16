@@ -67,11 +67,13 @@ function AnimeList({ results }: { readonly results: IAnimePartsFragment[] }) {
               src={coverImage?.extraLarge!}
             />
 
-            <AnimeCharactersContainer
-              animeId={id}
-              className={clsx(!on && 'hidden')}
-              src={coverImage?.extraLarge!}
-            />
+            {on && id && (
+              <AnimeCharactersContainer
+                animeId={id}
+                className={clsx(!on && 'hidden')}
+                src={coverImage?.extraLarge!}
+              />
+            )}
           </div>
         );
       }}
