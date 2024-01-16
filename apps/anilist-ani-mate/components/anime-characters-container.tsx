@@ -1,10 +1,11 @@
 import clsx from 'clsx';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import {
   IAnimePartsFragment,
   IAnimeQuery,
   ICharacterPartsFragment,
   IUserAnimeListQuery,
+  useAnimeLazyQuery,
   useAnimeQuery,
 } from '../generated/graphql/graphql';
 
@@ -45,10 +46,13 @@ export function AnimeCharactersContainer({
   animeId,
   src,
 }: AnimeCharactersContainerProps) {
-  const { data, error, loading } = useAnimeQuery({
-    variables: { id: animeId },
+  const [getAnime, { data, error, loading }] = useAnimeLazyQuery({
+    // variables: { id: animeId },
   });
-  if (loading) return null;
+  useEffect(() => {
+    getAnime({ variables: { id: animeId } });
+  }, []);
+
   const characters = (data && transformAnime(data!)) || [];
 
   const sortedCharacters = useMemo(() => {
@@ -56,6 +60,9 @@ export function AnimeCharactersContainer({
     n.sort(characterSortPredicate);
     return n;
   }, [characters]);
+  //
+  if (loading) return null;
+  console.log(sortedCharacters);
   return (
     <div
       className={clsx(className, 'bg-cover w-full')}
