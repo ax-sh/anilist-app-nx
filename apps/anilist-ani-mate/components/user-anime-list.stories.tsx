@@ -1,7 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { UserAnimeList } from './user-anime-list';
 
-import { within } from '@storybook/testing-library';
+import {
+  within,
+  screen,
+  waitForElementToBeRemoved,
+} from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { HttpResponse } from 'msw';
 import { UserAnimeListMockData } from '../mocks/mock-data/userAnimeListMockData';
@@ -26,9 +30,11 @@ export const Primary: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+    const loader = canvas.getByTestId(/loader/i);
 
-    await expect(canvas.getByTestId(/loader/i)).toBeInTheDocument();
-    // await expect(canvas.getByTestId(/UserAnimeList/i)).toBeInTheDocument();
+    await expect(loader).toBeInTheDocument();
+    await waitForElementToBeRemoved(() => canvas.queryByTestId(/loader/i));
+    await expect(canvas.getByTestId(/UserAnimeList/i)).toBeInTheDocument();
   },
 };
 
