@@ -8,6 +8,7 @@ import React from 'react';
 import { useToggle } from 'react-use';
 import clsx from 'clsx';
 import { AnimeCardContainer } from './anime-card-container';
+import { AnimeCharactersContainer } from './anime-characters-container';
 
 export interface UserAnimeListProps {}
 
@@ -43,27 +44,6 @@ function AnimeCard({
         src={src}
       />
     </Card>
-  );
-}
-
-function AnimeCharactersContainer({
-  className,
-  animeId,
-  src,
-}: {
-  animeId: number;
-  className: string;
-  src: string;
-}) {
-  return (
-    <div
-      className={clsx(className, 'bg-cover w-full')}
-      style={{ backgroundImage: `url(${src})` }}
-    >
-      <div className={'backdrop-blur-md w-full h-full p-10 '}>
-        AnimeCharactersContainer {animeId}
-      </div>
-    </div>
   );
 }
 
