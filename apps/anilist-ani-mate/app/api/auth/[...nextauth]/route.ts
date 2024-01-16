@@ -9,6 +9,15 @@ import { env } from '../../../../env';
 
 // import jsonwebtoken from 'jsonwebtoken';
 import { CallbacksOptions } from 'next-auth/src/core/types';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+
+function createApolloClient() {
+  return new ApolloClient({
+    cache: new InMemoryCache(),
+    // link: createIsomorphLink(),
+    ssrMode: typeof window === 'undefined',
+  });
+}
 
 async function fetchAuthUser(access_token: string) {
   const client = createApolloClient();
