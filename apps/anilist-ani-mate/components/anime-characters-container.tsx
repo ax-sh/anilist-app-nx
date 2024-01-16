@@ -74,7 +74,7 @@ export function AnimeCharactersContainer({
 
         {sortedCharacters.map((character) => {
           return (
-            <AvatarGroup isGrid key={character.id}>
+            <div key={character.id} className={'grid grid-col-5'}>
               <Badge
                 content={
                   <span>
@@ -104,7 +104,7 @@ export function AnimeCharactersContainer({
               {/*<h5>*/}
               {/*  {character.name.userPreferred} {character.gender}*/}
               {/*</h5>*/}
-            </AvatarGroup>
+            </div>
           );
         })}
       </div>
