@@ -20,9 +20,14 @@ function AnimeCardContainer<T extends Record<string, any>>(
   );
 }
 function AnimeCard({ title, src }: { src: string; title: string }) {
+  const handleOpen = ()>{
+    console.log('get characters')
+  }
+
   return (
     <div
       className={'relative aspect-square overflow-hidden h-90 rounded-md prose'}
+      onClick={handleOpen}
     >
       <img className={'object-cover w-full h-full'} alt="series" src={src} />
 
