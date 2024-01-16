@@ -4618,6 +4618,16 @@ export type IAnimePartsFragment = {
   } | null;
 };
 
+export type ICharacterPartsFragment = {
+  __typename?: 'Character';
+  gender?: string | null;
+  id: number;
+  favourites?: number | null;
+  isFavourite: boolean;
+  image?: { __typename?: 'CharacterImage'; large?: string | null } | null;
+  name?: { __typename?: 'CharacterName'; userPreferred?: string | null } | null;
+};
+
 export type IAnimeQueryVariables = Exact<{
   id?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -4686,6 +4696,20 @@ export const AnimePartsFragmentDoc = gql`
     }
     idMal
     status
+  }
+`;
+export const CharacterPartsFragmentDoc = gql`
+  fragment CharacterParts on Character {
+    gender
+    image {
+      large
+    }
+    name {
+      userPreferred
+    }
+    id
+    favourites
+    isFavourite
   }
 `;
 export const UserAnimeListDocument = gql`
@@ -4774,21 +4798,13 @@ export const AnimeDocument = gql`
       ...AnimeParts
       characters {
         nodes {
-          gender
-          image {
-            large
-          }
-          name {
-            userPreferred
-          }
-          id
-          favourites
-          isFavourite
+          ...CharacterParts
         }
       }
     }
   }
   ${AnimePartsFragmentDoc}
+  ${CharacterPartsFragmentDoc}
 `;
 
 /**
