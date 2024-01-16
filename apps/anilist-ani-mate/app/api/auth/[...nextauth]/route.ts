@@ -8,7 +8,6 @@ import {
 import { env } from '../../../../env';
 
 // import jsonwebtoken from 'jsonwebtoken';
-import { createApolloClient } from '../../../apollo-client';
 import { CallbacksOptions } from 'next-auth/src/core/types';
 
 async function fetchAuthUser(access_token: string) {
