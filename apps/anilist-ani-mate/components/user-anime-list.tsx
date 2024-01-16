@@ -49,11 +49,22 @@ function AnimeCard({
 function AnimeCharactersContainer({
   className,
   animeId,
+  src,
 }: {
   animeId: number;
   className: string;
+  src: string;
 }) {
-  return <div className={className}>AnimeCharactersContainer {animeId}</div>;
+  return (
+    <div
+      className={clsx(className, 'bg-cover w-full')}
+      style={{ backgroundImage: `url(${src})` }}
+    >
+      <div className={'backdrop-blur-md w-full h-full p-10 '}>
+        AnimeCharactersContainer {animeId}
+      </div>
+    </div>
+  );
 }
 
 function AnimeList({ results }: { readonly results: IAnimePartsFragment[] }) {
@@ -63,7 +74,7 @@ function AnimeList({ results }: { readonly results: IAnimePartsFragment[] }) {
       renderRow={({ title, coverImage, id }, index) => {
         const [on, toggle] = useToggle(false);
         const className = clsx(
-          'duration-200',
+          'duration-200 flex flex-row gap-4',
           on &&
             'mb-20 flex w-full grow flex-col items-start rounded-2xl bg-white py-20 col-start-0 col-span-5',
         );
@@ -79,6 +90,7 @@ function AnimeList({ results }: { readonly results: IAnimePartsFragment[] }) {
             <AnimeCharactersContainer
               animeId={id}
               className={clsx(!on && 'hidden')}
+              src={coverImage?.extraLarge!}
             />
           </div>
         );
