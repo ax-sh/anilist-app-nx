@@ -1,4 +1,4 @@
 {
   "*.{ts,tsx,md,gql}": ["eslint"],
-    "*.{ts,tsx,json,md,gql}": ["prettier --write"],
+    "*.{ts,tsx,json,md,gql}": ["prettier --write --ignore-unknown"],
 }
