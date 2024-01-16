@@ -3,26 +3,14 @@ import {
   IUserAnimeListQuery,
   useUserAnimeListQuery,
 } from '../generated/graphql/graphql';
-import { Image, Card, CardHeader } from '@nextui-org/react';
-import React, { useState } from 'react';
+import { Card, CardHeader, Image } from '@nextui-org/react';
+import React from 'react';
 import { useToggle } from 'react-use';
 import clsx from 'clsx';
+import { AnimeCardContainer } from './anime-card-container';
 
 export interface UserAnimeListProps {}
 
-type AnimeCardContainerProps<T> = { rows: T[]; renderRow: React.FC<T> };
-
-function AnimeCardContainer<T extends Record<string, any>>(
-  props: AnimeCardContainerProps<T>,
-) {
-  return (
-    <section className={'grid grid-cols-4 flex-wrap container gap-2'}>
-      {props.rows.map((row) => (
-        <props.renderRow {...row} />
-      ))}
-    </section>
-  );
-}
 function AnimeCard({
   title,
   src,
