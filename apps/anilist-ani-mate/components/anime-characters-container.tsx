@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   IAnimePartsFragment,
   IAnimeQuery,
@@ -7,6 +7,25 @@ import {
   IUserAnimeListQuery,
   useAnimeQuery,
 } from '../generated/graphql/graphql';
+
+function characterSortPredicate<T extends { gender: string }>(a: T, b: T) {
+  // equal items sort equally
+  if (a === b) {
+    return 0;
+  }
+
+  // nulls sort after anything else
+  if (a === null) {
+    return 1;
+  }
+  if (b === null) {
+    return -1;
+  }
+
+  const modifier = (x: T) => x?.gender ?? 0;
+
+  return modifier(a) < modifier(b) ? -1 : 1;
+}
 
 type AnimeCharactersContainerProps = {
   animeId: number;
@@ -30,7 +49,13 @@ export function AnimeCharactersContainer({
     variables: { id: animeId },
   });
   if (loading) return null;
-  console.log(transformAnime(data!), loading, error);
+  const characters = transformAnime(data!);
+
+  const sortedCharacters = useMemo(() => {
+    const n = [...characters];
+    n.sort(characterSortPredicate);
+    return n;
+  }, [characters]);
   return (
     <div
       className={clsx(className, 'bg-cover w-full')}

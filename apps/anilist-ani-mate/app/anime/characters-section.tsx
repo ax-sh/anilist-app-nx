@@ -2,7 +2,7 @@ import { Avatar, AvatarGroup, Badge } from '@nextui-org/react';
 import { AnimeCard } from './anime-card';
 import { useMemo } from 'react';
 import clsx from 'clsx';
-
+// old file depricate after migration
 function characterSortPredicate<T extends { gender: string }>(a: T, b: T) {
   // equal items sort equally
   if (a === b) {
