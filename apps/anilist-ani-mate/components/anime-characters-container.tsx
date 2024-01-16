@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   IAnimePartsFragment,
   IAnimeQuery,
@@ -8,6 +8,7 @@ import {
   useAnimeLazyQuery,
   useAnimeQuery,
 } from '../generated/graphql/graphql';
+import { Avatar, AvatarGroup, Badge } from '@nextui-org/react';
 
 function characterSortPredicate<T extends ICharacterPartsFragment>(a: T, b: T) {
   // equal items sort equally
@@ -46,20 +47,20 @@ export function AnimeCharactersContainer({
   animeId,
   src,
 }: AnimeCharactersContainerProps) {
+  const [sortedCharacters, setSortedCharacters] = useState([]);
   const [getAnime, { data, error, loading }] = useAnimeLazyQuery({
     // variables: { id: animeId },
+    onCompleted(data) {
+      const characters = transformAnime(data!);
+      const n = [...characters];
+      n.sort(characterSortPredicate);
+      setSortedCharacters(n);
+    },
   });
   useEffect(() => {
     getAnime({ variables: { id: animeId } });
   }, []);
 
-  const characters = (data && transformAnime(data!)) || [];
-
-  const sortedCharacters = useMemo(() => {
-    const n = [...characters];
-    n.sort(characterSortPredicate);
-    return n;
-  }, [characters]);
   //
   if (loading) return null;
   console.log(sortedCharacters);
@@ -69,7 +70,43 @@ export function AnimeCharactersContainer({
       style={{ backgroundImage: `url(${src})` }}
     >
       <div className={'backdrop-blur-md w-full h-full p-10 '}>
-        AnimeCharactersContainer {animeId}
+        <div>Anime Characters {animeId}</div>
+
+        {sortedCharacters.map((character) => {
+          return (
+            <AvatarGroup isGrid key={character.id}>
+              <Badge
+                content={
+                  <span>
+                    {character.favourites} {character.gender}
+                  </span>
+                }
+                color={'primary'}
+              >
+                <Badge
+                  placement={'bottom-right'}
+                  content={character.name.userPreferred}
+                >
+                  <Avatar
+                    isBordered
+                    color="secondary"
+                    className={clsx('w-20 h-20 text-large', {
+                      'opacity-100': character.gender === 'Female',
+                      'opacity-20': character.gender !== 'Female',
+                    })}
+                    size={'lg'}
+                    src={character.image.large}
+                    alt={character.name.userPreferred}
+                  />
+                </Badge>
+              </Badge>
+
+              {/*<h5>*/}
+              {/*  {character.name.userPreferred} {character.gender}*/}
+              {/*</h5>*/}
+            </AvatarGroup>
+          );
+        })}
       </div>
     </div>
   );
