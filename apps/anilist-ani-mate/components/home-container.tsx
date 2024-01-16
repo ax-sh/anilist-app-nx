@@ -31,8 +31,7 @@ export const containerVariant = tv({
   },
 });
 
-export function HomeContainer() {
-  const { status } = useSession();
+function DataTest() {
   const { data, loading, error } = useQuery(gql`
     query ListPosts {
       posts {
@@ -43,9 +42,21 @@ export function HomeContainer() {
   `);
   if (loading) return <>loading</>;
   if (error) {
-    console.log(error, error.clientErrors);
-    return <>{error.message}</>;
+    console.log(error.name);
+    return (
+      <div>
+        <h1>
+          test: {error.name} {error.message}
+        </h1>
+      </div>
+    );
   }
+
+  return <pre>test {JSON.stringify(data, null, 4)}</pre>;
+}
+
+export function HomeContainer() {
+  const { status } = useSession();
 
   return (
     <div className={containerVariant({ color: 'primary' })}>
@@ -55,6 +66,7 @@ export function HomeContainer() {
         )}
         {status === 'unauthenticated' && <ConnectAnilistButton />}
         {status === 'loading' && <Spinner />}
+        {/*<DataTest />*/}
       </div>
     </div>
   );
