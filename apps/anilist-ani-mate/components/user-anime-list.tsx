@@ -70,7 +70,7 @@ function AnimeList({ results }: { readonly results: IAnimePartsFragment[] }) {
         return (
           <div className={className}>
             <AnimeCard
-              onClick={() => toggle()}
+              onClick={toggle}
               key={index}
               title={title?.romaji!}
               src={coverImage?.extraLarge!}
