@@ -9,7 +9,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@nextui-org/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useToggle } from 'react-use';
+import clsx from 'clsx';
 
 export interface UserAnimeListProps {}
 
@@ -68,33 +70,26 @@ function AnimeList({ results }: { readonly results: IAnimePartsFragment[] }) {
       <AnimeCardContainer
         rows={results}
         renderRow={({ title, coverImage }, index) => {
-          const [isOpen, setIsOpen] = useState(false);
+          const [on, toggle] = useToggle(false);
+          const className = clsx(
+            'duration-200',
+            on &&
+              'mb-20 flex w-full grow flex-col items-start rounded-2xl bg-white py-20 ',
+          );
           return (
-            <Popover
-              placement="bottom"
-              isOpen={isOpen}
-              onOpenChange={(open) => {
-                setIsOpen(open);
-                console.log('get characters');
-              }}
-            >
-              <PopoverTrigger>
-                <AnimeCard
-                  onClick={() => setIsOpen(true)}
-                  key={index}
-                  title={title?.romaji!}
-                  src={coverImage?.extraLarge!}
-                />
-              </PopoverTrigger>
-              <PopoverContent>
-                <div className="px-1 py-2">
-                  <div className="text-small font-bold">
-                    Popover {title?.romaji}
-                  </div>
-                  <div className="text-tiny">This is the popover content</div>
-                </div>
-              </PopoverContent>
-            </Popover>
+            <div className={className}>
+              <AnimeCard
+                onClick={() => toggle()}
+                key={index}
+                title={title?.romaji!}
+                src={coverImage?.extraLarge!}
+              />
+
+              <div className={clsx('p-4 text-black bg-black', !on && 'hidden')}>
+                <h2>{title?.romaji}</h2>
+                {/*<AnimeCharacters animeId={anime.id} />*/}
+              </div>
+            </div>
           );
         }}
       />
