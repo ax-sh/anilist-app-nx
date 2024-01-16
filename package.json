@@ -44,6 +44,7 @@
     "msw-storybook-addon": "2.0.0--canary.122.b3ed3b1.0",
     "next": "14.0.4",
     "next-auth": "^4.24.5",
+    "pino": "^8.17.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^5.0.1",
