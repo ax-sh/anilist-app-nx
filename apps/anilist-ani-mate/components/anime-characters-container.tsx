@@ -8,7 +8,7 @@ import {
   useAnimeQuery,
 } from '../generated/graphql/graphql';
 
-function characterSortPredicate<T extends { gender: string }>(a: T, b: T) {
+function characterSortPredicate<T extends ICharacterPartsFragment>(a: T, b: T) {
   // equal items sort equally
   if (a === b) {
     return 0;
@@ -49,7 +49,7 @@ export function AnimeCharactersContainer({
     variables: { id: animeId },
   });
   if (loading) return null;
-  const characters = transformAnime(data!);
+  const characters = (data && transformAnime(data!)) || [];
 
   const sortedCharacters = useMemo(() => {
     const n = [...characters];
