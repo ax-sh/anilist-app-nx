@@ -9,12 +9,18 @@ import { env } from '../../../../env';
 
 // import jsonwebtoken from 'jsonwebtoken';
 import { CallbacksOptions } from 'next-auth/src/core/types';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
 
 function createApolloClient() {
+  function createIsomorphLink() {
+    return createHttpLink({
+      credentials: 'same-origin',
+      uri: 'https://graphql.anilist.co',
+    });
+  }
   return new ApolloClient({
     cache: new InMemoryCache(),
-    // link: createIsomorphLink(),
+    link: createIsomorphLink(),
     ssrMode: typeof window === 'undefined',
   });
 }
