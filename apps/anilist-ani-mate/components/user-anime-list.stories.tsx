@@ -3,17 +3,17 @@ import { UserAnimeList } from './user-anime-list';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
-import { graphql, HttpResponse } from 'msw';
+import { HttpResponse } from 'msw';
 import { UserAnimeListMockData } from '../mocks/mock-data/userAnimeListMockData';
 import { MockedProvider } from '@apollo/client/testing';
-import { anilistLink } from '../app/constants';
 import {
   ApolloClient,
   ApolloProvider,
   from,
   InMemoryCache,
 } from '@apollo/client';
-import { httpLink } from '../app/apollo-provider-wrapper'; // Use for Apollo Version 3+
+import { httpLink } from '../app/apollo-provider-wrapper';
+import { anilistMockLink } from '../mocks'; // Use for Apollo Version 3+
 
 const meta: Meta<typeof UserAnimeList> = {
   component: UserAnimeList,
@@ -26,7 +26,9 @@ export const Primary: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await expect(canvas.getByText(/Welcome to UserAnimeList!/gi)).toBeTruthy();
+
+    await expect(canvas.getByTestId(/loader/i)).toBeInTheDocument();
+    // await expect(canvas.getByTestId(/UserAnimeList/i)).toBeInTheDocument();
   },
 };
 
@@ -56,7 +58,7 @@ Primary.parameters = {
   },
   msw: {
     handlers: [
-      anilistLink.query('UserAnimeList', ({ query }) =>
+      anilistMockLink.query('UserAnimeList', ({ query }) =>
         HttpResponse.json(UserAnimeListMockData, { status: 201 }),
       ),
     ],

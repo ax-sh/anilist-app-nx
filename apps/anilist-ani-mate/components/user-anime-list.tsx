@@ -38,11 +38,11 @@ export function UserAnimeList(props: UserAnimeListProps) {
       // console.log('complete', data);
     },
   });
-  if (loading) return <>loading</>;
-  if (error) return <>{error.message}</>;
+  if (loading) return <div data-testid={'loader'}>loading</div>;
+  if (error) return <div>{error.message}</div>;
 
   return (
-    <div>
+    <div data-testid={'UserAnimeList'}>
       <AnimeList results={transformUserAnimeList(data!)} />
     </div>
   );
