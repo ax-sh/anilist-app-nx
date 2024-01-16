@@ -10,6 +10,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { NEXT_PUBLIC_ANILIST_GRAPHQL_API_URL } from './constants';
+import { logger } from './logger';
 
 const httpLink = new HttpLink({
   uri: NEXT_PUBLIC_ANILIST_GRAPHQL_API_URL,
@@ -21,7 +22,7 @@ export const ApolloProviderWrapper = ({ children }: PropsWithChildren) => {
 
   const documentTransform = new DocumentTransform((document) => {
     const transformedDocument = document;
-    console.log('[transformedDocument]', document);
+    logger.debug(document);
     // modify the document
     return transformedDocument;
   });

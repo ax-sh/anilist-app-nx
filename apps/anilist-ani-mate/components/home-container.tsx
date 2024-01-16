@@ -46,7 +46,6 @@ export function HomeContainer() {
     console.log(error, error.clientErrors);
     return <>{error.message}</>;
   }
-  console.log(data);
 
   return (
     <div className={containerVariant({ color: 'primary' })}>
