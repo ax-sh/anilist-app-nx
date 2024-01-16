@@ -3,7 +3,7 @@
 import { NextUIProvider } from '@nextui-org/react';
 import { SessionProvider } from 'next-auth/react';
 
-import { PropsWithChildren, useMemo } from 'react';
+import { type PropsWithChildren } from 'react';
 
 import { ApolloProviderWrapper } from './apollo-provider-wrapper';
 
