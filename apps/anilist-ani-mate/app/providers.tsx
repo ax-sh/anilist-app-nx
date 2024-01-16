@@ -1,17 +1,11 @@
 'use client';
 
 import { NextUIProvider } from '@nextui-org/react';
-import { getSession, SessionProvider } from 'next-auth/react';
-import {
-  ApolloClient,
-  ApolloProvider,
-  DocumentTransform,
-  from,
-  InMemoryCache,
-} from '@apollo/client';
-import { PropsWithChildren, useMemo } from 'react';
-import { httpLink } from './apollo-client';
-import { setContext } from '@apollo/client/link/context';
+import { SessionProvider } from 'next-auth/react';
+
+import { type PropsWithChildren } from 'react';
+
+import { ApolloProviderWrapper } from './apollo-provider-wrapper';
 
 async function initMocks() {
   if (typeof window === 'undefined') {
@@ -47,37 +41,6 @@ export const NextAuthProvider = ({ children }: PropsWithChildren) => {
   return <SessionProvider>{children}</SessionProvider>;
 };
 
-// export const apolloClient = createApolloClient();
-
-const documentTransform = new DocumentTransform((document) => {
-  const transformedDocument = document;
-  console.log('[transformedDocument]', document);
-  // modify the document
-  return transformedDocument;
-});
-
 export const AnilistApolloProvider = ({ children }: PropsWithChildren) => {
-  const client = useMemo(() => {
-    const authMiddleware = setContext(async (operation, { headers }) => {
-      const session = await getSession();
-      if (!session) return headers;
-
-      // @ts-ignore
-      const token = session.token.accessToken;
-
-      return {
-        headers: {
-          ...headers,
-          authorization: `Bearer ${token}`,
-        },
-      };
-    });
-
-    return new ApolloClient({
-      documentTransform,
-      cache: new InMemoryCache(),
-      link: from([authMiddleware, httpLink]),
-    });
-  }, []);
-  return <ApolloProvider client={client}>{children}</ApolloProvider>;
+  return <ApolloProviderWrapper>{children}</ApolloProviderWrapper>;
 };

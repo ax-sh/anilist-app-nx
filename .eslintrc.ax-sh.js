@@ -7,13 +7,13 @@ module.exports = defineConfig({
     'perfectionist',
     'write-good-comments',
     'perfectionist',
-    'deprecation',
+    // 'deprecation',
   ],
   extends: [
     'plugin:pii/recommended',
     'plugin:deprecation/recommended',
     // 'plugin:perfectionist/recommended-natural',
-    'plugin:deprecation/recommended',
+    // 'plugin:deprecation/recommended',
   ],
   rules: {
     'write-good-comments/write-good-comments': 'warn',

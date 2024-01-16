@@ -35,7 +35,7 @@ export function UserAnimeList(props: UserAnimeListProps) {
   const { data, error, loading } = useUserAnimeListQuery({
     variables: { username: '' },
     onCompleted(data) {
-      console.log('complete', data);
+      // console.log('complete', data);
     },
   });
   if (loading) return <>loading</>;
