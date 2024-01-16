@@ -14,22 +14,27 @@ fragment AnimeParts on Media {
   status
 }
 
+fragment CharacterParts on Character {
+  gender
+
+  image {
+    large
+  }
+  name {
+    userPreferred
+  }
+  id
+  favourites
+  isFavourite
+
+}
+
 query Anime($id: Int) {
   Media(id: $id, type: ANIME) {
    ...AnimeParts
     characters {
       nodes {
-        gender
-
-        image {
-          large
-        }
-        name {
-          userPreferred
-        }
-        id
-        favourites
-        isFavourite
+       ...CharacterParts
       }
     }
   }

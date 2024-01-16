@@ -24,20 +24,23 @@ function AnimeCard({ title, src }: { src: string; title: string }) {
     <div
       className={'relative aspect-square overflow-hidden h-90 rounded-md prose'}
     >
-      <img
-        className={'object-cover w-full h-full opacity-40'}
-        alt="series"
-        src={src}
-      />
+      <img className={'object-cover w-full h-full'} alt="series" src={src} />
 
-      <div className={'absolute inset-0 h-full w-full'}>
-        <div className={'absolute bottom-0'}>{title}</div>
+      <div className={'absolute inset-0 h-full w-full '}>
+        <div
+          className={
+            'absolute bottom-0 p-4 right-0 bg-black/40 text-white font-medium'
+          }
+        >
+          {title}
+        </div>
       </div>
     </div>
   );
 }
 
 function AnimeList({ results }: { readonly results: IAnimePartsFragment[] }) {
+  console.log(results, 33);
   return (
     <section>
       <AnimeCardContainer
@@ -45,7 +48,7 @@ function AnimeList({ results }: { readonly results: IAnimePartsFragment[] }) {
         renderRow={({ title, coverImage }, index) => (
           <AnimeCard
             key={index}
-            title={title?.userPreferred!}
+            title={title?.romaji!}
             src={coverImage?.extraLarge!}
           />
         )}
