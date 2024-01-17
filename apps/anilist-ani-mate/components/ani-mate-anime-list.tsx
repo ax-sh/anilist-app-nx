@@ -40,26 +40,22 @@ function AnimeCard({
   );
 }
 
-function AnimeCardWrapper({
-  title,
-  src,
-  animeId,
-}: {
+type AnimeCardWrapperProps = {
   title: string;
   src: string;
   animeId: number;
-}) {
+};
+function AnimeCardWrapper({ title, src, animeId }: AnimeCardWrapperProps) {
   const [on, toggle] = useToggle(false);
   const className = clsx(
     'duration-200 flex flex-row gap-4',
     on &&
-      'mb-20 flex w-full grow flex-col items-start rounded-2xl bg-white py-20 col-start-0 col-span-5',
+      'mb-20 flex w-full grow flex-col items-start rounded-2xl bg-white py-20 col-start-0 col-span-4',
   );
 
   return (
     <div className={className}>
       <AnimeCard onClick={toggle} title={title} src={src} />
-
       {on && (
         <AnimeCharactersContainer
           animeId={animeId}
