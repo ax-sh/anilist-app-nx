@@ -1,20 +1,30 @@
 'use client';
 
 import { useUserAnimeListQuery } from '../../../generated/graphql/graphql';
-import React, { useMemo } from 'react';
+import React, { useState } from 'react';
 import { ErrorJsonViewer, Loader } from '@anilist-app-nx/ui';
-import { AnimeCard } from './anime-card';
 
 type UserPageProps = { params: { username: string } };
-export default function UserPage({ params }: UserPageProps) {
+
+function useAniMateUserAnimeListQuery(username: string) {
+  const [medias, setMedias] = useState([]);
   const { data, error, loading } = useUserAnimeListQuery({
-    variables: { username: params.username },
+    variables: { username },
+    onCompleted(data) {
+      const medias = data?.MediaListCollection?.lists?.flatMap((i) =>
+        i?.entries?.map((e) => e?.media),
+      );
+      setMedias(medias);
+    },
   });
-  const medias = useMemo(() => {
-    return data?.MediaListCollection?.lists?.flatMap(
-      (i) => i?.entries?.map((e) => e?.media),
-    );
-  }, [data]);
+  return { medias, loading, error };
+}
+
+export default function UserPage({ params }: UserPageProps) {
+  const { medias, loading, error } = useAniMateUserAnimeListQuery(
+    params.username,
+  );
+
   if (error) return <ErrorJsonViewer error={error} />;
 
   if (loading) return <Loader />;
@@ -27,7 +37,8 @@ export default function UserPage({ params }: UserPageProps) {
         <h1>User: {params.username}</h1>
 
         <div className={'flex flex-wrap gap-4'}>
-          {medias?.map((anime) => <AnimeCard key={anime?.id} anime={anime} />)}
+          <AnimeList results={medias} />
+          {/*{medias?.map((anime) => <AnimeCard key={anime?.id} anime={anime} />)}*/}
         </div>
       </div>
     </section>
