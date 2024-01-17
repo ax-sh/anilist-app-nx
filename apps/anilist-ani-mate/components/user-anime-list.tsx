@@ -1,8 +1,4 @@
-import {
-  IAnimePartsFragment,
-  IUserAnimeListQuery,
-  useUserAnimeListQuery,
-} from '../generated/graphql/graphql';
+import { IAnimePartsFragment } from '../generated/graphql/graphql';
 import { Card, CardHeader, Image } from '@nextui-org/react';
 import React from 'react';
 import { useToggle } from 'react-use';
@@ -11,6 +7,7 @@ import { AnimeCardContainer } from './anime-card-container';
 
 import { DeepRequired } from 'utility-types';
 import { AnimeCharactersContainer } from '../features/characters/anime-characters-container';
+import { useAniMateUserAnimeListQuery } from '../app/user/[username]/use-ani-mate-user-anime-list-query';
 
 export interface UserAnimeListProps {}
 
@@ -94,29 +91,14 @@ function AnimeList({ results }: AnimeListProps) {
   );
 }
 
-function transformUserAnimeList(data: IUserAnimeListQuery) {
-  const lists = data.MediaListCollection?.lists;
-  if (!lists) return [];
-  const result = lists[0] ?? {};
-  const anime: DeepRequired<IAnimePartsFragment>[] = result?.entries?.map(
-    (entry) => entry?.media || {},
-  )!;
-  return anime;
-}
-
 export function UserAnimeList(props: UserAnimeListProps) {
-  const { data, error, loading } = useUserAnimeListQuery({
-    variables: { username: '' },
-    onCompleted(data) {
-      // console.log('complete', data);
-    },
-  });
+  const { loading, error, medias } = useAniMateUserAnimeListQuery('ro');
   if (loading) return <div data-testid={'loader'}>loading</div>;
   if (error) return <div>{error.message}</div>;
 
   return (
     <div data-testid={'UserAnimeList'}>
-      <AnimeList results={transformUserAnimeList(data!)} />
+      <AnimeList results={medias} />
     </div>
   );
 }
