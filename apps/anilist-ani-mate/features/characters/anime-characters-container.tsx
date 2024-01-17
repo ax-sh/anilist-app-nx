@@ -3,8 +3,8 @@ import React from 'react';
 
 import { Badge, Image } from '@nextui-org/react';
 
-import AnimeCharacterCard from '../../components/anime-character-card';
 import { useAnimeCharacters } from './use-anime-characters';
+import AnimeCharacterCard from './anime-character-card';
 
 type AnimeCharactersContainerProps = {
   animeId: number;
