@@ -67,9 +67,10 @@ Primary.parameters = {
       anilistMockLink.query('UserAnimeList', ({ query }) =>
         HttpResponse.json(UserAnimeListMockData, { status: 201 }),
       ),
-      anilistMockLink.query('Anime', ({ query }) =>
-        HttpResponse.json(AnimeCharactersMockData, { status: 200 }),
-      ),
+      anilistMockLink.query('Anime', ({ query, ...rest }) => {
+        console.log(query, rest);
+        return HttpResponse.json(AnimeCharactersMockData, { status: 200 });
+      }),
     ],
   },
 };
