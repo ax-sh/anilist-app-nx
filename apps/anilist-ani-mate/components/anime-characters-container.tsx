@@ -1,11 +1,12 @@
 import clsx from 'clsx';
-import React, { PropsWithChildren, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   IAnimeQuery,
   ICharacterPartsFragment,
   useAnimeLazyQuery,
 } from '../generated/graphql/graphql';
-import { Image, Badge, Card, CardFooter, Button } from '@nextui-org/react';
+import { Badge, Image } from '@nextui-org/react';
+import AnimeCharacterCard from './anime-character-card';
 
 function characterSortPredicate<T extends ICharacterPartsFragment>(a: T, b: T) {
   // equal items sort equally
@@ -24,29 +25,6 @@ function characterSortPredicate<T extends ICharacterPartsFragment>(a: T, b: T) {
   const modifier = (x: T) => x?.gender ?? 0;
 
   return modifier(a) < modifier(b) ? -1 : 1;
-}
-
-export default function AnimeCharacter({
-  children,
-  name,
-}: PropsWithChildren<{ name: string }>) {
-  return (
-    <Card isFooterBlurred radius="lg" className="border-none">
-      {children}
-      <CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-        <p className="text-tiny text-white/80">{name}</p>
-        <Button
-          className="text-tiny text-white bg-black/20"
-          variant="flat"
-          color="default"
-          radius="lg"
-          size="sm"
-        >
-          Like
-        </Button>
-      </CardFooter>
-    </Card>
-  );
 }
 
 type AnimeCharactersContainerProps = {
@@ -112,7 +90,7 @@ export function AnimeCharactersContainer({
                   }
                   color={'primary'}
                 >
-                  <AnimeCharacter name={characterName}>
+                  <AnimeCharacterCard name={characterName}>
                     <Image
                       alt={character.name?.userPreferred!}
                       className="object-cover w-full h-full"
@@ -120,7 +98,7 @@ export function AnimeCharactersContainer({
                       src={character?.image?.large as string}
                       width={200}
                     />
-                  </AnimeCharacter>
+                  </AnimeCharacterCard>
                 </Badge>
               </div>
             );
