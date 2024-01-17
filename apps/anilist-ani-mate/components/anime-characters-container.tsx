@@ -1,14 +1,18 @@
 import clsx from 'clsx';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { PropsWithChildren, useEffect, useState } from 'react';
 import {
-  IAnimePartsFragment,
   IAnimeQuery,
   ICharacterPartsFragment,
-  IUserAnimeListQuery,
   useAnimeLazyQuery,
-  useAnimeQuery,
 } from '../generated/graphql/graphql';
-import { Avatar, AvatarGroup, Badge } from '@nextui-org/react';
+import {
+  Avatar,
+  Image,
+  Badge,
+  Card,
+  CardFooter,
+  Button,
+} from '@nextui-org/react';
 
 function characterSortPredicate<T extends ICharacterPartsFragment>(a: T, b: T) {
   // equal items sort equally
@@ -29,6 +33,29 @@ function characterSortPredicate<T extends ICharacterPartsFragment>(a: T, b: T) {
   return modifier(a) < modifier(b) ? -1 : 1;
 }
 
+export default function AnimeCharacter({
+  children,
+  name,
+}: PropsWithChildren<{ name: string }>) {
+  return (
+    <Card isFooterBlurred radius="lg" className="border-none">
+      {children}
+      <CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+        <p className="text-tiny text-white/80">{name}</p>
+        <Button
+          className="text-tiny text-white bg-black/20"
+          variant="flat"
+          color="default"
+          radius="lg"
+          size="sm"
+        >
+          Like
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
 type AnimeCharactersContainerProps = {
   animeId: number;
   className: string;
@@ -47,23 +74,25 @@ export function AnimeCharactersContainer({
   animeId,
   src,
 }: AnimeCharactersContainerProps) {
-  const [sortedCharacters, setSortedCharacters] = useState([]);
+  const [sortedCharacters, setSortedCharacters] = useState<
+    ICharacterPartsFragment[]
+  >([]);
   const [getAnime, { data, error, loading }] = useAnimeLazyQuery({
     // variables: { id: animeId },
     onCompleted(data) {
-      const characters = transformAnime(data!);
-      const n = [...characters];
-      n.sort(characterSortPredicate);
-      setSortedCharacters(n);
+      const characters = transformAnime(data);
+      if (!characters) return [];
+      const sorted = [...characters];
+      sorted.sort(characterSortPredicate);
+      setSortedCharacters(sorted);
     },
   });
   useEffect(() => {
-    getAnime({ variables: { id: animeId } });
+    void getAnime({ variables: { id: animeId } });
   }, []);
 
-  //
   if (loading) return null;
-  console.log(sortedCharacters);
+
   return (
     <div
       className={clsx(className, 'bg-cover w-full')}
@@ -71,42 +100,58 @@ export function AnimeCharactersContainer({
     >
       <div className={'backdrop-blur-md w-full h-full p-10 '}>
         <div>Anime Characters {animeId}</div>
-
-        {sortedCharacters.map((character) => {
-          return (
-            <div key={character.id} className={'grid grid-col-5'}>
-              <Badge
-                content={
-                  <span>
-                    {character.favourites} {character.gender}
-                  </span>
-                }
-                color={'primary'}
-              >
+        <div className={'grid grid-cols-5 gap-2'}>
+          {sortedCharacters.map((character) => {
+            if (
+              (character as ICharacterPartsFragment).__typename !== 'Character'
+            )
+              return null;
+            const characterName = character.name?.userPreferred!;
+            return (
+              <div key={character.id}>
+                {' '}
                 <Badge
-                  placement={'bottom-right'}
-                  content={character.name.userPreferred}
+                  content={
+                    <span>
+                      {character.favourites} {character.gender}
+                    </span>
+                  }
+                  color={'primary'}
                 >
-                  <Avatar
-                    isBordered
-                    color="secondary"
-                    className={clsx('w-20 h-20 text-large', {
-                      'opacity-100': character.gender === 'Female',
-                      'opacity-20': character.gender !== 'Female',
-                    })}
-                    size={'lg'}
-                    src={character.image.large}
-                    alt={character.name.userPreferred}
-                  />
-                </Badge>
-              </Badge>
+                  <AnimeCharacter name={characterName}>
+                    <Image
+                      alt={character.name?.userPreferred!}
+                      className="object-cover w-full h-full"
+                      height={200}
+                      src={character?.image?.large as string}
+                      width={200}
+                    />
+                  </AnimeCharacter>
 
-              {/*<h5>*/}
-              {/*  {character.name.userPreferred} {character.gender}*/}
-              {/*</h5>*/}
-            </div>
-          );
-        })}
+                  {/*<Badge*/}
+                  {/*  placement={'bottom-right'}*/}
+                  {/*  content={character.name.userPreferred}*/}
+                  {/*>*/}
+                  {/*  <Avatar*/}
+                  {/*    isBordered*/}
+                  {/*    color="secondary"*/}
+                  {/*    className={clsx('w-20 h-20 text-large', {*/}
+                  {/*      'opacity-100': character.gender === 'Female',*/}
+                  {/*      'opacity-20': character.gender !== 'Female',*/}
+                  {/*    })}*/}
+                  {/*    size={'lg'}*/}
+                  {/*    src={character.image.large}*/}
+                  {/*    alt={character.name.userPreferred}*/}
+                  {/*  />*/}
+                  {/*</Badge>*/}
+                </Badge>
+                {/*<h5>*/}
+                {/*  {character.name.userPreferred} {character.gender}*/}
+                {/*</h5>*/}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
