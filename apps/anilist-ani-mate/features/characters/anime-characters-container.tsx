@@ -28,13 +28,16 @@ export function AnimeCharactersContainer({
     >
       <div className={'backdrop-blur-md w-full h-full p-10 '}>
         <div>Anime Characters {animeId}</div>
-        <div className={'grid grid-cols-5 gap-2'}>
+        <div className={'grid-cols-4 grid gap-2'}>
           {data.map((character) => {
             const characterName = character?.name?.userPreferred ?? '';
             return (
               <div
                 key={character.id}
-                className={clsx(character.gender !== 'Female' && 'opacity-30')}
+                className={clsx(
+                  'Character',
+                  character.gender !== 'Female' && 'opacity-30',
+                )}
               >
                 <Badge
                   content={
