@@ -7,8 +7,8 @@ export function AnimeCardContainer<T extends Record<string, any>>(
 ) {
   return (
     <section className={'grid grid-cols-4 flex-wrap container gap-2'}>
-      {props.rows.map((row) => (
-        <props.renderRow {...row} />
+      {props.rows.map((row, index) => (
+        <props.renderRow {...row} key={index} />
       ))}
     </section>
   );
