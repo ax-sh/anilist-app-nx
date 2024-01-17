@@ -21,7 +21,7 @@
     "gen:ui:story": "pnpm nx generate @nx/react:component-story  --no-interactive",
     "gen:app:story": "nx g @nx/react:stories --name=anilist-ani-mate  --interactionTests=true",
     "gen:app:ui": "nx g @nx/next:component --directory=apps/anilist-ani-mate/ui --nameAndDirectoryFormat=as-provided --style=none",
-    "ox": "npx --yes oxlint@latest"
+    "ox": "pnpm oxlint"
   },
   "private": true,
   "dependencies": {
@@ -132,6 +132,7 @@
     "jsdom": "~23.2.0",
     "msw": "^2.1.0",
     "nx": "17.2.8",
+    "oxlint": "^0.2.1",
     "postcss": "8.4.33",
     "prettier": "^3.2.2",
     "sass": "1.69.7",
