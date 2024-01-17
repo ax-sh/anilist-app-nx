@@ -12,6 +12,7 @@ export default function AnimePage({ params }: AnimePageProps) {
   });
   if (error) return <ErrorJsonViewer error={error} />;
   if (loading) return <>loading</>;
+
   const { characters, id, idMal, title } = data?.Media!;
 
   return (

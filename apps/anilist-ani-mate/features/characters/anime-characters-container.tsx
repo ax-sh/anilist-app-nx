@@ -30,11 +30,7 @@ export function AnimeCharactersContainer({
         <div>Anime Characters {animeId}</div>
         <div className={'grid grid-cols-5 gap-2'}>
           {data.map((character) => {
-            if (
-              (character as ICharacterPartsFragment).__typename !== 'Character'
-            )
-              return null;
-            const characterName = character.name?.userPreferred!;
+            const characterName = character.name.userPreferred;
             return (
               <div
                 key={character.id}

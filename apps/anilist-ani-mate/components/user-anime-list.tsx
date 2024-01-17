@@ -9,6 +9,7 @@ import { useToggle } from 'react-use';
 import clsx from 'clsx';
 import { AnimeCardContainer } from './anime-card-container';
 import { AnimeCharactersContainer } from './anime-characters-container';
+import { DeepRequired } from 'utility-types';
 
 export interface UserAnimeListProps {}
 
@@ -78,7 +79,9 @@ function AnimeCardWrapper({
   );
 }
 
-function AnimeList({ results }: { readonly results: IAnimePartsFragment[] }) {
+type AnimeListProps = { readonly results: DeepRequired<IAnimePartsFragment>[] };
+
+function AnimeList({ results }: AnimeListProps) {
   return (
     <AnimeCardContainer
       rows={results}
