@@ -41,6 +41,7 @@
     "framer-motion": "^10.16.16",
     "graphql": "^16.8.1",
     "graphql-config": "5.0.3",
+    "install": "^0.13.0",
     "jsonwebtoken": "^9.0.2",
     "msw-storybook-addon": "2.0.0--canary.122.b3ed3b1.0",
     "next": "14.0.4",
@@ -52,6 +53,7 @@
     "react-use": "^17.4.3",
     "tailwind-variants": "^0.1.19",
     "tslib": "^2.6.2",
+    "utility-types": "^3.10.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {

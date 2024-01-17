@@ -53,6 +53,9 @@ dependencies:
   graphql-config:
     specifier: 5.0.3
     version: 5.0.3(@types/node@20.11.3)(graphql@16.8.1)(typescript@5.3.3)
+  install:
+    specifier: ^0.13.0
+    version: 0.13.0
   jsonwebtoken:
     specifier: ^9.0.2
     version: 9.0.2
@@ -86,6 +89,9 @@ dependencies:
   tslib:
     specifier: ^2.6.2
     version: 2.6.2
+  utility-types:
+    specifier: ^3.10.0
+    version: 3.10.0
   zod:
     specifier: ^3.22.4
     version: 3.22.4
@@ -15683,6 +15689,11 @@ packages:
       through: 2.3.8
       wrap-ansi: 6.2.0
 
+  /install@0.13.0:
+    resolution: {integrity: sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==}
+    engines: {node: '>= 0.10'}
+    dev: false
+
   /internal-slot@1.0.6:
     resolution: {integrity: sha512-Xj6dv+PsbtwyPpEflsejS+oIZxmMlV44zAhG479uYu89MsjcYOhCFnNyKrkJrihbsiasQyY0afoCl/9BLR65bg==}
     engines: {node: '>= 0.4'}
@@ -21742,6 +21753,11 @@ packages:
   /utila@0.4.0:
     resolution: {integrity: sha512-Z0DbgELS9/L/75wZbro8xAnT50pBVFQZ+hUEueGDU5FN51YSCYM+jdxsfCiHjwNP/4LCDD0i/graKpeBnOXKRA==}
     dev: true
+
+  /utility-types@3.10.0:
+    resolution: {integrity: sha512-O11mqxmi7wMKCo6HKFt5AhO4BwY3VV68YU07tgxfz8zJTIxr4BpsezN49Ffwy9j3ZpwwJp4fkRwjRzq3uWE6Rg==}
+    engines: {node: '>= 4'}
+    dev: false
 
   /utils-merge@1.0.1:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
