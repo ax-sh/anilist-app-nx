@@ -3,7 +3,7 @@ import {
   IAnimePartsFragment,
   IUserAnimeListQuery,
   useUserAnimeListQuery,
-} from '../../../generated/graphql/graphql';
+} from '../../generated/graphql/graphql';
 import { DeepRequired } from 'utility-types';
 
 function transformUserAnimeList(data: IUserAnimeListQuery) {
