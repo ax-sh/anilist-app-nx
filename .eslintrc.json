@@ -5,7 +5,8 @@
   "extends": ["plugin:@cspell/recommended"],
   "overrides": [
     {
-      "files": ["**/*.mock.{ts,tsx}"],
+      "files": ["**/*.mock.ts"],
+      "extends": ["plugin:@cspell/recommended"],
       "rules": {
       "@cspell/spellchecker": "off"
     }

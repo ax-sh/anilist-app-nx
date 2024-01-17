@@ -47,34 +47,49 @@ function AnimeCard({
   );
 }
 
+function AnimeCardWrapper({
+  title,
+  src,
+  animeId,
+}: {
+  title: string;
+  src: string;
+  animeId: number;
+}) {
+  const [on, toggle] = useToggle(false);
+  const className = clsx(
+    'duration-200 flex flex-row gap-4',
+    on &&
+      'mb-20 flex w-full grow flex-col items-start rounded-2xl bg-white py-20 col-start-0 col-span-5',
+  );
+
+  return (
+    <div className={className}>
+      <AnimeCard onClick={toggle} title={title} src={src} />
+
+      {on && (
+        <AnimeCharactersContainer
+          animeId={animeId}
+          className={clsx(!on && 'hidden')}
+          src={src}
+        />
+      )}
+    </div>
+  );
+}
+
 function AnimeList({ results }: { readonly results: IAnimePartsFragment[] }) {
   return (
     <AnimeCardContainer
       rows={results}
       renderRow={({ title, coverImage, id }, index) => {
-        const [on, toggle] = useToggle(false);
-        const className = clsx(
-          'duration-200 flex flex-row gap-4',
-          on &&
-            'mb-20 flex w-full grow flex-col items-start rounded-2xl bg-white py-20 col-start-0 col-span-5',
-        );
         return (
-          <div className={className}>
-            <AnimeCard
-              onClick={toggle}
-              key={index}
-              title={title?.romaji!}
-              src={coverImage?.extraLarge!}
-            />
-
-            {on && (
-              <AnimeCharactersContainer
-                animeId={id}
-                className={clsx(!on && 'hidden')}
-                src={coverImage?.extraLarge!}
-              />
-            )}
-          </div>
+          <AnimeCardWrapper
+            animeId={id}
+            key={index}
+            title={title?.romaji!}
+            src={coverImage?.extraLarge!}
+          />
         );
       }}
     />
