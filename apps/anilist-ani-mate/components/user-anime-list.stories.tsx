@@ -6,8 +6,8 @@ import { expect } from '@storybook/jest';
 import { HttpResponse } from 'msw';
 import {
   AnimeCharactersMockData,
-  UserAnimeListMockData,
-} from '../mocks/mock-data/userAnimeListMockData';
+  UserAnimeListMock,
+} from '../mocks/mock-data/userAnimeList.mock';
 import { MockedProvider } from '@apollo/client/testing';
 import {
   ApolloClient,
@@ -65,7 +65,7 @@ Primary.parameters = {
   msw: {
     handlers: [
       anilistMockLink.query('UserAnimeList', ({ query }) =>
-        HttpResponse.json(UserAnimeListMockData, { status: 201 }),
+        HttpResponse.json(UserAnimeListMock, { status: 201 }),
       ),
       anilistMockLink.query('Anime', ({ query, ...rest }) => {
         console.log(query, rest);

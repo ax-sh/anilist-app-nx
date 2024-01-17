@@ -21,7 +21,7 @@ function genMedia() {
   };
 }
 
-export const UserAnimeListMockData = {
+export const UserAnimeListMock = {
   data: {
     MediaListCollection: {
       lists: [

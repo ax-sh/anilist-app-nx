@@ -5,6 +5,12 @@
   "extends": ["plugin:@cspell/recommended"],
   "overrides": [
     {
+      "files": ["**/*mock.{ts,tsx}"],
+      "rules": {
+      "@cspell/spellchecker": "off"
+    }
+    },
+    {
       "files": ["**/*.{graphql,gql}"],
       "parser": "@graphql-eslint/eslint-plugin",
       "plugins": ["@graphql-eslint"],
