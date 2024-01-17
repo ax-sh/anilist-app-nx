@@ -2,7 +2,7 @@ import React from 'react';
 
 type AnimeCardContainerProps<T> = { rows: T[]; renderRow: React.FC<T> };
 
-export function AnimeCardContainer<T extends Record<string, any>>(
+export function AnimeCardContainer<T extends Record<string, unknown>>(
   props: AnimeCardContainerProps<T>,
 ) {
   return (
