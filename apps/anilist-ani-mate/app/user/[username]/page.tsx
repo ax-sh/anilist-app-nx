@@ -23,7 +23,6 @@ export default function UserPage({ params }: UserPageProps) {
 
         <div className={'flex flex-wrap gap-4'}>
           <AnimeList results={medias} />
-          {/*{medias?.map((anime) => <AnimeCard key={anime?.id} anime={anime} />)}*/}
         </div>
       </div>
     </section>
