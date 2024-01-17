@@ -8,8 +8,9 @@ import React from 'react';
 import { useToggle } from 'react-use';
 import clsx from 'clsx';
 import { AnimeCardContainer } from './anime-card-container';
-import { AnimeCharactersContainer } from './anime-characters-container';
+
 import { DeepRequired } from 'utility-types';
+import { AnimeCharactersContainer } from '../features/characters/anime-characters-container';
 
 export interface UserAnimeListProps {}
 
@@ -22,17 +23,11 @@ function AnimeCard({
   title: string;
   onClick: () => void;
 }) {
-  // const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
-  const handleOpen = () => {
-    onClick();
-  };
-
   return (
     <Card
       // className="col-span-12 sm:col-span-4 h-80"
       isPressable
-      onPress={handleOpen}
+      onPress={onClick}
     >
       <CardHeader className="absolute z-10 top-1 flex-col !items-start backdrop-blur-sm">
         <p className="text-tiny text-black/60 uppercase font-bold">{title}</p>
@@ -90,8 +85,8 @@ function AnimeList({ results }: AnimeListProps) {
           <AnimeCardWrapper
             animeId={id}
             key={index}
-            title={title?.romaji!}
-            src={coverImage?.extraLarge!}
+            title={title?.romaji ?? ''}
+            src={coverImage?.extraLarge ?? ''}
           />
         );
       }}
@@ -100,9 +95,11 @@ function AnimeList({ results }: AnimeListProps) {
 }
 
 function transformUserAnimeList(data: IUserAnimeListQuery) {
-  const result = data.MediaListCollection?.lists![0]!;
+  const lists = data.MediaListCollection?.lists;
+  if (!lists) return [];
+  const result = lists[0] ?? {};
   const anime: IAnimePartsFragment[] = result?.entries?.map(
-    (entry) => entry?.media!,
+    (entry) => entry?.media || {},
   )!;
   return anime;
 }

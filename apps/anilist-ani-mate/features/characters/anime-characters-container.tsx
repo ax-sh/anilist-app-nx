@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 
 import { Badge, Image } from '@nextui-org/react';
-import { ICharacterPartsFragment } from '../../generated/graphql/graphql';
+
 import AnimeCharacterCard from '../../components/anime-character-card';
 import { useAnimeCharacters } from './use-anime-characters';
 
@@ -30,7 +30,7 @@ export function AnimeCharactersContainer({
         <div>Anime Characters {animeId}</div>
         <div className={'grid grid-cols-5 gap-2'}>
           {data.map((character) => {
-            const characterName = character.name.userPreferred;
+            const characterName = character?.name?.userPreferred ?? '';
             return (
               <div
                 key={character.id}
