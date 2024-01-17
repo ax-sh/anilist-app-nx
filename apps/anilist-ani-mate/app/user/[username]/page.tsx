@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { ErrorJsonViewer, Loader } from '@anilist-app-nx/ui';
-import { useAniMateUserAnimeListQuery } from './use-ani-mate-user-anime-list-query';
+
 import { AniMateAnimeList } from '../../../components/ani-mate-anime-list';
+import { useAniMateUserAnimeListQuery } from '../../../features/anime/use-ani-mate-user-anime-list-query';
 
 type UserPageProps = { params: { username: string } };
 
