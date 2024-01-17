@@ -17,7 +17,7 @@ export function useAnimeCharacters({ animeId }: { animeId: number }) {
   });
   useEffect(() => {
     void getAnime({ variables: { id: animeId } });
-  }, []);
+  }, [animeId]);
 
   return { data: sortedCharacters, getAnime, loading, error };
 }
