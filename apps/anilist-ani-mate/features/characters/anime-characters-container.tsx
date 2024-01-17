@@ -46,7 +46,7 @@ export function AnimeCharactersContainer({
                 >
                   <AnimeCharacterCard name={characterName}>
                     <Image
-                      alt={character.name?.userPreferred!}
+                      alt={characterName}
                       className="object-cover w-full h-full"
                       height={200}
                       src={character?.image?.large as string}

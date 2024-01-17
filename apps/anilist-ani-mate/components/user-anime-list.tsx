@@ -98,7 +98,7 @@ function transformUserAnimeList(data: IUserAnimeListQuery) {
   const lists = data.MediaListCollection?.lists;
   if (!lists) return [];
   const result = lists[0] ?? {};
-  const anime: IAnimePartsFragment[] = result?.entries?.map(
+  const anime: DeepRequired<IAnimePartsFragment>[] = result?.entries?.map(
     (entry) => entry?.media || {},
   )!;
   return anime;
