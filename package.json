@@ -21,7 +21,8 @@
     "gen:ui:story": "pnpm nx generate @nx/react:component-story  --no-interactive",
     "gen:app:story": "nx g @nx/react:stories --name=anilist-ani-mate  --interactionTests=true",
     "gen:app:ui": "nx g @nx/next:component --directory=apps/anilist-ani-mate/ui --nameAndDirectoryFormat=as-provided --style=none",
-    "ox": "pnpm oxlint"
+    "ox": "pnpm oxlint",
+    "oxx": "pnpm oxlint -c ./.eslintrc.json"
   },
   "private": true,
   "dependencies": {
