@@ -3,6 +3,7 @@
 import React from 'react';
 import { ErrorJsonViewer, Loader } from '@anilist-app-nx/ui';
 import { useAniMateUserAnimeListQuery } from './use-ani-mate-user-anime-list-query';
+import { AniMateAnimeList } from '../../../components/ani-mate-anime-list';
 
 type UserPageProps = { params: { username: string } };
 
@@ -22,7 +23,7 @@ export default function UserPage({ params }: UserPageProps) {
         <h1>User: {params.username}</h1>
 
         <div className={'flex flex-wrap gap-4'}>
-          <AnimeList results={medias} />
+          <AniMateAnimeList results={medias} />
         </div>
       </div>
     </section>
