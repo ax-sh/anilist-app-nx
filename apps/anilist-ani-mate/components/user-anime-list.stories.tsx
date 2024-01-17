@@ -1,11 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { UserAnimeList } from './user-anime-list';
 
-import {
-  within,
-  screen,
-  waitForElementToBeRemoved,
-} from '@storybook/testing-library';
+import { within, waitForElementToBeRemoved } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { HttpResponse } from 'msw';
 import {
@@ -20,7 +16,8 @@ import {
   InMemoryCache,
 } from '@apollo/client';
 import { httpLink } from '../app/apollo-provider-wrapper';
-import { anilistMockLink } from '../mocks'; // Use for Apollo Version 3+
+import { anilistMockLink } from '../mocks';
+import { PropsWithChildren } from 'react'; // Use for Apollo Version 3+
 
 const meta: Meta<typeof UserAnimeList> = {
   component: UserAnimeList,
@@ -41,7 +38,7 @@ export const Primary: Story = {
   },
 };
 
-function AnilistStorybookProvider({ children }) {
+function AnilistStorybookProvider({ children }: PropsWithChildren) {
   const client = new ApolloClient({
     link: from([httpLink]),
     cache: new InMemoryCache(),
