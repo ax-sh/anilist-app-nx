@@ -1,8 +1,5 @@
-import { Card, CardHeader, Image } from '@nextui-org/react';
 import React from 'react';
-import { useToggle } from 'react-use';
-import clsx from 'clsx';
-import { AnimeCharactersContainer } from '../features/characters/anime-characters-container';
+
 import { useAniMateUserAnimeListQuery } from '../app/user/[username]/use-ani-mate-user-anime-list-query';
 import { AniMateAnimeList } from './ani-mate-anime-list';
 
