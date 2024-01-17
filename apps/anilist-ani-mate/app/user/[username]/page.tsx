@@ -1,25 +1,20 @@
 'use client';
 
-import { useUserAnimeListQuery } from '../../../generated/graphql/graphql';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { ErrorJsonViewer, Loader } from '@anilist-app-nx/ui';
-import { AnimeCard } from './anime-card';
+
+import { AniMateAnimeList } from '../../../components/ani-mate-anime-list';
+import { useAniMateUserAnimeListQuery } from '../../../features/anime/use-ani-mate-user-anime-list-query';
 
 type UserPageProps = { params: { username: string } };
+
 export default function UserPage({ params }: UserPageProps) {
-  const { data, error, loading } = useUserAnimeListQuery({
-    variables: { username: params.username },
-  });
-  const medias = useMemo(() => {
-    return data?.MediaListCollection?.lists?.flatMap(
-      (i) => i?.entries?.map((e) => e?.media),
-    );
-  }, [data]);
+  const { medias, loading, error } = useAniMateUserAnimeListQuery(
+    params.username,
+  );
+
   if (error) return <ErrorJsonViewer error={error} />;
-
   if (loading) return <Loader />;
-
-  console.log(medias, 333);
 
   return (
     <section className={'container mx-auto'}>
@@ -27,7 +22,7 @@ export default function UserPage({ params }: UserPageProps) {
         <h1>User: {params.username}</h1>
 
         <div className={'flex flex-wrap gap-4'}>
-          {medias?.map((anime) => <AnimeCard key={anime?.id} anime={anime} />)}
+          <AniMateAnimeList results={medias} />
         </div>
       </div>
     </section>

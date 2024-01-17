@@ -4,6 +4,7 @@
   "plugins": ["@nx", "pii"],
   "extends": ["plugin:@cspell/recommended"],
   "overrides": [
+
     {
       "files": ["**/*.{graphql,gql}"],
       "parser": "@graphql-eslint/eslint-plugin",
@@ -79,6 +80,13 @@
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-explicit-any": "warn",
         "@next/next/no-img-element": "off"
+      }
+    },
+    {
+      "files": ["**/*.mock.ts"],
+      "extends": ["plugin:@cspell/recommended"],
+      "rules": {
+        "@cspell/spellchecker": "off"
       }
     }
   ]

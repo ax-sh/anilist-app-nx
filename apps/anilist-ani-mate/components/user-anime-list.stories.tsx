@@ -1,14 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { UserAnimeList } from './user-anime-list';
 
-import {
-  within,
-  screen,
-  waitForElementToBeRemoved,
-} from '@storybook/testing-library';
+import { within, waitForElementToBeRemoved } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { HttpResponse } from 'msw';
-import { UserAnimeListMockData } from '../mocks/mock-data/userAnimeListMockData';
+import {
+  AnimeCharactersMockData,
+  UserAnimeListMock,
+} from '../mocks/mock-data/userAnimeList.mock';
 import { MockedProvider } from '@apollo/client/testing';
 import {
   ApolloClient,
@@ -17,7 +16,8 @@ import {
   InMemoryCache,
 } from '@apollo/client';
 import { httpLink } from '../app/apollo-provider-wrapper';
-import { anilistMockLink } from '../mocks'; // Use for Apollo Version 3+
+import { anilistMockLink } from '../mocks';
+import { PropsWithChildren } from 'react'; // Use for Apollo Version 3+
 
 const meta: Meta<typeof UserAnimeList> = {
   component: UserAnimeList,
@@ -38,7 +38,7 @@ export const Primary: Story = {
   },
 };
 
-function AnilistStorybookProvider({ children }) {
+function AnilistStorybookProvider({ children }: PropsWithChildren) {
   const client = new ApolloClient({
     link: from([httpLink]),
     cache: new InMemoryCache(),
@@ -65,8 +65,12 @@ Primary.parameters = {
   msw: {
     handlers: [
       anilistMockLink.query('UserAnimeList', ({ query }) =>
-        HttpResponse.json(UserAnimeListMockData, { status: 201 }),
+        HttpResponse.json(UserAnimeListMock, { status: 201 }),
       ),
+      anilistMockLink.query('Anime', ({ query, ...rest }) => {
+        console.log(query, rest);
+        return HttpResponse.json(AnimeCharactersMockData, { status: 200 });
+      }),
     ],
   },
 };

@@ -2,7 +2,7 @@
 
 import { useAnimeQuery } from '../../generated/graphql/graphql';
 import { ErrorJsonViewer, Loader } from '@anilist-app-nx/ui';
-import { CharactersSection } from './characters-section';
+// import { CharactersSection } from './characters-section';
 
 export function AnimeSection() {
   const variables = { id: 20 };
@@ -17,7 +17,7 @@ export function AnimeSection() {
   return <ErrorJsonViewer error={data} />;
   return (
     <section className={'container mx-auto'}>
-      <CharactersSection characters={characters.nodes!} />
+      {/*<CharactersSection characters={characters.nodes!} />*/}
     </section>
   );
 }
