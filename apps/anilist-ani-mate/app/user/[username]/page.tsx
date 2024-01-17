@@ -15,8 +15,6 @@ export default function UserPage({ params }: UserPageProps) {
   if (error) return <ErrorJsonViewer error={error} />;
   if (loading) return <Loader />;
 
-  console.log(medias, 333);
-
   return (
     <section className={'container mx-auto'}>
       <div className={'prose max-w-none'}>
