@@ -35,10 +35,11 @@ type AnimeCharactersContainerProps = {
 
 function transformAnime(data: IAnimeQuery) {
   const results = data.Media;
-  const characters = results?.characters?.nodes?.map(
-    (i) => i as ICharacterPartsFragment,
-  );
-  return characters;
+  const characters = results?.characters?.nodes as ICharacterPartsFragment[];
+  if (!characters) return [];
+  const sorted = [...characters];
+  sorted.sort(characterSortPredicate);
+  return sorted;
 }
 export function AnimeCharactersContainer({
   className,
@@ -50,11 +51,8 @@ export function AnimeCharactersContainer({
   >([]);
   const [getAnime, { data, error, loading }] = useAnimeLazyQuery({
     onCompleted(data) {
-      const characters = transformAnime(data);
-      if (!characters) return [];
-      const sorted = [...characters];
-      sorted.sort(characterSortPredicate);
-      setSortedCharacters(sorted);
+      const sortedCharacters = transformAnime(data);
+      setSortedCharacters(sortedCharacters);
     },
   });
   useEffect(() => {
