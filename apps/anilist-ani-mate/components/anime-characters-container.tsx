@@ -5,14 +5,7 @@ import {
   ICharacterPartsFragment,
   useAnimeLazyQuery,
 } from '../generated/graphql/graphql';
-import {
-  Avatar,
-  Image,
-  Badge,
-  Card,
-  CardFooter,
-  Button,
-} from '@nextui-org/react';
+import { Image, Badge, Card, CardFooter, Button } from '@nextui-org/react';
 
 function characterSortPredicate<T extends ICharacterPartsFragment>(a: T, b: T) {
   // equal items sort equally
@@ -78,7 +71,6 @@ export function AnimeCharactersContainer({
     ICharacterPartsFragment[]
   >([]);
   const [getAnime, { data, error, loading }] = useAnimeLazyQuery({
-    // variables: { id: animeId },
     onCompleted(data) {
       const characters = transformAnime(data);
       if (!characters) return [];
@@ -108,8 +100,10 @@ export function AnimeCharactersContainer({
               return null;
             const characterName = character.name?.userPreferred!;
             return (
-              <div key={character.id}>
-                {' '}
+              <div
+                key={character.id}
+                className={clsx(character.gender !== 'Female' && 'opacity-30')}
+              >
                 <Badge
                   content={
                     <span>
@@ -127,27 +121,7 @@ export function AnimeCharactersContainer({
                       width={200}
                     />
                   </AnimeCharacter>
-
-                  {/*<Badge*/}
-                  {/*  placement={'bottom-right'}*/}
-                  {/*  content={character.name.userPreferred}*/}
-                  {/*>*/}
-                  {/*  <Avatar*/}
-                  {/*    isBordered*/}
-                  {/*    color="secondary"*/}
-                  {/*    className={clsx('w-20 h-20 text-large', {*/}
-                  {/*      'opacity-100': character.gender === 'Female',*/}
-                  {/*      'opacity-20': character.gender !== 'Female',*/}
-                  {/*    })}*/}
-                  {/*    size={'lg'}*/}
-                  {/*    src={character.image.large}*/}
-                  {/*    alt={character.name.userPreferred}*/}
-                  {/*  />*/}
-                  {/*</Badge>*/}
                 </Badge>
-                {/*<h5>*/}
-                {/*  {character.name.userPreferred} {character.gender}*/}
-                {/*</h5>*/}
               </div>
             );
           })}
