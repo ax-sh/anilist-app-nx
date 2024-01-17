@@ -1,24 +1,10 @@
 'use client';
 
-import { useUserAnimeListQuery } from '../../../generated/graphql/graphql';
-import React, { useState } from 'react';
+import React from 'react';
 import { ErrorJsonViewer, Loader } from '@anilist-app-nx/ui';
+import { useAniMateUserAnimeListQuery } from './use-ani-mate-user-anime-list-query';
 
 type UserPageProps = { params: { username: string } };
-
-function useAniMateUserAnimeListQuery(username: string) {
-  const [medias, setMedias] = useState([]);
-  const { data, error, loading } = useUserAnimeListQuery({
-    variables: { username },
-    onCompleted(data) {
-      const medias = data?.MediaListCollection?.lists?.flatMap((i) =>
-        i?.entries?.map((e) => e?.media),
-      );
-      setMedias(medias);
-    },
-  });
-  return { medias, loading, error };
-}
 
 export default function UserPage({ params }: UserPageProps) {
   const { medias, loading, error } = useAniMateUserAnimeListQuery(
@@ -26,7 +12,6 @@ export default function UserPage({ params }: UserPageProps) {
   );
 
   if (error) return <ErrorJsonViewer error={error} />;
-
   if (loading) return <Loader />;
 
   console.log(medias, 333);
