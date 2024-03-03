@@ -28,7 +28,8 @@
       "configurations": {
         "development": {
           "buildTarget": "anilist-ani-mate:build:development",
-          "dev": true
+          "dev": true,
+          "turbo": false
         },
         "production": {
           "buildTarget": "anilist-ani-mate:build:production",
